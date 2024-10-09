@@ -20,6 +20,9 @@ private:
 	int m_GameOverCount;
 
 public:
+	GameMain() = default;
+	~GameMain() = default;
+
 	void Initialize(StageSelect* target);
 	void Initialize(void);
 	void Update(void);

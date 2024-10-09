@@ -4,8 +4,8 @@
 class CREDIT 
 {
 protected:
-	const float  width;
-	const float	 height;
+	const float  width = 0.0f;
+	const float	 height = 0.0f;
 	vivid::Vector2 pos;
 public:
 	void Initialize(void) ;

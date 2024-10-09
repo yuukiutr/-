@@ -5,13 +5,13 @@
 class Title
 {
 protected:
-	static const int m_max_BG;
-	static const int m_message_font_size;
+	//static const int m_max_BG;
+	//static const int m_message_font_size;
 
-	const int m_title_width;		//タイトル用背景サイズ横
-	const int  m_title_height;		//タイトル用背景サイズ縦
-	const int m_title_logo_width;	//タイトルロゴのサイズ横
-	const int m_title_logo_height;	//タイトルロゴのサイズ縦
+	const int m_title_width = 0;		//タイトル用背景サイズ横
+	const int  m_title_height = 0;		//タイトル用背景サイズ縦
+	const int m_title_logo_width = 0;	//タイトルロゴのサイズ横
+	const int m_title_logo_height = 0;	//タイトルロゴのサイズ縦
 
 	vivid::Rect m_Rect;			//描画範囲
 

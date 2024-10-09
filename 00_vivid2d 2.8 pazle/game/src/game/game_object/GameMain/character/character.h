@@ -4,13 +4,13 @@
 class Character
 {
 private:
-	const int m_character_height;
-	const int m_character_width;
+	const int m_character_height = 0;
+	const int m_character_width = 0;
 	vivid::Vector2 m_CharacterPosition;
 	vivid::Vector2 m_CharacterVelocity;
 	vivid::Vector2 m_CharacterDirection;
-	const float m_character_inertia;
-	const float m_character_move_speed;
+	const float m_character_inertia = 0.0f;
+	const float m_character_move_speed = 0.0f;
 	bool m_LoseFlag;
 
 	enum class STATE_ID
@@ -25,6 +25,7 @@ private:
 	int m_AnimRectPoint;
 
 public:
+
 	//‰Šú‰»
 	void Initialize(void);
 	//XV
