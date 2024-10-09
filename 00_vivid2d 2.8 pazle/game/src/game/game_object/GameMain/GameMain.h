@@ -9,6 +9,7 @@ class StageSelect;
 class GameMain
 {
 private:
+
 	StageSelect* m_Select;
 	Character character;
 	Goal goal;

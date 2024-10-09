@@ -2,8 +2,6 @@
 
 #include "vivid.h"
 #include "../gamescene_manager/gamescene_manager.h"
-#include "../../BGM_SE/BGM_SE.h"
-#include "../../BGM_SE/SE_ID.h"
 
 void StageSelect::Initialize(void)
 {
@@ -17,13 +15,11 @@ void StageSelect::Update(void)
 	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D)
 		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::RIGHT))
 	{
-		StartSE(SE_ID::CHENG);
 		m_SelectNumber++;
 	}
 	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A)
 		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::LEFT))
 	{
-		StartSE(SE_ID::CHENG);
 		m_SelectNumber--;
 	}
 

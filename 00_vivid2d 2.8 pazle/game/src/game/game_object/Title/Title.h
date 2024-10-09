@@ -16,7 +16,7 @@ protected:
 	vivid::Rect m_Rect;			//•`‰æ”ÍˆÍ
 
 
-	float g_TitlePawa;
+	float g_TitlePower;
 	int m_NowTitle;
 	int m_time;
 	unsigned int m_color;

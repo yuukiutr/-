@@ -1,9 +1,6 @@
 #include "GameMain.h"
 #include "../StageSelect/StageSelect.h"
 #include "effectmanager/effectmanager.h"
-#include "../../BGM_SE/BGM_SE.h"
-#include "../../BGM_SE/SE_ID.h"
-
 
 
 //main Initialize
@@ -67,7 +64,6 @@ void GameMain::Update(void)
 			if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 				||vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::B))
 			{
-				StartBGM(GameScene_ID::MAIN);
 				m_GameOverCount++;
 				this->Finalize();
 				this->Initialize();

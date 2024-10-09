@@ -5,7 +5,6 @@
 #include "../Result/Result.h"
 #include "../credit/credit.h"
 
-#include "../../BGM_SE/BGM_SE.h"
 
 
 GameMain gamemain;
@@ -76,11 +75,7 @@ void CreateScene(GameScene_ID next_scene)
 
 void GameSceneManager::Initialize(void)
 {
-	StopBGM();
-	BGM_SE_Initialize();
 	CreateScene(GameScene_ID::TITLE);
-	StartBGM(gamescene_id);
-
 }
 
 void GameSceneManager::Update(void)
