@@ -48,6 +48,10 @@ if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 		 CreateScene(GameScene_ID::TITLE);
 	}
 	
+if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
+{
+	CreateScene(GameScene_ID::MAIN);
+}
 
 #ifdef VIVID_DEBUG
 #if _DRAW_DEBUG_DATA
@@ -71,6 +75,7 @@ if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 void StageSelect::Draw(void)
 {
 #ifdef VIVID_DEBUG
+	vivid::DrawText(32, "ゲーム選択", { 0.0f,0.0f });
 #if _DRAW_DEBUG_DATA
 	//見本 vivid::DrawText(50, "水色ブロック   　引力の強い状態でしばらく乗っていると上に落ちるブロック", { 0.0f,750.0f }, 0xffff8800);
 #endif

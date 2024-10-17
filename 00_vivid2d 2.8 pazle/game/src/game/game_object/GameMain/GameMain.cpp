@@ -92,6 +92,7 @@ void GameMain::Draw(void)
 	lose.Draw();
 
 #ifdef VIVID_DEBUG
+	vivid::DrawText(32, "ƒQ[ƒ€ƒƒCƒ“", { 0.0f,0.0f });
 
 	character.CHARACTER_DEBUG_DRAW_DATA();
 	this->GAMEMAIN_DEBUG_DRAW_DATA();

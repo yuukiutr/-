@@ -6,7 +6,7 @@
 #include "Enemy_ID.h"
 
 class Character;
-class Ground;
+class StageCreate;
 class EnemyBase;
 
 class EnemyManager
@@ -24,7 +24,7 @@ private:
 	std::map<ENEMY_ID, std::function<EnemyBase* (void)>> m_Generator;
 
 	Character* m_character;
-	Ground* m_ground;
+	StageCreate* m_ground;
 public:
 	//BoxManagerインスタンス
 	static EnemyManager& GetInstance(void);

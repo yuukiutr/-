@@ -171,12 +171,14 @@
     <ClCompile Include="src\game\game_object\GameMain\Button_manager\Button\Button.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\Button_manager\Button_manager.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\character\character.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\dice\dice.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\effectmanager\effectmanager.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\effectmanager\effect\effectbase.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\EnemyManager\EnemyManager.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\EnemyManager\enemy\EnemyBase.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\goal\goal.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\lose\lose.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\StageCreate\StageCreate.cpp" />
     <ClCompile Include="src\game\game_object\gamescene_manager\gamescene_manager.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\GameMain.cpp" />
     <ClCompile Include="src\game\game_object\Result\Result.cpp" />
@@ -201,6 +203,7 @@
     <ClInclude Include="src\game\game_object\GameMain\Button_manager\Button_manager.h" />
     <ClInclude Include="src\game\game_object\GameMain\character\character.h" />
     <ClInclude Include="src\game\game object\GameMain\BoxManager\Box\deadbox\deadbox.h" />
+    <ClInclude Include="src\game\game_object\GameMain\dice\dice.h" />
     <ClInclude Include="src\game\game_object\GameMain\effectmanager\effectmanager.h" />
     <ClInclude Include="src\game\game_object\GameMain\effectmanager\effect\effectbase.h" />
     <ClInclude Include="src\game\game_object\GameMain\effectmanager\effect_id.h" />
@@ -209,6 +212,7 @@
     <ClInclude Include="src\game\game_object\GameMain\EnemyManager\Enemy_ID.h" />
     <ClInclude Include="src\game\game_object\GameMain\goal\goal.h" />
     <ClInclude Include="src\game\game_object\GameMain\lose\lose.h" />
+    <ClInclude Include="src\game\game_object\GameMain\StageCreate\StageCreate.h" />
     <ClInclude Include="src\game\game_object\gamescene_manager\gamescene_id.h" />
     <ClInclude Include="src\game\game_object\gamescene_manager\gamescene_manager.h" />
     <ClInclude Include="src\game\game_object\GameMain\GameMain.h" />

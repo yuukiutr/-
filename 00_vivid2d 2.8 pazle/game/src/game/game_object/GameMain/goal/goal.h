@@ -2,7 +2,7 @@
 #include "vivid.h"
 
 class Character;
-class Ground;
+class StageCreate;
 
 class Goal
 {
