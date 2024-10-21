@@ -16,10 +16,10 @@ enum class MAP_CHIP_ID
 	GOALFLAG,		//ÉSÅ[Éã
 };
 
-const int g_map_chip_height = 32;
-const int g_map_chip_width = 32;
-const int g_map_chip_count_width = vivid::WINDOW_WIDTH / g_map_chip_width;
-const int g_map_chip_count_height = vivid::WINDOW_HEIGHT / g_map_chip_height;
+const int g_map_chip_height = 64;
+const int g_map_chip_width = 64;
+const int g_map_chip_count_width = 12;
+const int g_map_chip_count_height = 12;
 
 class StageCreate
 {
@@ -31,7 +31,6 @@ private:
 	StageSelect* m_Select;
 	STAGE_ID m_StageID;
 
-	vivid::Vector2 m_GroundPosition;
 	vivid::Vector2 m_SavePosition;
 
 	struct ROADSTAGE
@@ -41,32 +40,12 @@ private:
 
 	ROADSTAGE m_StageName[(int)STAGE_ID::MAX] =
 	{
-		"data\\map.csv",
-		"data\\stage2.csv",
-		"data\\stage3.csv",
-		"data\\stage4.csv",
-		"data\\stage5.csv",
-		"data\\stage6.csv",
-		"data\\stage7.csv",
-		"data\\stage8.csv",
-		"data\\stage9.csv",
-		"data\\stage10.csv",
-		"data\\stage11.csv",
-		"data\\stage12.csv",
-		"data\\stage13.csv",
-		"data\\stage14.csv",
-		"data\\stage15.csv",
-		"data\\stage16.csv",
-		"data\\stage17.csv",
-		"data\\stage18.csv",
-		"data\\stage19.csv",
-		"data\\stage20.csv",
-		"data\\stage21.csv",
-		"data\\stage22.csv",
-		"data\\stage23.csv",
-		"data\\stage24.csv",
-		"data\\map_1.csv",
-		"data\\special.csv",
+		"data\\excel\\stage1.csv",
+		"data\\excel\\stage2.csv",
+		"data\\excel\\stage3.csv",
+		"data\\excel\\stage4.csv",
+		"data\\excel\\stage5.csv",
+		"data\\excel\\stage6.csv",
 	};
 
 public:

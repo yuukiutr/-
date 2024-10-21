@@ -10,8 +10,6 @@ void StageCreate::Initialize(StageSelect* target)
     m_Select = target;
     m_StageID = m_Select->GetNowStageID();
 
-    m_GroundPosition = { 0.0f,0.0f };
-
     //ファイルを開く
     std::ifstream file(m_StageName[(int)m_Select->GetNowStageID()].RoadName);
     std::string line = "\0";
@@ -60,6 +58,7 @@ void StageCreate::Initialize(StageSelect* target)
 
     for (int i = 0; i < g_map_chip_count_height; ++i)
     {
+        //動くものを入れます(爆破可能ブロック？)
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
             vivid::Vector2 pos;
@@ -94,10 +93,6 @@ void StageCreate::Initialize(StageSelect* target)
 
 void StageCreate::Update(void)
 {
-    if (m_GroundPosition.x > 0.0f)
-    {
-        m_GroundPosition.x = 0.0f;
-    }
 }
 
 void StageCreate::Draw(void)
@@ -108,8 +103,8 @@ void StageCreate::Draw(void)
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
             vivid::Vector2 pos;
-            pos.x = (float)(k * (float)g_map_chip_width) + m_GroundPosition.x;
-            pos.y = (float)(i * (float)g_map_chip_height) + m_GroundPosition.y;
+            pos.x = (float)(k * (float)g_map_chip_width) + 200.0f;
+            pos.y = (float)(i * (float)g_map_chip_height) + 200.0f;
 
             //読み込み範囲を求める
             vivid::Rect rect = {};
@@ -119,7 +114,7 @@ void StageCreate::Draw(void)
             rect.bottom = g_map_chip_height;
 
             //描画
-            vivid::DrawTexture("data\\gamemain_utility\\g.png", pos, 0xffffffff, rect);
+            vivid::DrawTexture("data\\gamemain_utility\\test.png", pos, 0xffffffff, rect);
             //vivid::DrawTexture("data/groundplus.png", { 0.0f,0.0f });
         }
     }
@@ -148,8 +143,8 @@ vivid::Vector2 StageCreate::GetCollision(vivid::Vector2 vec2, int width, int hei
             {
 
                 vivid::Vector2 pos;
-                pos.x = (float)(k * (float)g_map_chip_width) + m_GroundPosition.x;
-                pos.y = (float)(i * (float)g_map_chip_height) + m_GroundPosition.y;
+                pos.x = (float)(k * (float)g_map_chip_width);
+                pos.y = (float)(i * (float)g_map_chip_height);
 
                 //
                 if (m_Map[i - 1][k] != 1u && i > 0 || i == 0)
