@@ -1,0 +1,93 @@
+﻿2024/10/21 (月) 9:51:20 にビルドを開始しました。
+ログの詳細度は次のように設定されています: Normal。     1>ノード 2 上のプロジェクト "C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\game.vcxproj" (Build ターゲット)。
+     1>PrepareForBuild:
+         ディレクトリ "x64\Debug\game.tlog\" を作成しています。
+       InitializeBuildStatus:
+         "AlwaysCreate" が指定されたため "x64\Debug\game.tlog\unsuccessfulbuild" を作成しています。
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\HostX64\x64\CL.exe /c /I..\vivid2d\src /ZI /JMC /nologo /W4 /WX- /diagnostics:column /MP /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W4 /Gd /TP /wd26495 /FC /errorReport:prompt src\game\game.cpp src\game\game_obj\apple\Apple.cpp src\game\game_obj\character\character.cpp src\game\game_obj\chorus\chorus.cpp src\game\game_obj\clock\clock.cpp src\game\game_obj\effect\effect.cpp src\game\game_obj\GameMain\GameMain.cpp src\game\game_obj\gamescene_manager\gamescene_manager.cpp src\game\game_obj\Result\Result.cpp src\game\game_obj\scene\gamemain_scene\gamemain_scene.cpp src\game\game_obj\scene\result_scene\result_scene.cpp src\game\game_obj\scene\scene_manager.cpp src\game\game_obj\scene\title_scene\title_scene.cpp src\game\game_obj\score\score.cpp src\game\game_obj\StageSelect\StageSelect.cpp src\game\game_obj\Title\Title.cpp src\generic_function\generic_function.cpp src\main.cpp
+         game.cpp
+         Apple.cpp
+         character.cpp
+         chorus.cpp
+         clock.cpp
+         effect.cpp
+         GameMain.cpp
+         gamescene_manager.cpp
+         Result.cpp
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\clock\clock.cpp':No such file or directory
+         gamemain_scene.cpp
+         result_scene.cpp
+         scene_manager.cpp
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\apple\Apple.cpp':No such file or directory
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\gamemain_scene\gamemain_scene.cpp':No such file or directory
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\scene_manager.cpp':No such file or directory
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\chorus\chorus.cpp':No such file or directory
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\character\character.cpp':No such file or directory
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\result_scene\result_scene.cpp':No such file or directory
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\effect\effect.cpp':No such file or directory
+         title_scene.cpp
+         score.cpp
+         StageSelect.cpp
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\title_scene\title_scene.cpp':No such file or directory
+         Title.cpp
+         generic_function.cpp
+         main.cpp
+     1>c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\score\score.cpp':No such file or directory
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\GameMain\GameMain.cpp(3,40): warning C4100: 'target': 引数は関数の本体部で 1 度も参照されません。
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\generic_function\generic_function.cpp(19,55): warning C4100: 'height': 引数は関数の本体部で 1 度も参照されません。
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\generic_function\generic_function.cpp(19,44): warning C4100: 'width': 引数は関数の本体部で 1 度も参照されません。
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\gamescene_manager\gamescene_manager.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\Title\Title.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\main.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\StageSelect\StageSelect.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\Result\Result.cpp)
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\Result\Result.h(3,10): fatal  error C1083: include ファイルを開けません。'../StageSelect/Stage_id.h':No such file or directory (ソース ファイルをコンパイルしています src\game\game_obj\gamescene_manager\gamescene_manager.cpp)
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\main.cpp(27,5): error C3861: 'UpdateGame': 識別子が見つかりませんでした
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\main.cpp(30,5): error C3861: 'DrawGame': 識別子が見つかりませんでした
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\main.cpp(56,5): error C3861: 'InitializeGame': 識別子が見つかりませんでした
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\StageSelect\StageSelect.cpp(66,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\StageSelect\StageSelect.cpp(85,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+     1>C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\Result\Result.h(3,10): fatal  error C1083: include ファイルを開けません。'../StageSelect/Stage_id.h':No such file or directory (ソース ファイルをコンパイルしています src\game\game_obj\Result\Result.cpp)
+     1>プロジェクト "C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\game.vcxproj" (Build ターゲット) のビルドが終了しました -- 失敗。
+
+ビルドに失敗しました。
+
+       "C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\game.vcxproj" (Build ターゲット) (1) ->
+       (ClCompile ターゲット) -> 
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\GameMain\GameMain.cpp(3,40): warning C4100: 'target': 引数は関数の本体部で 1 度も参照されません。
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\generic_function\generic_function.cpp(19,55): warning C4100: 'height': 引数は関数の本体部で 1 度も参照されません。
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\generic_function\generic_function.cpp(19,44): warning C4100: 'width': 引数は関数の本体部で 1 度も参照されません。
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\gamescene_manager\gamescene_manager.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\Title\Title.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\main.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\StageSelect\StageSelect.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_obj\Result\Result.cpp)
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\StageSelect\StageSelect.cpp(66,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\StageSelect\StageSelect.cpp(85,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+
+
+       "C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\game.vcxproj" (Build ターゲット) (1) ->
+       (ClCompile ターゲット) -> 
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\clock\clock.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\apple\Apple.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\gamemain_scene\gamemain_scene.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\scene_manager.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\chorus\chorus.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\character\character.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\result_scene\result_scene.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\effect\effect.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\scene\title_scene\title_scene.cpp':No such file or directory
+         c1xx : fatal  error C1083: ソース ファイルを開けません。'src\game\game_obj\score\score.cpp':No such file or directory
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\Result\Result.h(3,10): fatal  error C1083: include ファイルを開けません。'../StageSelect/Stage_id.h':No such file or directory (ソース ファイルをコンパイルしています src\game\game_obj\gamescene_manager\gamescene_manager.cpp)
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\main.cpp(27,5): error C3861: 'UpdateGame': 識別子が見つかりませんでした
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\main.cpp(30,5): error C3861: 'DrawGame': 識別子が見つかりませんでした
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\main.cpp(56,5): error C3861: 'InitializeGame': 識別子が見つかりませんでした
+         C:\Users\oibc23217\Desktop\GitHub\-\00_vivid2d 2.8 空のプロジェクト - コピー\game\src\game\game_obj\Result\Result.h(3,10): fatal  error C1083: include ファイルを開けません。'../StageSelect/Stage_id.h':No such file or directory (ソース ファイルをコンパイルしています src\game\game_obj\Result\Result.cpp)
+
+    11 個の警告
+    15 エラー
+
+経過時間 00:00:01.99
