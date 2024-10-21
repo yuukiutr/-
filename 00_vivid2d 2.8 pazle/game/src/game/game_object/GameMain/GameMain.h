@@ -3,6 +3,7 @@
 #include "goal/goal.h"
 #include "lose/lose.h"
 #include "EnemyManager/EnemyManager.h"
+#include "StageCreate/StageCreate.h"
 
 class StageSelect;
 
@@ -14,6 +15,7 @@ private:
 	Character character;
 	Goal goal;
 	Lose lose;
+	StageCreate m_create;
 
 	int m_Timer;
 	int m_ResetCount;

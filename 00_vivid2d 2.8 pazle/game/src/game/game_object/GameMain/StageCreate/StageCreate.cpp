@@ -1,10 +1,3 @@
-/*
- * ground.cpp
- *
- * producer takuma kumamoto
- *
- * final update 2024/05/23
- */
 #include "StageCreate.h"
 
 #include <fstream>
@@ -126,7 +119,7 @@ void StageCreate::Draw(void)
             rect.bottom = g_map_chip_height;
 
             //•`‰æ
-            vivid::DrawTexture("data\\g.png", pos, 0xffffffff, rect);
+            vivid::DrawTexture("data\\gamemain_utility\\g.png", pos, 0xffffffff, rect);
             //vivid::DrawTexture("data/groundplus.png", { 0.0f,0.0f });
         }
     }

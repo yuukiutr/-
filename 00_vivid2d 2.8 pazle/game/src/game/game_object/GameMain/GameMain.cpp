@@ -10,6 +10,7 @@ void GameMain::Initialize(StageSelect* target)
 	m_Timer = 0;
 	m_ResetCount = 0;
 	m_GameOverCount = 0;
+	m_create.Initialize(m_Select);
 	EffectManager::CreateInstance();
 	EFFECT.Initialize();
 	character.Initialize();
@@ -23,6 +24,7 @@ void GameMain::Initialize(StageSelect* target)
 void GameMain::Initialize(void)
 {
 	m_Timer = 0;
+	m_create.Initialize(m_Select);
 	EffectManager::CreateInstance();
 	EFFECT.Initialize();
 	character.Initialize();
@@ -43,6 +45,7 @@ void GameMain::Update(void)
 				m_Timer++;
 			}
 
+			m_create.Update();
 			character.Update();
 			EnemyManager::GetInstance().Update();
 			EFFECT.Update();
@@ -83,6 +86,7 @@ void GameMain::Update(void)
 void GameMain::Draw(void)
 {
 	vivid::DrawTexture("data/back.png", { 0.0f,0.0f });
+	m_create.Draw();
 	EFFECT.Draw();
 	character.Draw();
 	EnemyManager::GetInstance().Draw();
@@ -102,6 +106,7 @@ void GameMain::Draw(void)
 
 void GameMain::Finalize(void)
 {
+	m_create.Finalize();
 	character.Finalize();
 	EnemyManager::GetInstance().Finalize();
 	goal.Finalize();

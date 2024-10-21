@@ -41,7 +41,7 @@ private:
 
 	ROADSTAGE m_StageName[(int)STAGE_ID::MAX] =
 	{
-		"data\\stage1.csv",
+		"data\\map.csv",
 		"data\\stage2.csv",
 		"data\\stage3.csv",
 		"data\\stage4.csv",
