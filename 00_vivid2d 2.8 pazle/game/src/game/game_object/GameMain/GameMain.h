@@ -1,7 +1,6 @@
 #pragma once
 #include "character/character.h"
 #include "goal/goal.h"
-#include "lose/lose.h"
 #include "EnemyManager/EnemyManager.h"
 #include "StageCreate/StageCreate.h"
 
@@ -14,7 +13,6 @@ private:
 	StageSelect* m_Select;
 	Character character;
 	Goal goal;
-	Lose lose;
 	StageCreate m_create;
 
 	int m_Timer;

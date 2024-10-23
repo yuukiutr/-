@@ -35,7 +35,7 @@ private:
 
 	struct ROADSTAGE
 	{
-		const char* const RoadName;
+		const char* RoadName;
 	};
 
 	ROADSTAGE m_StageName[(int)STAGE_ID::MAX] =

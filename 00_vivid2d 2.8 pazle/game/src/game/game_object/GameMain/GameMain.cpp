@@ -16,7 +16,6 @@ void GameMain::Initialize(StageSelect* target)
 	character.Initialize();
 	EnemyManager::GetInstance().Initialize(&character);
 	goal.Initialize();
-	lose.Initialize();
 	//ste_BGM_Initialize();
 }
 
@@ -30,7 +29,6 @@ void GameMain::Initialize(void)
 	character.Initialize();
 	EnemyManager::GetInstance().Initialize(&character);
 	goal.Initialize();
-	lose.Initialize();
 }
 
 void GameMain::Update(void)
@@ -63,7 +61,6 @@ void GameMain::Update(void)
 		else
 		{
 			//GAME OVER
-			lose.Update();
 			if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 				||vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::B))
 			{
@@ -93,7 +90,6 @@ void GameMain::Draw(void)
 
 	//Ç±ÇÍÇÊÇËëOÇ…èëÇ≠
 	goal.Draw();
-	lose.Draw();
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(32, "ÉQÅ[ÉÄÉÅÉCÉì", { 0.0f,0.0f });
@@ -110,7 +106,6 @@ void GameMain::Finalize(void)
 	character.Finalize();
 	EnemyManager::GetInstance().Finalize();
 	goal.Finalize();
-	lose.Finalize();
 	EFFECT.Finalize();
 	EffectManager::DeleteInstance();
 }
@@ -158,21 +153,6 @@ void GameMain::GAMEMAIN_DEBUG_DRAW_DATA(void)
 			break;
 		case STAGE_ID::STAGE6:
 			vivid::DrawText(30, "SS:STAGE6", { 0.0f,420.0f }, 0xff00ff00);
-			break;
-		case STAGE_ID::STAGE7:
-			vivid::DrawText(30, "SS:STAGE7", { 0.0f,420.0f }, 0xff00ff00);
-			break;
-		case STAGE_ID::STAGE8:
-			vivid::DrawText(30, "SS:STAGE8", { 0.0f,420.0f }, 0xff00ff00);
-			break;
-		case STAGE_ID::STAGE9:
-			vivid::DrawText(30, "SS:STAGE9", { 0.0f,420.0f }, 0xff00ff00);
-			break;
-		case STAGE_ID::DUMMY:
-			vivid::DrawText(30, "SS:DUMMY", { 0.0f,420.0f }, 0xff00ff00);
-			break;
-		case STAGE_ID::SPECIAL:
-			vivid::DrawText(30, "SS:SPECIAL", { 0.0f,420.0f }, 0xff00ff00);
 			break;
 		default:
 			break;

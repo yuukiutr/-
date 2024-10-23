@@ -37,7 +37,6 @@ void StageSelect::Update(void)
 	if (vivid::keyboard::Button(vivid::keyboard::KEY_ID::NUMPAD8)
 		&& vivid::keyboard::Button(vivid::keyboard::KEY_ID::D))
 	{
-		m_SelectNumber = (int)STAGE_ID::SPECIAL;
 	}
 
 	
