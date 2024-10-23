@@ -3,6 +3,7 @@
 #include "goal/goal.h"
 #include "EnemyManager/EnemyManager.h"
 #include "StageCreate/StageCreate.h"
+#include "dice/dice.h"
 
 class StageSelect;
 
@@ -14,6 +15,7 @@ private:
 	Character character;
 	Goal goal;
 	StageCreate m_create;
+	Dice dice;
 
 	int m_Timer;
 	int m_ResetCount;
