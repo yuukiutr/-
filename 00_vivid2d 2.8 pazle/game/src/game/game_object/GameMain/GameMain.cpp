@@ -17,6 +17,7 @@ void GameMain::Initialize(StageSelect* target)
 	EnemyManager::GetInstance().Initialize(&character);
 	goal.Initialize();
 	//ste_BGM_Initialize();
+	dice.Initialize();
 }
 
 //overroad Initialize
@@ -29,6 +30,7 @@ void GameMain::Initialize(void)
 	character.Initialize();
 	EnemyManager::GetInstance().Initialize(&character);
 	goal.Initialize();
+	dice.Initialize();
 }
 
 void GameMain::Update(void)
@@ -47,6 +49,7 @@ void GameMain::Update(void)
 			character.Update();
 			EnemyManager::GetInstance().Update();
 			EFFECT.Update();
+			dice.Update();
 
 			if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 				||vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::START)
@@ -87,6 +90,7 @@ void GameMain::Draw(void)
 	EFFECT.Draw();
 	character.Draw();
 	EnemyManager::GetInstance().Draw();
+	dice.Draw();
 
 	//Ç±ÇÍÇÊÇËëOÇ…èëÇ≠
 	goal.Draw();
