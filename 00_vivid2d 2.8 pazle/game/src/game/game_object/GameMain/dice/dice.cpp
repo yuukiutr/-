@@ -10,6 +10,8 @@
 * 
 * マップ大きさ
 * 一辺64×12＝768
+* いまのところの位置
+* x,y:200～968
 */
 
 struct DICE
@@ -85,4 +87,9 @@ void Dice::Draw(void)
 int Dice::GetDiceDigit(void)
 {
     return m_Dice.center;
+}
+
+vivid::Vector2 Dice::GetDicePosition(void)
+{
+    return m_Position;
 }

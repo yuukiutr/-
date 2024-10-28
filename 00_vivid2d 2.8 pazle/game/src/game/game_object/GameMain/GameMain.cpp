@@ -10,7 +10,7 @@ void GameMain::Initialize(StageSelect* target)
 	m_Timer = 0;
 	m_ResetCount = 0;
 	m_GameOverCount = 0;
-	m_create.Initialize(m_Select);
+	m_create.Initialize(m_Select, &dice);
 	EffectManager::CreateInstance();
 	EFFECT.Initialize();
 	character.Initialize();
@@ -24,7 +24,7 @@ void GameMain::Initialize(StageSelect* target)
 void GameMain::Initialize(void)
 {
 	m_Timer = 0;
-	m_create.Initialize(m_Select);
+	m_create.Initialize(m_Select, &dice);
 	EffectManager::CreateInstance();
 	EFFECT.Initialize();
 	character.Initialize();

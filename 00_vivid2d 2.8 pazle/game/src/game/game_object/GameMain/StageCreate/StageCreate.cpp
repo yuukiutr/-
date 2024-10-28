@@ -1,13 +1,15 @@
 #include "StageCreate.h"
+#include "../dice/dice.h"
 
 #include <fstream>
 
 #include "../EnemyManager/EnemyManager.h"
 #include "../../StageSelect/StageSelect.h"
 
-void StageCreate::Initialize(StageSelect* target)
+void StageCreate::Initialize(StageSelect* target, Dice* dice)
 {
     m_Select = target;
+    m_Dice = dice;
     m_StageID = m_Select->GetNowStageID();
 
     //ファイルを開く
@@ -93,6 +95,7 @@ void StageCreate::Initialize(StageSelect* target)
 
 void StageCreate::Update(void)
 {
+    BlastRange();
 }
 
 void StageCreate::Draw(void)
@@ -117,6 +120,45 @@ void StageCreate::Draw(void)
             vivid::DrawTexture("data\\gamemain_utility\\test.png", pos, 0xffffffff, rect);
             //vivid::DrawTexture("data/groundplus.png", { 0.0f,0.0f });
         }
+    }
+    switch (m_Digit)
+    {
+    case 1:
+        for (int j = -1; j <= 1; j += 2)
+            if (m_DicePosition.x >= 200.0f && m_DicePosition.x < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x, m_DicePosition.y + 64 * j });
+        break;
+    case 2:
+        for (int i = -1; i <= 1; i += 2)
+            if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y >= 200.0f && m_DicePosition.y < 968.0f)
+            vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y});
+        break;
+    case 3:
+        for (int i = -1; i <= 1; i += 2)
+            for (int j = -1; j <= 1; j += 2)            
+                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j});
+        break;
+    case 4:
+        for (int i = -1; i <= 1; i++)
+            for (int j = -2; j <= 2; j += 4)
+                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j });
+        break;
+    case 5:
+        for (int i = -2; i <= 2; i += 4)
+            for (int j = -1; j <= 1; j++)
+                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j });
+        break;
+    case 6:
+        for (int i = -2; i <= 2; i += 4)
+            for (int j = -2; j <= 2; j += 4)
+                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j });
+        break;
+    default:
+        break;
     }
 }
 
@@ -232,6 +274,12 @@ bool StageCreate::GoalFlag(vivid::Vector2 vec2, int width, int height)
     }
 
     return false;
+}
+
+void StageCreate::BlastRange(void)
+{
+    m_DicePosition = m_Dice->GetDicePosition();
+    m_Digit = m_Dice->GetDiceDigit();
 }
 
 

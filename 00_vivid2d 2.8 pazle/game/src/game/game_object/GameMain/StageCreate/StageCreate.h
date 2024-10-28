@@ -6,6 +6,7 @@
 #include "../../StageSelect/Stage_id.h"
 
 class StageSelect;
+class Dice;
 
 // マップチップ番号を列挙型で定義
 enum class MAP_CHIP_ID
@@ -29,8 +30,9 @@ private:
 	{ (unsigned int)MAP_CHIP_ID::EMPTY };
 
 	StageSelect* m_Select;
+	Dice* m_Dice;
 	STAGE_ID m_StageID;
-
+	
 	vivid::Vector2 m_SavePosition;
 
 	struct ROADSTAGE
@@ -48,9 +50,12 @@ private:
 		"data\\excel\\stage6.csv",
 	};
 
+	int m_Digit;
+	vivid::Vector2 m_DicePosition;
+
 public:
 	//初期化
-	void Initialize(StageSelect* target);
+	void Initialize(StageSelect* target, Dice* dice);
 	//更新
 	void Update(void);
 	//描画
@@ -63,4 +68,6 @@ public:
 	vivid::Vector2 StartPosition(void);
 	//ゴールにキャラクターが接触したか(接触した == true, other == false)
 	bool GoalFlag(vivid::Vector2 vec2, int width, int height);
+
+	void BlastRange(void);
 };

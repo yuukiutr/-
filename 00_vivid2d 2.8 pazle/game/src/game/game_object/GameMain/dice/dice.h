@@ -23,4 +23,6 @@ public:
 	* @return int ‚P`‚U‚Ü‚Å‚ÌŠÔ‚Å”’l‚ğ•Ô‚·B
 	*/
 	int GetDiceDigit(void);
+
+	vivid::Vector2 GetDicePosition(void);
 };
