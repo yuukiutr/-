@@ -29,7 +29,6 @@ DICE m_Dice = { 2, 3, 5, 4, 1, 6 };
 void Dice::Initialize(void)
 {
     m_DiceDigit = 1;//仮置き
-    m_DiceDirection = 1;
     m_Position = { 200.0f,200.0f };//スタートマスの位置を参照
     rect={0, 0, m_dice_width, m_dice_height};
 }
@@ -38,6 +37,7 @@ void Dice::Update(void)
 {
     int work = NULL;//入れ替えるのに必要
 
+    //上に転がる
     if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::W) && m_Position.y >= 264.0f)
     {
         m_Position.y -= 64.0f;
@@ -47,6 +47,7 @@ void Dice::Update(void)
         m_Dice.bottom = m_Dice.back;
         m_Dice.back = work;
     }
+    //左に転がる
     else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A) && m_Position.x >= 264.0f)
     {
         m_Position.x -= 64.0f;
@@ -56,6 +57,7 @@ void Dice::Update(void)
         m_Dice.back = m_Dice.left;
         m_Dice.left = work;
     }
+    //下に転がる
     else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::S) && m_Position.y < m_map_height + 136.0f)
     {
         m_Position.y += 64.0f;
@@ -65,6 +67,7 @@ void Dice::Update(void)
         m_Dice.bottom = m_Dice.center;
         m_Dice.center = work;
     }
+    //右に転がる
     else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D) && m_Position.x < m_map_width + 136.0f)
     {
         m_Position.x += 64.0f;
@@ -74,6 +77,7 @@ void Dice::Update(void)
         m_Dice.back = m_Dice.right;
         m_Dice.right = work;
     }
+    //描画位置
     rect.left = m_dice_width * (m_Dice.center - 1);
     rect.right = m_dice_width * m_Dice.center;
 }

@@ -6,7 +6,6 @@ class Dice
 private:
 	int m_DiceDigit; //ダイスの出目
 	int m_BlastCount;//爆破回数
-	int m_DiceDirection;//サイコロの向き
 	vivid::Vector2 m_Position;
 	vivid::Rect rect;
 	const int m_dice_width = 64;
