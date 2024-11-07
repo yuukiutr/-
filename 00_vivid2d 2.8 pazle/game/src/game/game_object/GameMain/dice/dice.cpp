@@ -1,5 +1,5 @@
 #include "dice.h"
-
+#include "../StageCreate/StageCreate.h"
 /*‚¨–ğ—§‚¿î•ñ
 * 1 left 0   right 63
 * 2      64        178
