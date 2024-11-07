@@ -7,6 +7,7 @@
 
 class StageSelect;
 class Dice;
+class UtilityManager;
 
 // マップチップ番号を列挙型で定義
 enum class MAP_CHIP_ID
@@ -31,8 +32,9 @@ private:
 
 	StageSelect* m_Select;
 	Dice* m_Dice;
+	UtilityManager* m_Key;
 	STAGE_ID m_StageID;
-	
+
 	vivid::Vector2 m_SavePosition;
 
 	struct ROADSTAGE
@@ -50,7 +52,8 @@ private:
 		"data\\excel\\stage6.csv",
 	};
 
-	int m_Digit;
+	int m_DiceDigit;
+	int m_KeyDigit;
 	vivid::Vector2 m_DicePosition;
 
 public:
@@ -70,4 +73,6 @@ public:
 	bool GoalFlag(vivid::Vector2 vec2, int width, int height);
 
 	void BlastRange(void);
+
+	int GetKeyDigit(void);
 };
