@@ -178,6 +178,9 @@
     <ClCompile Include="src\game\game_object\GameMain\EnemyManager\enemy\EnemyBase.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\GameMain.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\goal\goal.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\StageCreate\StageCreate.cpp" />
     <ClCompile Include="src\game\game_object\gamescene_manager\gamescene_manager.cpp" />
     <ClCompile Include="src\game\game_object\Result\Result.cpp" />
@@ -211,7 +214,11 @@
     <ClInclude Include="src\game\game_object\GameMain\EnemyManager\Enemy_ID.h" />
     <ClInclude Include="src\game\game_object\GameMain\GameMain.h" />
     <ClInclude Include="src\game\game_object\GameMain\goal\goal.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilitytManager.h" />
     <ClInclude Include="src\game\game_object\GameMain\StageCreate\StageCreate.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\Utility_ID.h" />
     <ClInclude Include="src\game\game_object\gamescene_manager\gamescene_id.h" />
     <ClInclude Include="src\game\game_object\gamescene_manager\gamescene_manager.h" />
     <ClInclude Include="src\game\game_object\Result\Result.h" />
@@ -224,7 +231,7 @@
     <ClInclude Include="src\game\game_object\Title\Title.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\game\game_object\GameMain\key\key.h" />
+    <Text Include="data\text_data\MapKey.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

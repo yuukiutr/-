@@ -12,6 +12,8 @@ void StageCreate::Initialize(StageSelect* target, Dice* dice)
     m_Dice = dice;
     m_StageID = m_Select->GetNowStageID();
 
+    m_KeyDigit = 0;
+
     //ファイルを開く
     std::ifstream file(m_StageName[(int)m_Select->GetNowStageID()].RoadName);
     std::string line = "\0";
@@ -67,9 +69,15 @@ void StageCreate::Initialize(StageSelect* target, Dice* dice)
             pos.x = (float)(k * (float)g_map_chip_width);
             pos.y = (float)(i * (float)g_map_chip_height);
 
+            /*
+            * 5 鍵
+            * 6 
+            * 7
+            */
+
             if (m_Map[i][k] == 5u)
             {
-
+                
 
                 m_Map[i][k] = 0u;
             }
@@ -121,7 +129,7 @@ void StageCreate::Draw(void)
             //vivid::DrawTexture("data/groundplus.png", { 0.0f,0.0f });
         }
     }
-    switch (m_Digit)
+    switch (m_DiceDigit)
     {
     case 1:
         for (int j = -1; j <= 1; j += 2)
@@ -279,7 +287,10 @@ bool StageCreate::GoalFlag(vivid::Vector2 vec2, int width, int height)
 void StageCreate::BlastRange(void)
 {
     m_DicePosition = m_Dice->GetDicePosition();
-    m_Digit = m_Dice->GetDiceDigit();
+    m_DiceDigit = m_Dice->GetDiceDigit();
 }
 
-
+int StageCreate::GetKeyDigit(void)
+{
+    return m_KeyDigit;
+}
