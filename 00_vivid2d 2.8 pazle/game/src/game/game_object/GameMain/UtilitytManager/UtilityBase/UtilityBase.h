@@ -2,11 +2,13 @@
 #include "vivid.h"
 #include "../Utility_ID.h"
 
+class Dice;
 class StageCreate;
 
 class UtilityBase
 {
 protected:
+	Dice* m_Dice;
 	StageCreate* m_Stage;
 	vivid::Vector2 m_UtilityPosition;
 	static const int m_utility_width;
@@ -17,7 +19,7 @@ protected:
 
 public:
 	//èâä˙âª
-	virtual void Initialize(StageCreate* stage, vivid::Vector2 pos);
+	virtual void Initialize(StageCreate* stage,Dice* dice, vivid::Vector2 pos);
 
 	//çXêV
 	virtual void Update(void);
