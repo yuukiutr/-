@@ -214,8 +214,10 @@
     <ClInclude Include="src\game\game_object\GameMain\EnemyManager\Enemy_ID.h" />
     <ClInclude Include="src\game\game_object\GameMain\GameMain.h" />
     <ClInclude Include="src\game\game_object\GameMain\goal\goal.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\BrekableWall\BrekableWall.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Wall\Wall.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilitytManager.h" />
     <ClInclude Include="src\game\game_object\GameMain\StageCreate\StageCreate.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\Utility_ID.h" />

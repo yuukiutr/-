@@ -8,4 +8,6 @@ private:
 
 public:
 	void Update(void)override;
+
+	UTILITY_ID GetUtilityID(void)override;
 };

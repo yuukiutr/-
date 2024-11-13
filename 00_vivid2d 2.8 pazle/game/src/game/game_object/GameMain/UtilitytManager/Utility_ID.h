@@ -3,5 +3,5 @@ enum class UTILITY_ID
 {
 	KEY,
 
-	OTHER,
+	BASE,
 };
