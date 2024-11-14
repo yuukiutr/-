@@ -40,7 +40,7 @@ public:
 	//ê∂ê¨Ç≥ÇÍÇΩBOXÇÃID
 	virtual UTILITY_ID GetUtilityID(void);
 
-	virtual bool UtilityBase::GetCharacterCompressionFlag(vivid::Vector2 vec2, int width, int height)
+	virtual bool UtilityBase::GetCharacterCompressionFlag(vivid::Vector2 vec2, int width, int height);
 
 	bool GetUtilityFlag(void);
 };
