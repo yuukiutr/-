@@ -10,16 +10,17 @@ class UtilityBase
 protected:
 	Dice* m_Dice;
 	StageCreate* m_Stage;
+
 	vivid::Vector2 m_UtilityPosition;
 	static const int m_utility_width;
 	static const int m_utility_height;
 	unsigned int m_UtilityColor;
-
+	static const bool m_UtilityFlag;
 	static const std::string m_Utility_Data;
 
 public:
 	//èâä˙âª
-	virtual void Initialize(StageCreate* stage,Dice* dice, vivid::Vector2 pos);
+	virtual void Initialize(StageCreate* stage, Dice* dice, vivid::Vector2 pos);
 
 	//çXêV
 	virtual void Update(void);
@@ -38,4 +39,8 @@ public:
 
 	//ê∂ê¨Ç≥ÇÍÇΩBOXÇÃID
 	virtual UTILITY_ID GetUtilityID(void);
+
+	virtual bool UtilityBase::GetCharacterCompressionFlag(vivid::Vector2 vec2, int width, int height)
+
+	bool GetUtilityFlag(void);
 };
