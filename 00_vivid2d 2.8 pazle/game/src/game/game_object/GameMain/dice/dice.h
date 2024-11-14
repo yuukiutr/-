@@ -1,6 +1,8 @@
 #pragma once
 #include "vivid.h"
 
+class StageCreate;
+
 class Dice
 {
 private:
@@ -22,6 +24,8 @@ public:
 	* @return int ‚P`‚U‚Ü‚Å‚ÌŠÔ‚Å”’l‚ğ•Ô‚·B
 	*/
 	int GetDiceDigit(void);
+	int GetDiceWidth(void);
+	int GetDiceHeight(void);
 
 	vivid::Vector2 GetDicePosition(void);
 };

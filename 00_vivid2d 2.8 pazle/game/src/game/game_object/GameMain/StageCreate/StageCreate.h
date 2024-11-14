@@ -14,12 +14,12 @@ enum class MAP_CHIP_ID
 {
 	EMPTY,			//空白
 	WALL,			//壁
+	BLASTWALL,		//爆破できる壁
 	STARTFLAG,		//スタート
 	GOALFLAG,		//ゴール
 };
 
-const int g_map_chip_height = 64;
-const int g_map_chip_width = 64;
+const int g_map_chip_size = 64;
 const int g_map_chip_count_width = 12;
 const int g_map_chip_count_height = 12;
 
@@ -29,6 +29,9 @@ private:
 	// 配列データを入れておくための二次元配列（整数）
 	unsigned int m_Map[g_map_chip_count_height][g_map_chip_count_width] =
 	{ (unsigned int)MAP_CHIP_ID::EMPTY };
+
+	StageCreate() = default;
+	~StageCreate() = default;
 
 	StageSelect* m_Select;
 	Dice* m_Dice;
@@ -57,6 +60,9 @@ private:
 	vivid::Vector2 m_DicePosition;
 
 public:
+
+	static StageCreate& GetInst(void);
+
 	//初期化
 	void Initialize(StageSelect* target, Dice* dice);
 	//更新
@@ -75,4 +81,12 @@ public:
 	void BlastRange(void);
 
 	int GetKeyDigit(void);
+
+	int GetMapChipSize(void);
+
+	//引数のマス目の場所が壁かどうか調べる
+//壁true　通路false
+	bool CheckWall(int x, int y);
 };
+
+#define STAGE StageCreate::GetInst()

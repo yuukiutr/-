@@ -29,16 +29,19 @@ DICE m_Dice = { 2, 3, 5, 4, 1, 6 };
 void Dice::Initialize(void)
 {
     m_DiceDigit = 1;//仮置き
-    m_Position = { 200.0f,200.0f };//スタートマスの位置を参照
+    m_Position = STAGE.StartPosition();//スタートマスの位置を参照
     rect={0, 0, m_dice_width, m_dice_height};
 }
 
 void Dice::Update(void)
 {
+    int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+    int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+
     int work = NULL;//入れ替えるのに必要
 
     //上に転がる
-    if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::W) && m_Position.y >= 264.0f)
+    if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::W) && m_Position.y >= 264.0f && STAGE.CheckWall(x, y - 1) != true)
     {
         m_Position.y -= 64.0f;
         work = m_Dice.top;
@@ -48,7 +51,7 @@ void Dice::Update(void)
         m_Dice.back = work;
     }
     //左に転がる
-    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A) && m_Position.x >= 264.0f)
+    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A) && m_Position.x >= 264.0f && STAGE.CheckWall(x - 1, y) != true)
     {
         m_Position.x -= 64.0f;
         work = m_Dice.center;
@@ -58,7 +61,7 @@ void Dice::Update(void)
         m_Dice.left = work;
     }
     //下に転がる
-    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::S) && m_Position.y < m_map_height + 136.0f)
+    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::S) && m_Position.y < m_map_height + 136.0f && STAGE.CheckWall(x, y + 1) != true)
     {
         m_Position.y += 64.0f;
         work = m_Dice.top;
@@ -68,7 +71,7 @@ void Dice::Update(void)
         m_Dice.center = work;
     }
     //右に転がる
-    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D) && m_Position.x < m_map_width + 136.0f)
+    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D) && m_Position.x < m_map_width + 136.0f && STAGE.CheckWall(x + 1, y) != true)
     {
         m_Position.x += 64.0f;
         work = m_Dice.center;
@@ -91,6 +94,16 @@ void Dice::Draw(void)
 int Dice::GetDiceDigit(void)
 {
     return m_Dice.center;
+}
+
+int Dice::GetDiceWidth(void)
+{
+    return m_dice_width;
+}
+
+int Dice::GetDiceHeight(void)
+{
+    return m_dice_height;
 }
 
 vivid::Vector2 Dice::GetDicePosition(void)

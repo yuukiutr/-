@@ -6,6 +6,13 @@
 #include "../EnemyManager/EnemyManager.h"
 #include "../../StageSelect/StageSelect.h"
 
+StageCreate& StageCreate::GetInst(void)
+{
+    static StageCreate instance;
+
+    return instance;
+}
+
 void StageCreate::Initialize(StageSelect* target, Dice* dice)
 {
     m_Select = target;
@@ -66,8 +73,8 @@ void StageCreate::Initialize(StageSelect* target, Dice* dice)
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
             vivid::Vector2 pos;
-            pos.x = (float)(k * (float)g_map_chip_width);
-            pos.y = (float)(i * (float)g_map_chip_height);
+            pos.x = (float)(k * (float)g_map_chip_size);
+            pos.y = (float)(i * (float)g_map_chip_size);
 
             /*
             * 5 åÆ
@@ -114,21 +121,23 @@ void StageCreate::Draw(void)
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
             vivid::Vector2 pos;
-            pos.x = (float)(k * (float)g_map_chip_width) + 200.0f;
-            pos.y = (float)(i * (float)g_map_chip_height) + 200.0f;
+            pos.x = (float)(k * (float)g_map_chip_size) + 200.0f;
+            pos.y = (float)(i * (float)g_map_chip_size) + 200.0f;
 
             //ì«Ç›çûÇ›îÕàÕÇãÅÇﬂÇÈ
             vivid::Rect rect = {};
-            rect.left = (int)m_Map[i][k] * g_map_chip_width;
-            rect.right = rect.left + g_map_chip_width;
+            rect.left = (int)m_Map[i][k] * g_map_chip_size;
+            rect.right = rect.left + g_map_chip_size;
             rect.top = 0;
-            rect.bottom = g_map_chip_height;
+            rect.bottom = g_map_chip_size;
 
             //ï`âÊ
             vivid::DrawTexture("data\\gamemain_utility\\test.png", pos, 0xffffffff, rect);
             //vivid::DrawTexture("data/groundplus.png", { 0.0f,0.0f });
         }
     }
+
+    //îöî≠îÕàÕï\é¶
     switch (m_DiceDigit)
     {
     case 1:
@@ -193,14 +202,14 @@ vivid::Vector2 StageCreate::GetCollision(vivid::Vector2 vec2, int width, int hei
             {
 
                 vivid::Vector2 pos;
-                pos.x = (float)(k * (float)g_map_chip_width);
-                pos.y = (float)(i * (float)g_map_chip_height);
+                pos.x = (float)(k * (float)g_map_chip_size);
+                pos.y = (float)(i * (float)g_map_chip_size);
 
                 //
                 if (m_Map[i - 1][k] != 1u && i > 0 || i == 0)
                 {
                     if (vec2.x + (float)width > pos.x + between
-                        && vec2.x < pos.x + (float)g_map_chip_width - between
+                        && vec2.x < pos.x + (float)g_map_chip_size - between
                         && vec2.y + (float)height >= pos.y
                         && vec2.y < pos.y - (float)height / 2.0f)
                     {
@@ -208,30 +217,30 @@ vivid::Vector2 StageCreate::GetCollision(vivid::Vector2 vec2, int width, int hei
                     }
                 }
 
-                if (vec2.y <= pos.y + (float)g_map_chip_height
-                    && vec2.y + (float)height >= pos.y + (float)g_map_chip_height
+                if (vec2.y <= pos.y + (float)g_map_chip_size
+                    && vec2.y + (float)height >= pos.y + (float)g_map_chip_size
                     && vec2.x + (float)width > pos.x + between
-                    && vec2.x < pos.x + (float)g_map_chip_width - between)
+                    && vec2.x < pos.x + (float)g_map_chip_size - between)
                 {
-                    vec2.y = pos.y + (float)g_map_chip_height;
+                    vec2.y = pos.y + (float)g_map_chip_size;
                 }
                 //}
 
                 //â°
                 if (vec2.x + (float)width >= pos.x
-                    && vec2.x <= pos.x + (float)g_map_chip_width / 3.0f
-                    && vec2.y + (float)height > pos.y + (float)g_map_chip_height / 3.0f
-                    && vec2.y < pos.y + (float)g_map_chip_height / 1.5f)
+                    && vec2.x <= pos.x + (float)g_map_chip_size / 3.0f
+                    && vec2.y + (float)height > pos.y + (float)g_map_chip_size / 3.0f
+                    && vec2.y < pos.y + (float)g_map_chip_size / 1.5f)
                 {
                     vec2.x = pos.x - (float)width;
                 }
 
-                if (vec2.x + (float)width >= pos.x + (float)g_map_chip_width / 2.0f
-                    && vec2.x <= pos.x + (float)g_map_chip_width
-                    && vec2.y + (float)height > pos.y + (float)g_map_chip_height / 3.0f
-                    && vec2.y < pos.y + (float)g_map_chip_height / 1.5f)
+                if (vec2.x + (float)width >= pos.x + (float)g_map_chip_size / 2.0f
+                    && vec2.x <= pos.x + (float)g_map_chip_size
+                    && vec2.y + (float)height > pos.y + (float)g_map_chip_size / 3.0f
+                    && vec2.y < pos.y + (float)g_map_chip_size / 1.5f)
                 {
-                    vec2.x = pos.x + (float)g_map_chip_width;
+                    vec2.x = pos.x + (float)g_map_chip_size;
                 }
             }
         }
@@ -246,11 +255,11 @@ vivid::Vector2 StageCreate::StartPosition(void)
     {
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
-            if (m_Map[i][k] != 2) continue;
+            if (m_Map[i][k] != 3) continue;
 
             vivid::Vector2 pos;
-            pos.x = (float)(k * (float)g_map_chip_width) + 10.0f;
-            pos.y = (float)(i * (float)g_map_chip_height) - 1.0f;
+            pos.x = (float)(k * (float)g_map_chip_size)+200.0f;
+            pos.y = (float)(i * (float)g_map_chip_size)+200.0f;
 
             return pos;
         }
@@ -265,16 +274,16 @@ bool StageCreate::GoalFlag(vivid::Vector2 vec2, int width, int height)
     {
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
-            if (m_Map[i][k] != 3) continue;
+            if (m_Map[i][k] != 4) continue;
 
             vivid::Vector2 pos;
-            pos.x = (float)(k * (float)g_map_chip_width);
-            pos.y = (float)(i * (float)g_map_chip_height);
+            pos.x = (float)(k * (float)g_map_chip_size);
+            pos.y = (float)(i * (float)g_map_chip_size);
 
             if (vec2.x + (float)width >= pos.x + width / 2.0f
-                && vec2.x <= pos.x + (float)g_map_chip_width - width / 2.0f
-                && vec2.y + (float)height > pos.y + (float)g_map_chip_height - height * 2.0f / 3.0f
-                && vec2.y < pos.y + (float)g_map_chip_height - height / 3.0f)
+                && vec2.x <= pos.x + (float)g_map_chip_size - width / 2.0f
+                && vec2.y + (float)height > pos.y + (float)g_map_chip_size - height * 2.0f / 3.0f
+                && vec2.y < pos.y + (float)g_map_chip_size - height / 3.0f)
             {
                 return true;
             }
@@ -293,4 +302,24 @@ void StageCreate::BlastRange(void)
 int StageCreate::GetKeyDigit(void)
 {
     return m_KeyDigit;
+}
+
+int StageCreate::GetMapChipSize(void)
+{
+    return g_map_chip_size;
+}
+
+bool StageCreate::CheckWall(int x, int y)
+{
+    if (x < 0)x = 0;
+    if (x > g_map_chip_count_width)x = g_map_chip_count_width - 1;
+    if (y < 0)y = 0;
+    if (y > g_map_chip_count_height)y = g_map_chip_count_height - 1;
+
+    //IDÇ™ï«Ç©îöîjï«Ç»ÇÁêiÇﬂÇ»Ç¢
+    if (m_Map[y][x] == (unsigned char)MAP_CHIP_ID::WALL 
+        || m_Map[y][x] == (unsigned char)MAP_CHIP_ID::BLASTWALL)
+        return true;
+
+    return false;
 }

@@ -14,7 +14,6 @@ private:
 	StageSelect* m_Select;
 	Character character;
 	Goal goal;
-	StageCreate m_create;
 	Dice dice;
 
 	int m_Timer;
