@@ -61,7 +61,7 @@ private:
 
 public:
 
-	static StageCreate& GetInst(void);
+	static StageCreate& GetInstance(void);
 
 	//初期化
 	void Initialize(StageSelect* target, Dice* dice);
@@ -85,8 +85,8 @@ public:
 	int GetMapChipSize(void);
 
 	//引数のマス目の場所が壁かどうか調べる
-//壁true　通路false
+	//壁true　通路false
 	bool CheckWall(int x, int y);
 };
 
-#define STAGE StageCreate::GetInst()
+#define STAGE StageCreate::GetInstance()

@@ -3,12 +3,19 @@
 
 class StageCreate;
 
+struct Blast
+{
+	bool DicePosFlag;
+	vivid::Vector2 BlastPos;
+};
+
 class Dice
 {
 private:
 	int m_DiceDigit; //ダイスの出目
 	int m_BlastCount;//爆破回数
 	vivid::Vector2 m_Position;
+	vivid::Vector2 m_BlastPosition;
 	vivid::Rect rect;
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;
@@ -26,6 +33,14 @@ public:
 	int GetDiceDigit(void);
 	int GetDiceWidth(void);
 	int GetDiceHeight(void);
+
+	/*
+*	@break	爆発する範囲を返す
+*	@param[in]	x軸
+*	@param[in]	y軸
+*	@return		爆破範囲
+*/
+	Blast BlastSpot(int x, int y);
 
 	vivid::Vector2 GetDicePosition(void);
 };

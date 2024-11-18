@@ -178,8 +178,10 @@
     <ClCompile Include="src\game\game_object\GameMain\EnemyManager\enemy\EnemyBase.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\GameMain.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\goal\goal.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\BreakableWall\BreakableWall.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Wall\Wall.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\StageCreate\StageCreate.cpp" />
     <ClCompile Include="src\game\game_object\gamescene_manager\gamescene_manager.cpp" />
@@ -214,7 +216,7 @@
     <ClInclude Include="src\game\game_object\GameMain\EnemyManager\Enemy_ID.h" />
     <ClInclude Include="src\game\game_object\GameMain\GameMain.h" />
     <ClInclude Include="src\game\game_object\GameMain\goal\goal.h" />
-    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\BrekableWall\BrekableWall.h" />
+    <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\BreakableWall\BreakableWall.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.h" />
     <ClInclude Include="src\game\game_object\GameMain\UtilitytManager\UtilityBase\Wall\Wall.h" />

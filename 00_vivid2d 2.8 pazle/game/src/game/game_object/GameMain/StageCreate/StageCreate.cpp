@@ -6,7 +6,7 @@
 #include "../EnemyManager/EnemyManager.h"
 #include "../../StageSelect/StageSelect.h"
 
-StageCreate& StageCreate::GetInst(void)
+StageCreate& StageCreate::GetInstance(void)
 {
     static StageCreate instance;
 
@@ -141,38 +141,57 @@ void StageCreate::Draw(void)
     switch (m_DiceDigit)
     {
     case 1:
+
         for (int j = -1; j <= 1; j += 2)
-            if (m_DicePosition.x >= 200.0f && m_DicePosition.x < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
-                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x, m_DicePosition.y + 64 * j });
+        {
+            if (m_Dice->BlastSpot(0, j).DicePosFlag)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
+                    m_Dice->BlastSpot(0, j).BlastPos);
+        }
         break;
     case 2:
         for (int i = -1; i <= 1; i += 2)
-            if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y >= 200.0f && m_DicePosition.y < 968.0f)
-            vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y});
+        {
+            if (m_Dice->BlastSpot(i, 0).DicePosFlag)
+                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
+                    m_Dice->BlastSpot(i, 0).BlastPos);
+        }
         break;
     case 3:
         for (int i = -1; i <= 1; i += 2)
-            for (int j = -1; j <= 1; j += 2)            
-                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
-                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j});
+            for (int j = -1; j <= 1; j += 2)
+            {
+                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                    vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
+                        m_Dice->BlastSpot(i, j).BlastPos);
+            }
         break;
     case 4:
         for (int i = -1; i <= 1; i++)
             for (int j = -2; j <= 2; j += 4)
-                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
-                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j });
+            {
+                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                    vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
+                        m_Dice->BlastSpot(i, j).BlastPos);
+            }
         break;
     case 5:
         for (int i = -2; i <= 2; i += 4)
             for (int j = -1; j <= 1; j++)
-                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
-                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j });
+            {
+                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                    vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
+                        m_Dice->BlastSpot(i, j).BlastPos);
+            }
         break;
     case 6:
         for (int i = -2; i <= 2; i += 4)
             for (int j = -2; j <= 2; j += 4)
-                if (m_DicePosition.x + 64 * i >= 200.0f && m_DicePosition.x + 64 * i < 968.0f && m_DicePosition.y + 64 * j >= 200.0f && m_DicePosition.y + 64 * j < 968.0f)
-                vivid::DrawTexture("data\\gamemain_utility\\blast_range.png", { m_DicePosition.x + 64 * i , m_DicePosition.y + 64 * j });
+            {
+                if (!m_Dice->BlastSpot(i, j).DicePosFlag)
+                    vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
+                        m_Dice->BlastSpot(i, j).BlastPos);
+            }
         break;
     default:
         break;

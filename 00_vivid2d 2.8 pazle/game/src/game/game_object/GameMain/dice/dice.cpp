@@ -14,13 +14,17 @@
 * x,y:200～968
 */
 
+
+/*
+*  @brief	ダイスの目を管理する構造体
+*/
 struct DICE
 {
     int top,
         right,
         bottom,
         left,
-        center,
+        center,		//現在のダイスの出目！！！！！！！！
         back;
 };
 
@@ -104,6 +108,85 @@ int Dice::GetDiceWidth(void)
 int Dice::GetDiceHeight(void)
 {
     return m_dice_height;
+}
+
+Blast Dice::BlastSpot(int x, int y)
+{
+	bool blast_flg = false;
+	m_BlastPosition = m_Position;
+
+	switch (m_Dice.center)
+	{
+	case 1:
+		if (m_Position.x >= 200.0f &&
+			m_Position.x < 968.0f &&
+			m_Position.y + 64 * y >= 200.0f &&
+			m_Position.y + 64 * y < 968.0f)
+		{
+			m_BlastPosition.y = m_Position.y + 64 * y;
+			blast_flg = true;
+		}
+		break;
+	case 2:
+		if (m_Position.x + 64 * x >= 200.0f &&
+			m_Position.x + 64 * x < 968.0f &&
+			m_Position.y >= 200.0f &&
+			m_Position.y < 968.0f)
+		{
+			m_BlastPosition.x = m_Position.x + 64 * x;
+			blast_flg = true;
+		}
+		break;
+	case 3:
+		if (m_Position.x + 64 * x >= 200.0f &&
+			m_Position.x + 64 * x < 968.0f &&
+			m_Position.y + 64 * y >= 200.0f &&
+			m_Position.y + 64 * y < 968.0f)
+		{
+			m_BlastPosition.x = m_Position.x + 64 * x;
+			m_BlastPosition.y = m_Position.y + 64 * y;
+			blast_flg = true;
+		}
+		break;
+	case 4:
+		if (m_Position.x + 64 * x >= 200.0f &&
+			m_Position.x + 64 * x < 968.0f &&
+			m_Position.y + 64 * y >= 200.0f &&
+			m_Position.y + 64 * y < 968.0f)
+		{
+			m_BlastPosition.x = m_Position.x + 64 * x;
+			m_BlastPosition.y = m_Position.y + 64 * y;
+			blast_flg = true;
+		}
+		break;
+	case 5:
+		if (m_Position.x + 64 * x >= 200.0f &&
+			m_Position.x + 64 * x < 968.0f &&
+			m_Position.y + 64 * y >= 200.0f &&
+			m_Position.y + 64 * y < 968.0f)
+		{
+			m_BlastPosition.x = m_Position.x + 64 * x;
+			m_BlastPosition.y = m_Position.y + 64 * y;
+			blast_flg = true;
+		}
+		break;
+	case 6:
+		if (m_Position.x + 64 * x >= 200.0f &&
+			m_Position.x + 64 * x < 968.0f &&
+			m_Position.y + 64 * y >= 200.0f &&
+			m_Position.y + 64 * y < 968.0f)
+		{
+			m_BlastPosition.x = m_Position.x + 64 * x;
+			m_BlastPosition.y = m_Position.y + 64 * y;
+			blast_flg = true;
+		}
+		break;
+	default:
+		break;
+	}
+
+	return {blast_flg, m_BlastPosition };
+
 }
 
 vivid::Vector2 Dice::GetDicePosition(void)
