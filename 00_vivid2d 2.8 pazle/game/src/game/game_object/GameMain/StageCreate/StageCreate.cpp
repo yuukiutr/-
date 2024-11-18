@@ -188,7 +188,7 @@ void StageCreate::Draw(void)
         for (int i = -2; i <= 2; i += 4)
             for (int j = -2; j <= 2; j += 4)
             {
-                if (!m_Dice->BlastSpot(i, j).DicePosFlag)
+                if (m_Dice->BlastSpot(i, j).DicePosFlag)
                     vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
                         m_Dice->BlastSpot(i, j).BlastPos);
             }
