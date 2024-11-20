@@ -14,9 +14,9 @@ enum class MAP_CHIP_ID
 {
 	EMPTY,			//空白
 	WALL,			//壁
-	BLASTWALL,		//爆破できる壁
 	STARTFLAG,		//スタート
 	GOALFLAG,		//ゴール
+	BLASTWALL,		//爆破できる壁
 };
 
 const int g_map_chip_size = 64;

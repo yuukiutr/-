@@ -274,7 +274,7 @@ vivid::Vector2 StageCreate::StartPosition(void)
     {
         for (int k = 0; k < g_map_chip_count_width; ++k)
         {
-            if (m_Map[i][k] != 3) continue;
+            if (m_Map[i][k] != 2) continue;
 
             vivid::Vector2 pos;
             pos.x = (float)(k * (float)g_map_chip_size)+200.0f;
