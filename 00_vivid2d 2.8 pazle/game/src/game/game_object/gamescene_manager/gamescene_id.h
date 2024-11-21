@@ -6,7 +6,7 @@ enum class GameScene_ID
 	TITLE,
 	STAGESELECT,
 	RESULT,
-	CREDIT,
+	OPTION,
 	DUMMY
 
 };

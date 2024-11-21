@@ -5,7 +5,7 @@
 #include "../Result/Result.h"
 #include "../credit/credit.h"
 
-
+//credit‚ð‘S‚Äoption‚É‚·‚é(‚ ‚Æ‚Å)
 
 GameMain gamemain;
 Title title;
@@ -34,7 +34,7 @@ void CreateScene(GameScene_ID next_scene)
 		case GameScene_ID::STAGESELECT:
 			stageselect.Finalize();
 			break;
-		case GameScene_ID::CREDIT:
+		case GameScene_ID::OPTION:
 			credit.Finalize();
 			break;
 		case GameScene_ID::RESULT:
@@ -61,7 +61,7 @@ void CreateScene(GameScene_ID next_scene)
 		case GameScene_ID::RESULT:
 			result.Initialize(&gamemain, &stageselect);
 			break;
-		case GameScene_ID::CREDIT:
+		case GameScene_ID::OPTION:
 			credit.Initialize();
 			break;
 
@@ -94,7 +94,7 @@ void GameSceneManager::Update(void)
 	case GameScene_ID::RESULT:
 		result.Update();
 		break;
-	case GameScene_ID::CREDIT:
+	case GameScene_ID::OPTION:
 		credit.Update();
 		break;
 
@@ -119,7 +119,7 @@ void GameSceneManager::Draw(void)
 	case GameScene_ID::RESULT:
 		result.Draw();
 		break;
-	case GameScene_ID::CREDIT:
+	case GameScene_ID::OPTION:
 		credit.Draw();
 		break;
 
@@ -144,7 +144,7 @@ void GameSceneManager::Finalize(void)
 	case GameScene_ID::RESULT:
 		result.Finalize();
 		break;
-	case GameScene_ID::CREDIT:
+	case GameScene_ID::OPTION:
 		credit.Finalize();
 		break;
 
