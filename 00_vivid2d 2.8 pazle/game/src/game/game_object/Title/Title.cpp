@@ -8,7 +8,7 @@ void Title::Initialize(void)
 	m_Position = { 500.0f,700.0f };
 	rect = { 0, 0, m_dice_width, m_dice_height };
 	m_GoStageSelect = true;
-	m_OuterFrameCount = 0;
+	m_OuterFrameCount = 0; //ŠO˜g“_–Å
 }
 
 void Title::Update(void)
@@ -49,6 +49,7 @@ void Title::Draw(void)
 	vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
 	vivid::DrawTexture("data\\title\\start.png", {564.0f,700.0f});
 	vivid::DrawTexture("data\\title\\option.png", { 564.0f,764.0f });
+	vivid::DrawTexture("data\\title\\title.png", { 240.0f,20.0f });
 
 	if(m_OuterFrameCount < 30)
 	vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + 64.0f,m_Position.y });

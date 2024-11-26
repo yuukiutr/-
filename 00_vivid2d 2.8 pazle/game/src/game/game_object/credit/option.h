@@ -1,7 +1,7 @@
 #pragma once
 #include"vivid.h"
 
-class CREDIT 
+class OPTION 
 {
 protected:
 	const float  width = 0.0f;
