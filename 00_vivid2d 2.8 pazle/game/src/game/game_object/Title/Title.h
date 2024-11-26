@@ -33,6 +33,7 @@ private:
 	vivid::Vector2	m_Position;
 	vivid::Rect		rect;
 	bool m_GoStageSelect;
+	int m_OuterFrameCount;	//ŠO˜g‚Ì“_–Å
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;
 };
