@@ -1,5 +1,5 @@
 #include "Button_manager.h"
-
+#include "../dice/dice.h"
 
 
 
@@ -11,9 +11,9 @@ ButtonManager& ButtonManager::GetInstance(void)
 }
 
 // ‰Šú‰»
-void ButtonManager::Initialize(Character* character)
+void ButtonManager::Initialize(Dice *dice)
 {
-	m_character = character;
+	m_Dice = dice;
 }
 
 // XV

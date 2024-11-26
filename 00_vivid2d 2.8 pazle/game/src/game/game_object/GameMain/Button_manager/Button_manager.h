@@ -2,13 +2,12 @@
 
 #include "vivid.h"
 #include "Button_id.h"
-#include "../character/character.h"
 #include <functional>
 #include <map>
 #include <list>
 
 class Button;
-class Character;
+class Dice;
 
 class ButtonManager
 {
@@ -19,14 +18,13 @@ private:
 	ButtonManager(const ButtonManager&& rhs) = delete;
 	ButtonManager& operator=(const ButtonManager& rhs) = delete;
 
-	Character* m_character;
-
+	Dice* m_Dice;
 
 public:
 
 
 	static ButtonManager& GetInstance(void);
-	void Initialize(Character* character);
+	void Initialize(Dice* dice);
 	void Updata(void);
 	void Draw(void);
 	void Finalize(void);

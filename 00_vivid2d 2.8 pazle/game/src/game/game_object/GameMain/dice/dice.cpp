@@ -1,5 +1,6 @@
 #include "dice.h"
 #include "../StageCreate/StageCreate.h"
+#include "../UtilitytManager/UtilitytManager.h"
 /*‚¨–ð—§‚¿î•ñ
 * 1 left 0   right 63
 * 2      64        178
@@ -39,13 +40,18 @@ void Dice::Initialize(void)
 
 void Dice::Update(void)
 {
+
+    namespace keyboad = vivid::keyboard;
+
     int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
     int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
 
     int work = NULL;//“ü‚ê‘Ö‚¦‚é‚Ì‚É•K—v
 
     //ã‚É“]‚ª‚é
-    if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::W) && m_Position.y >= 264.0f && STAGE.CheckWall(x, y - 1) != true)
+    if (keyboad::Trigger(keyboad::KEY_ID::W) &&
+        m_Position.y >= 264.0f &&
+        STAGE.CheckWall(x, y - 1) != true)
     {
         m_Position.y -= 64.0f;
         work = m_Dice.top;
@@ -55,7 +61,11 @@ void Dice::Update(void)
         m_Dice.back = work;
     }
     //¶‚É“]‚ª‚é
-    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A) && m_Position.x >= 264.0f && STAGE.CheckWall(x - 1, y) != true)
+    else if (keyboad::Trigger(keyboad::KEY_ID::A) &&
+        m_Position.x >= 264.0f &&
+        STAGE.CheckWall(x - 1, y) != true
+        &&
+        !UtilityManager::GetInstance().Collision())
     {
         m_Position.x -= 64.0f;
         work = m_Dice.center;
@@ -65,7 +75,9 @@ void Dice::Update(void)
         m_Dice.left = work;
     }
     //‰º‚É“]‚ª‚é
-    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::S) && m_Position.y < m_map_height + 136.0f && STAGE.CheckWall(x, y + 1) != true)
+    else if (keyboad::Trigger(keyboad::KEY_ID::S) &&
+        m_Position.y < m_map_height + 136.0f &&
+        STAGE.CheckWall(x, y + 1) != true)
     {
         m_Position.y += 64.0f;
         work = m_Dice.top;
@@ -75,7 +87,9 @@ void Dice::Update(void)
         m_Dice.center = work;
     }
     //‰E‚É“]‚ª‚é
-    else if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D) && m_Position.x < m_map_width + 136.0f && STAGE.CheckWall(x + 1, y) != true)
+    else if (keyboad::Trigger(keyboad::KEY_ID::D) &&
+        m_Position.x < m_map_width + 136.0f &&
+        STAGE.CheckWall(x + 1, y) != true)
     {
         m_Position.x += 64.0f;
         work = m_Dice.center;
@@ -93,6 +107,17 @@ void Dice::Draw(void)
 {
     vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
     vivid::DrawText(40, std::to_string(m_Dice.center), { 0.0f,100.0f });
+
+#ifdef VIVID_DEBUG
+    int id = 0;
+    int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+    int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+    if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+        id = 3;
+
+    vivid::DrawText(40,std::to_string(id),{ 0.0f, 200.0f });
+#endif // VIVID_DEBUG
+
 }
 
 int Dice::GetDiceDigit(void)
@@ -112,7 +137,7 @@ int Dice::GetDiceHeight(void)
 
 Blast Dice::BlastSpot(int x, int y)
 {
-	bool blast_flg = false;
+	bool blast_range_flg = false;
 	m_BlastPosition = m_Position;
 
 	switch (m_Dice.center)
@@ -124,7 +149,7 @@ Blast Dice::BlastSpot(int x, int y)
 			m_Position.y + 64 * y < 968.0f)
 		{
 			m_BlastPosition.y = m_Position.y + 64 * y;
-			blast_flg = true;
+			blast_range_flg = true;
 		}
 		break;
 	case 2:
@@ -134,7 +159,7 @@ Blast Dice::BlastSpot(int x, int y)
 			m_Position.y < 968.0f)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
-			blast_flg = true;
+			blast_range_flg = true;
 		}
 		break;
 	case 3:
@@ -145,7 +170,7 @@ Blast Dice::BlastSpot(int x, int y)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
-			blast_flg = true;
+			blast_range_flg = true;
 		}
 		break;
 	case 4:
@@ -156,7 +181,7 @@ Blast Dice::BlastSpot(int x, int y)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
-			blast_flg = true;
+			blast_range_flg = true;
 		}
 		break;
 	case 5:
@@ -167,7 +192,7 @@ Blast Dice::BlastSpot(int x, int y)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
-			blast_flg = true;
+			blast_range_flg = true;
 		}
 		break;
 	case 6:
@@ -178,15 +203,33 @@ Blast Dice::BlastSpot(int x, int y)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
-			blast_flg = true;
+			blast_range_flg = true;
 		}
 		break;
 	default:
 		break;
 	}
 
-	return {blast_flg, m_BlastPosition };
+	return {blast_range_flg, m_BlastPosition,MAP_CHIP_ID::EMPTY};
 
+}
+
+MAP_CHIP_ID Dice::Blast(void)
+{
+    MAP_CHIP_ID id=MAP_CHIP_ID::EMPTY;
+    if(UtilityManager::GetInstance().Blast().ID!=MAP_CHIP_ID::EMPTY&&
+       UtilityManager::GetInstance().Blast().ID!= MAP_CHIP_ID::WALL&&
+       UtilityManager::GetInstance().Blast().ID != MAP_CHIP_ID::STARTFLAG&&
+       UtilityManager::GetInstance().Blast().ID != MAP_CHIP_ID::GOALFLAG)
+    id = UtilityManager::GetInstance().Blast().ID;
+    return id;
+}
+
+bool Dice::GoalFlag(void)
+{
+int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+    return STAGE.GoalFlag(x,y);
 }
 
 vivid::Vector2 Dice::GetDicePosition(void)

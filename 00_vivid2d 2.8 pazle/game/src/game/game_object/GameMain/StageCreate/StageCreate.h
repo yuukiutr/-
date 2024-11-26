@@ -4,24 +4,20 @@
 
 #include "vivid.h"
 #include "../../StageSelect/Stage_id.h"
-
+#include "MapChipID.h"
 class StageSelect;
 class Dice;
-class UtilityManager;
 
 // マップチップ番号を列挙型で定義
-enum class MAP_CHIP_ID
-{
-	EMPTY,			//空白
-	WALL,			//壁
-	STARTFLAG,		//スタート
-	GOALFLAG,		//ゴール
-	BLASTWALL,		//爆破できる壁
-};
 
 const int g_map_chip_size = 64;
 const int g_map_chip_count_width = 12;
 const int g_map_chip_count_height = 12;
+struct MAP_CHIP_SPOT
+{
+	int x;
+	int y;
+};
 
 class StageCreate
 {
@@ -35,7 +31,6 @@ private:
 
 	StageSelect* m_Select;
 	Dice* m_Dice;
-	UtilityManager* m_Key;
 	STAGE_ID m_StageID;
 
 	vivid::Vector2 m_SavePosition;
@@ -75,8 +70,11 @@ public:
 	vivid::Vector2 GetCollision(vivid::Vector2 vec2, int width, int height, float between);
 	//スタート位置を検索
 	vivid::Vector2 StartPosition(void);
-	//ゴールにキャラクターが接触したか(接触した == true, other == false)
-	bool GoalFlag(vivid::Vector2 vec2, int width, int height);
+
+	/* @brief ゴールにキャラクターが接触したか
+	*  @return (接触した == true, other == false)
+	*/
+	bool GoalFlag(int x, int y);
 
 	void BlastRange(void);
 
@@ -87,6 +85,11 @@ public:
 	//引数のマス目の場所が壁かどうか調べる
 	//壁true　通路false
 	bool CheckWall(int x, int y);
+
+	MAP_CHIP_ID GetMapChipID(int x, int y);
+
+	//マップチップのどこにあたるのかを返す
+	MAP_CHIP_SPOT GetMapChipSpot(vivid::Vector2 pos);
 };
 
 #define STAGE StageCreate::GetInstance()

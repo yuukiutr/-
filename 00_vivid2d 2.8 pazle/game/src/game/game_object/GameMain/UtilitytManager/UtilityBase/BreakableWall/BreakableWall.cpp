@@ -1,7 +1,17 @@
 #include "BreakableWall.h"
+#include "../../../dice/dice.h"
 
-bool BreakableWall::BreakWall(void)
+void BreakableWall::Update(void)
 {
-    
-    return false;
+	
+}
+
+void BreakableWall::Draw(void)
+{
+	vivid::DrawTexture("data\\gamemain_utility\\blast_wall.png", m_UtilityPosition);
+}
+
+UTILITY_ID BreakableWall::GetUtilityID(void)
+{
+	return UTILITY_ID::BreakableWall;
 }

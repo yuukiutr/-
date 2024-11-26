@@ -6,9 +6,15 @@
 #include <functional>
 #include "Utility_ID.h"
 
-class StageCreate;
 class Dice;
 class UtilityBase;
+
+struct Blast_state
+{
+	bool			DicePosFlag;
+	vivid::Vector2	BlastPos;
+	MAP_CHIP_ID		ID;
+};
 
 class UtilityManager
 {
@@ -19,9 +25,6 @@ private:
 	UtilityManager(const UtilityManager&& rhs);
 	UtilityManager& operator=(const UtilityManager& rhs);
 
-	static inline UtilityManager* s_Instance;
-
-	StageCreate* m_StageCreate;
 	Dice* m_Dice;
 
 	using UTILITYLIST = std::list<UtilityBase*>;
@@ -41,7 +44,7 @@ public:
 	 */
 	static UtilityManager& GetInstance();
 	//初期化
-	void Initialize(StageCreate* stagecreate, Dice* dice);
+	void Initialize(Dice* dice);
 	//更新
 	void Update(void);
 	//描画
@@ -49,9 +52,11 @@ public:
 	//解放
 	void Finalize(void);
 	//サイコロとの当たり判定
-	vivid::Vector2 Collision(vivid::Vector2 vec2, int width, int height);
+	bool Collision(void);
 
-	void SetKeyPosition(vivid::Vector2 pos);
+	Blast_state Blast(void);
+
+	void Create(UTILITY_ID id, vivid::Vector2 pos);
 	//デバック時に描画されるデータ
 	void KEY_DEBUG_DRAW_DATA(void);
 };

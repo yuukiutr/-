@@ -1,6 +1,7 @@
 #include "GameMain.h"
 #include "../StageSelect/StageSelect.h"
 #include "effectmanager/effectmanager.h"
+#include "UtilitytManager/UtilitytManager.h"
 
 
 //main Initialize
@@ -10,11 +11,10 @@ void GameMain::Initialize(StageSelect* target)
 	m_Timer = 0;
 	m_ResetCount = 0;
 	m_GameOverCount = 0;
+	UtilityManager::GetInstance().Initialize(&dice);
 	StageCreate::GetInstance().Initialize(m_Select, &dice);
 	EffectManager::CreateInstance();
 	EFFECT.Initialize();
-	character.Initialize();
-	EnemyManager::GetInstance().Initialize(&character);
 	goal.Initialize();
 	//ste_BGM_Initialize();
 	dice.Initialize();
@@ -25,53 +25,35 @@ void GameMain::Initialize(void)
 {
 	m_Timer = 0;
 	EffectManager::CreateInstance();
+	UtilityManager::GetInstance().Initialize(&dice);
 	StageCreate::GetInstance().Initialize(m_Select, &dice);
+
 	EFFECT.Initialize();
-	character.Initialize();
-	EnemyManager::GetInstance().Initialize(&character);
 	goal.Initialize();
 	dice.Initialize();
 }
 
 void GameMain::Update(void)
 {
-	if (!character.GetGoalFlag())
+	if (!dice.GoalFlag())
 	{
-		if (!character.GetLoseFlag()&&
-			!EnemyManager::GetInstance().GetLoseFlag())
+		if (m_Timer < 2159999)
 		{
-			if (m_Timer < 2159999)
-			{
-				m_Timer++;
-			}
-
-			StageCreate::GetInstance().Update();
-			character.Update();
-			EnemyManager::GetInstance().Update();
-			EFFECT.Update();
-			dice.Update();
-
-			if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
-				||vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::START)
-				&&vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::X))
-			{
-				m_ResetCount++;
-				this->Finalize();
-				this->Initialize();
-			}
-
+			m_Timer++;
 		}
-		else
-		{
-			//GAME OVER
-			if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
-				||vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::B))
-			{
-				m_GameOverCount++;
-				this->Finalize();
-				this->Initialize();
 
-			}
+		StageCreate::GetInstance().Update();
+		UtilityManager::GetInstance().Update();
+		EFFECT.Update();
+		dice.Update();
+
+		if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
+			|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::START)
+			&& vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::X))
+		{
+			m_ResetCount++;
+			this->Finalize();
+			this->Initialize();
 		}
 
 	}
@@ -88,9 +70,8 @@ void GameMain::Draw(void)
 	vivid::DrawTexture("data/back.png", { 0.0f,0.0f });
 	StageCreate::GetInstance().Draw();
 	EFFECT.Draw();
-	character.Draw();
-	EnemyManager::GetInstance().Draw();
 	dice.Draw();
+	UtilityManager::GetInstance().Draw();
 
 	//‚±‚ê‚æ‚è‘O‚É‘‚­
 	goal.Draw();
@@ -98,7 +79,6 @@ void GameMain::Draw(void)
 #ifdef VIVID_DEBUG
 	vivid::DrawText(32, "ƒQ[ƒ€ƒƒCƒ“", { 0.0f,0.0f });
 
-	character.CHARACTER_DEBUG_DRAW_DATA();
 	this->GAMEMAIN_DEBUG_DRAW_DATA();
 #endif //VIVID_DEBUG
 
@@ -107,8 +87,7 @@ void GameMain::Draw(void)
 void GameMain::Finalize(void)
 {
 	StageCreate::GetInstance().Finalize();
-	character.Finalize();
-	EnemyManager::GetInstance().Finalize();
+	UtilityManager::GetInstance().Finalize();
 	goal.Finalize();
 	EFFECT.Finalize();
 	EffectManager::DeleteInstance();

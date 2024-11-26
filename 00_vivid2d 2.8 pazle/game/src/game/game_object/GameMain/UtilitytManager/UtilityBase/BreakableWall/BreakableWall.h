@@ -6,5 +6,9 @@ class BreakableWall : public UtilityBase
 private:
 
 public:
-	bool BreakWall(void);
+
+	void Update(void)override;
+	void Draw(void)override;
+
+	UTILITY_ID GetUtilityID(void)override;
 };

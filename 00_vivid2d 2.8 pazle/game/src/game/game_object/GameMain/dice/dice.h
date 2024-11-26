@@ -1,12 +1,13 @@
 #pragma once
 #include "vivid.h"
+#include "../StageCreate/MapChipID.h"
 
-class StageCreate;
 
 struct Blast
 {
-	bool DicePosFlag;
-	vivid::Vector2 BlastPos;
+	bool			DicePosFlag;
+	vivid::Vector2	BlastPos;
+	MAP_CHIP_ID		ID;
 };
 
 class Dice
@@ -35,12 +36,18 @@ public:
 	int GetDiceHeight(void);
 
 	/*
-*	@break	爆発する範囲を返す
+*	@brief	爆発する範囲を返す
 *	@param[in]	x軸
 *	@param[in]	y軸
 *	@return		爆破範囲
 */
 	Blast BlastSpot(int x, int y);
 
+	/*
+	*	@brief	爆破範囲に破壊できるオブジェクトがある場合破壊する
+	*/
+	MAP_CHIP_ID Blast(void);
+
+	bool GoalFlag(void);
 	vivid::Vector2 GetDicePosition(void);
 };

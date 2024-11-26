@@ -13,7 +13,7 @@ void Goal::Initialize(void)
 
 void Goal::Update(void)
 {
-
+	CreateScene(GameScene_ID::TITLE);
 }
 
 void Goal::Draw(void)

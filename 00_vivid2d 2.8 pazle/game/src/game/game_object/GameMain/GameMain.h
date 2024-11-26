@@ -1,8 +1,7 @@
 #pragma once
-#include "character/character.h"
 #include "goal/goal.h"
-#include "EnemyManager/EnemyManager.h"
 #include "StageCreate/StageCreate.h"
+#include "UtilitytManager/UtilitytManager.h"
 #include "dice/dice.h"
 
 class StageSelect;
@@ -12,7 +11,7 @@ class GameMain
 private:
 
 	StageSelect* m_Select;
-	Character character;
+	UtilityManager* m_Utility;
 	Goal goal;
 	Dice dice;
 

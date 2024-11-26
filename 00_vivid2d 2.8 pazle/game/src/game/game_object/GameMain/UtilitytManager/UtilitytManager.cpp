@@ -2,7 +2,7 @@
 #include "../dice/dice.h"
 #include "UtilitytManager.h"
 #include "UtilityBase/Key/key.h"
-
+#include "UtilityBase/BreakableWall/BreakableWall.h"
 
 UtilityManager::UtilityManager()
 {
@@ -37,15 +37,15 @@ UtilityManager& UtilityManager::GetInstance(void)
 	return Instance;
 }
 
-void UtilityManager::Initialize(StageCreate* stagecreate, Dice* dice)
+void UtilityManager::Initialize(Dice* dice)
 {
-	m_StageCreate = stagecreate;
 	m_Dice = dice;
-		
+	
+	m_Generator[UTILITY_ID::BreakableWall] = []() {return new BreakableWall(); };
 	m_Generator[UTILITY_ID::KEY] = []() {return new Key(); };
 
 
-	m_KeyDigit = m_StageCreate->GetKeyDigit();
+	m_KeyDigit = STAGE.GetKeyDigit();
 }
 
 void UtilityManager::Update(void)
@@ -93,12 +93,20 @@ void UtilityManager::Finalize(void)
 	}
 }
 
-vivid::Vector2 UtilityManager::Collision(vivid::Vector2 vec2, int width, int height)
+bool UtilityManager::Collision(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
-	vivid::Vector2 tmp = vec2;
 
+	bool flg = false;
+	int x = (int)(m_Dice->GetDicePosition().x);
+	int y = (int)(m_Dice->GetDicePosition().y);
+	vivid::Vector2 tmp = {(float) x,(float)y };
+
+	if (x < 0)x = 0;
+	if (x > g_map_chip_count_width)x = g_map_chip_count_width - 1;
+	if (y < 0)y = 0;
+	if (y > g_map_chip_count_height)y = g_map_chip_count_height - 1;
 	while (it != end)
 	{
 		UtilityBase* base = (*it);
@@ -108,46 +116,188 @@ vivid::Vector2 UtilityManager::Collision(vivid::Vector2 vec2, int width, int hei
 			++it;
 			continue;
 		}
-		vivid::Vector2 pos = base->UtilityCollision(vec2, width, height);
+		flg = base->GetCollisionFlag(x, y);
 
-		if (pos.x == -1.0f && pos.y == -1.0f)
+		if(flg)
+		return false;
+	}
+	return flg;
+}
+
+
+Blast_state UtilityManager::Blast(void)
+{
+	int DiceDigit = m_Dice->GetDiceDigit();
+	vivid::Vector2  pos = { 0.0f,0.0f };
+	bool flg = false;
+	MAP_CHIP_ID id = MAP_CHIP_ID::EMPTY;
+
+	//”š”­”ÍˆÍ•\Ž¦
+	switch (DiceDigit)
+	{
+	case 1:
+
+		for (int j = -1; j <= 1; j += 2)
 		{
-			++it;
+			if (m_Dice->BlastSpot(0, j).DicePosFlag)
+			{
+				int x = (int)((m_Dice->BlastSpot(0, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				int y = (int)((m_Dice->BlastSpot(0, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+			}
 		}
-		else
+		break;
+	case 2:
+		for (int i = -1; i <= 1; i += 2)
 		{
-			++it;
-			vec2 = pos;
+			int x = (int)((m_Dice->BlastSpot(i, 0).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+			int y = (int)((m_Dice->BlastSpot(i, 0).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+			if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+			{
+				id = MAP_CHIP_ID::BLASTWALL;
+				pos = { (float)x,(float)y };
+				flg = true;
+			}
+			if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
+			{
+				id = MAP_CHIP_ID::BLASTWALL;
+				pos = { (float)x,(float)y };
+				flg = true;
+			}
 		}
+		break;
+	case 3:
+		for (int i = -1; i <= 1; i += 2)
+			for (int j = -1; j <= 1; j += 2)
+			{
+				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				MAP_CHIP_ID id = STAGE.GetMapChipID(x, y);
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+			}
+		break;
+	case 4:
+		for (int i = -1; i <= 1; i++)
+			for (int j = -2; j <= 2; j += 4)
+			{
+				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+			}
+		break;
+	case 5:
+		for (int i = -2; i <= 2; i += 4)
+			for (int j = -1; j <= 1; j++)
+			{
+				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+			}
+		break;
+	case 6:
+		for (int i = -2; i <= 2; i += 4)
+			for (int j = -2; j <= 2; j += 4)
+			{
+				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
+				{
+					id = MAP_CHIP_ID::BLASTWALL;
+					pos = { (float)x,(float)y };
+					flg = true;
+				}
+			}
+		break;
+	default:
+		break;
 	}
 
-	return vec2;
+	return { flg, pos, id };
 }
 
-void UtilityManager::SetKeyPosition(vivid::Vector2 pos)
+void UtilityManager::Create(UTILITY_ID ID, vivid::Vector2 pos)
 {
-}
+	UtilityBase* base = nullptr;
 
+	base = m_Generator[ID]();
+
+	if (base != nullptr)
+	{
+		base->Initialize(m_Dice, pos);
+
+		m_UtilityList.push_back(base);
+	}
+}
 
 void UtilityManager::KEY_DEBUG_DRAW_DATA(void)
 {
 #ifdef VIVID_DEBUG
 
-	int BoxCount = 0;
+	int UtilityCount = 0;
 
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
 
 	while (it != end)
 	{
-		BoxCount++;
+		UtilityCount++;
 
 		++it;
 	}
 
 	if (vivid::keyboard::Button(vivid::keyboard::KEY_ID::NUMPAD3))
 	{
-		vivid::DrawText(30, "BC:" + std::to_string(BoxCount), { 0.0f,240.0f }, 0xff00ff00);
+		vivid::DrawText(30, "BC:" + std::to_string(UtilityCount), { 0.0f,240.0f }, 0xff00ff00);
 	}
 #endif //VIVID_DEBUG
 
