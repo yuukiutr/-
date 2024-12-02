@@ -3,6 +3,7 @@
 #include "../Title/Title.h"
 #include "../StageSelect/StageSelect.h"
 #include "../Result/Result.h"
+#include "../option/option.h"
 
 //credit‚ð‘S‚Äoption‚É‚·‚é(‚ ‚Æ‚Å)
 
@@ -10,6 +11,7 @@ GameMain gamemain;
 Title title;
 StageSelect stageselect;
 Result result;
+Option option;
 
 GameScene_ID gamescene_id = GameScene_ID::DUMMY;
 
@@ -33,6 +35,7 @@ void CreateScene(GameScene_ID next_scene)
 			stageselect.Finalize();
 			break;
 		case GameScene_ID::OPTION:
+			option.Finalize();
 			break;
 		case GameScene_ID::RESULT:
 			result.Finalize();
@@ -59,6 +62,7 @@ void CreateScene(GameScene_ID next_scene)
 			result.Initialize(&gamemain, &stageselect);
 			break;
 		case GameScene_ID::OPTION:
+			option.Initialize();
 			break;
 
 		default:
@@ -91,6 +95,7 @@ void GameSceneManager::Update(void)
 		result.Update();
 		break;
 	case GameScene_ID::OPTION:
+		option.Update();
 		break;
 
 	default:
@@ -115,6 +120,7 @@ void GameSceneManager::Draw(void)
 		result.Draw();
 		break;
 	case GameScene_ID::OPTION:
+		option.Draw();
 		break;
 
 	default:
@@ -139,6 +145,7 @@ void GameSceneManager::Finalize(void)
 		result.Finalize();
 		break;
 	case GameScene_ID::OPTION:
+		option.Finalize();
 		break;
 
 	default:
