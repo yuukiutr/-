@@ -1,5 +1,6 @@
 #pragma once
 #include"vivid.h"
+#include "../gamescene_manager/gamescene_id.h"
 
 
 class Title
@@ -36,4 +37,6 @@ private:
 	int m_OuterFrameCount;	//ŠO˜g‚Ì“_–Å
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;
+
+	GameScene_ID m_ID;
 };

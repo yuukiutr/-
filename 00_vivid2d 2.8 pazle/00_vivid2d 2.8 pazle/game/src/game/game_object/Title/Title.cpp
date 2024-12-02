@@ -7,34 +7,43 @@ void Title::Initialize(void)
 {
 	m_Position = { 500.0f,700.0f };
 	rect = { 0, 0, m_dice_width, m_dice_height };
-	m_GoStageSelect = true;
 	m_OuterFrameCount = 0; //ŠO˜g“_–Å
+	m_ID = GameScene_ID::STAGESELECT;
 }
 
 void Title::Update(void)
 {
 	namespace keyboard = vivid::keyboard;
 
-	if (keyboard::Trigger(keyboard::KEY_ID::NUMPADENTER) && m_GoStageSelect)
+	
+	if (keyboard::Trigger(keyboard::KEY_ID::NUMPADENTER))
 	{
-		CreateScene(GameScene_ID::STAGESELECT);
-	}
-	else if(keyboard::Trigger(keyboard::KEY_ID::NUMPADENTER))
-	{
-		CreateScene(GameScene_ID::OPTION);
-	}
+		switch (m_ID)
+		{
+		case GameScene_ID::STAGESELECT:
 
-	if ((keyboard::Trigger(keyboard::KEY_ID::W) || keyboard::Trigger(keyboard::KEY_ID::S)) && m_Position.y == 764.0f)
+			CreateScene(GameScene_ID::STAGESELECT);
+			break;
+
+		case GameScene_ID::OPTION:
+			CreateScene(GameScene_ID::OPTION);
+			break;
+
+		default:
+			break;
+		}
+	}
+	if (keyboard::Trigger(keyboard::KEY_ID::W) && m_Position.y == 764.0f)
 	{
 		m_Position.y -= 64.0f;
 		rect = { 0, 0, m_dice_width, m_dice_height };
-		m_GoStageSelect = true;
+		m_ID = GameScene_ID::STAGESELECT;
 	}
-	else if ((keyboard::Trigger(keyboard::KEY_ID::S) || keyboard::Trigger(keyboard::KEY_ID::W)) && m_Position.y == 700.0f)
+	else if (keyboard::Trigger(keyboard::KEY_ID::S) && m_Position.y == 700.0f)
 	{
 		m_Position.y += 64.0f;
 		rect = { 64, 0, m_dice_width * 2, m_dice_height };
-		m_GoStageSelect = false;
+		m_ID = GameScene_ID::OPTION;
 	}
 
 	if (m_OuterFrameCount++ > 40)
