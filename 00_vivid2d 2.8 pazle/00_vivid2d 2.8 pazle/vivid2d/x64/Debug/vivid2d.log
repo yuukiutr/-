@@ -1,0 +1,29 @@
+﻿2024/12/02 9:57:12 にビルドを開始しました。
+ログの詳細度は次のように設定されています: Normal。     1>ノード 2 上のプロジェクト "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\vivid2d\vivid2d.vcxproj" (Build ターゲット)。
+     1>PrepareForBuild:
+         ディレクトリ "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\" を作成しています。
+         ディレクトリ "x64\Debug\vivid2d.tlog\" を作成しています。
+       InitializeBuildStatus:
+         "AlwaysCreate" が指定されたため "x64\Debug\vivid2d.tlog\unsuccessfulbuild" を作成しています。
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W4 /WX- /diagnostics:column /MP /Od /D WIN32 /D _DEBUG /D _LIB /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"x64\Debug\\" /Fd"C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\vivid2d.pdb" /external:W4 /Gd /TP /wd26495 /FC /errorReport:prompt src\vivid.cpp
+         vivid.cpp
+     1>c:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+       Lib:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\bin\HostX64\x64\Lib.exe /OUT:"C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\vivid2d.lib" legacy_stdio_definitions.lib /NOLOGO /MACHINE:X64 x64\Debug\vivid.obj
+         vivid2d.vcxproj -> C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\vivid2d.lib
+       FinalizeBuildStatus:
+         ファイル "x64\Debug\vivid2d.tlog\unsuccessfulbuild" を削除しています。
+         "x64\Debug\vivid2d.tlog\vivid2d.lastbuildstate" のタッチ タスクを実行しています。
+     1>プロジェクト "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\vivid2d\vivid2d.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+       "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\vivid2d\vivid2d.vcxproj" (Build ターゲット) (1) ->
+       (ClCompile ターゲット) -> 
+         c:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+
+    1 個の警告
+    0 エラー
+
+経過時間 00:00:01.86

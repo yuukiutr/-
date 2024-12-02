@@ -1,0 +1,115 @@
+﻿2024/12/02 9:57:14 にビルドを開始しました。
+ログの詳細度は次のように設定されています: Normal。     1>ノード 2 上のプロジェクト "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\game.vcxproj" (Build ターゲット)。
+     1>PrepareForBuild:
+         ディレクトリ "x64\Debug\game.tlog\" を作成しています。
+       InitializeBuildStatus:
+         "AlwaysCreate" が指定されたため "x64\Debug\game.tlog\unsuccessfulbuild" を作成しています。
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\bin\HostX64\x64\CL.exe /c /I..\vivid2d\src /ZI /JMC /nologo /W4 /WX- /diagnostics:column /MP /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W4 /Gd /TP /wd26495 /FC /errorReport:prompt src\game\game.cpp src\game\game_object\Credit\option.cpp src\game\game_object\GameMain\Button_manager\Button\Button.cpp src\game\game_object\GameMain\Button_manager\Button_manager.cpp src\game\game_object\GameMain\dice\dice.cpp src\game\game_object\GameMain\GameMain.cpp src\game\game_object\GameMain\goal\goal.cpp src\game\game_object\GameMain\UtilitytManager\UtilityBase\BreakableWall\BreakableWall.cpp src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.cpp src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp src\game\game_object\GameMain\StageCreate\StageCreate.cpp src\game\game_object\gamescene_manager\gamescene_manager.cpp src\game\game_object\Result\Result.cpp src\game\game_object\StageSelect\StageSelect.cpp src\game\game_object\TextManager\TextManager.cpp src\game\game_object\TextManager\text_loader\text_loader.cpp src\game\game_object\TextManager\text_writer\text_writer.cpp src\game\game_object\Title\Title.cpp src\main.cpp
+         game.cpp
+         option.cpp
+         Button.cpp
+         Button_manager.cpp
+         dice.cpp
+         GameMain.cpp
+         goal.cpp
+         BreakableWall.cpp
+         key.cpp
+         UtilityBase.cpp
+         UtilitytManager.cpp
+         StageCreate.cpp
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\Button_manager\Button_manager.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\GameMain.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilityBase\BreakableWall\BreakableWall.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\goal\goal.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\Button_manager\Button\Button.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\dice\dice.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\Credit\option.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\StageCreate\StageCreate.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp)
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp(42): warning C4702: 制御が渡らないコードです。
+         gamescene_manager.cpp
+         Result.cpp
+         StageSelect.cpp
+         TextManager.cpp
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp(186,17): warning C4456: 'id' を宣言すると、以前のローカル宣言が隠蔽されます
+       C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp(133,14): message : 'id' の宣言を確認してください
+         text_loader.cpp
+         text_writer.cpp
+         Title.cpp
+         main.cpp
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\StageCreate\StageCreate.cpp(83,18): warning C4456: 'k' を宣言すると、以前のローカル宣言が隠蔽されます
+       C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\StageCreate\StageCreate.cpp(50,10): message : 'k' の宣言を確認してください
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\StageSelect\StageSelect.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\Title\Title.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\Result\Result.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\gamescene_manager\gamescene_manager.cpp)
+     1>C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\main.cpp)
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\StageSelect\StageSelect.cpp(56,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\StageSelect\StageSelect.cpp(78,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\Result\Result.cpp(7,54): warning C4100: 'target': 引数は関数の本体部で 1 度も参照されません。
+     1>C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\Result\Result.cpp(7,35): warning C4100: 'main': 引数は関数の本体部で 1 度も参照されません。
+       Link:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\game.exe" /INCREMENTAL /ILK:"x64\Debug\game.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\game.lib" /MACHINE:X64 /ignore:4099 x64\Debug\game.obj
+         x64\Debug\option.obj
+         x64\Debug\Button.obj
+         x64\Debug\Button_manager.obj
+         x64\Debug\dice.obj
+         x64\Debug\GameMain.obj
+         x64\Debug\goal.obj
+         x64\Debug\BreakableWall.obj
+         x64\Debug\key.obj
+         x64\Debug\UtilityBase.obj
+         x64\Debug\UtilitytManager.obj
+         x64\Debug\StageCreate.obj
+         x64\Debug\gamescene_manager.obj
+         x64\Debug\Result.obj
+         x64\Debug\StageSelect.obj
+         x64\Debug\TextManager.obj
+         x64\Debug\text_loader.obj
+         x64\Debug\text_writer.obj
+         x64\Debug\Title.obj
+         x64\Debug\main.obj
+         "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\vivid2d.lib"
+         game.vcxproj -> C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\project\x64\Debug\game.exe
+       FinalizeBuildStatus:
+         ファイル "x64\Debug\game.tlog\unsuccessfulbuild" を削除しています。
+         "x64\Debug\game.tlog\game.lastbuildstate" のタッチ タスクを実行しています。
+     1>プロジェクト "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\game.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+       "C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\game.vcxproj" (Build ターゲット) (1) ->
+       (ClCompile ターゲット) -> 
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\Button_manager\Button_manager.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\GameMain.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilityBase\Key\key.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilityBase\BreakableWall\BreakableWall.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\goal\goal.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\Button_manager\Button\Button.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\dice\dice.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\Credit\option.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\StageCreate\StageCreate.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp)
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\UtilitytManager\UtilityBase\UtilityBase.cpp(42): warning C4702: 制御が渡らないコードです。
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\UtilitytManager\UtilitytManager.cpp(186,17): warning C4456: 'id' を宣言すると、以前のローカル宣言が隠蔽されます
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\GameMain\StageCreate\StageCreate.cpp(83,18): warning C4456: 'k' を宣言すると、以前のローカル宣言が隠蔽されます
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\StageSelect\StageSelect.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\Title\Title.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\Result\Result.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\game\game_object\gamescene_manager\gamescene_manager.cpp)
+         C:\dxlib\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています src\main.cpp)
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\StageSelect\StageSelect.cpp(56,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\StageSelect\StageSelect.cpp(78,5): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\Result\Result.cpp(7,54): warning C4100: 'target': 引数は関数の本体部で 1 度も参照されません。
+         C:\Users\oibc23207\Documents\GitHub\god\00_vivid2d 2.8 pazle\00_vivid2d 2.8 pazle\game\src\game\game_object\Result\Result.cpp(7,35): warning C4100: 'main': 引数は関数の本体部で 1 度も参照されません。
+
+    24 個の警告
+    0 エラー
+
+経過時間 00:00:04.23
