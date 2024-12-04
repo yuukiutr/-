@@ -41,7 +41,7 @@ void Dice::Initialize(void)
 void Dice::Update(void)
 {
 
-    namespace keyboad = vivid::keyboard;
+    namespace keyboard = vivid::keyboard;
 
     int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
     int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
@@ -49,7 +49,7 @@ void Dice::Update(void)
     int work = NULL;//“ü‚ê‘Ö‚¦‚é‚Ì‚É•K—v
 
     //ã‚É“]‚ª‚é
-    if (keyboad::Trigger(keyboad::KEY_ID::W) &&
+    if (keyboard::Trigger(keyboard::KEY_ID::W) &&
         m_Position.y >= 264.0f &&
         STAGE.CheckWall(x, y - 1) != true)
     {
@@ -61,7 +61,7 @@ void Dice::Update(void)
         m_Dice.back = work;
     }
     //¶‚É“]‚ª‚é
-    else if (keyboad::Trigger(keyboad::KEY_ID::A) &&
+    else if (keyboard::Trigger(keyboard::KEY_ID::A) &&
         m_Position.x >= 264.0f &&
         STAGE.CheckWall(x - 1, y) != true
         &&
@@ -75,7 +75,7 @@ void Dice::Update(void)
         m_Dice.left = work;
     }
     //‰º‚É“]‚ª‚é
-    else if (keyboad::Trigger(keyboad::KEY_ID::S) &&
+    else if (keyboard::Trigger(keyboard::KEY_ID::S) &&
         m_Position.y < m_map_height + 136.0f &&
         STAGE.CheckWall(x, y + 1) != true)
     {
@@ -87,7 +87,7 @@ void Dice::Update(void)
         m_Dice.center = work;
     }
     //‰E‚É“]‚ª‚é
-    else if (keyboad::Trigger(keyboad::KEY_ID::D) &&
+    else if (keyboard::Trigger(keyboard::KEY_ID::D) &&
         m_Position.x < m_map_width + 136.0f &&
         STAGE.CheckWall(x + 1, y) != true)
     {
