@@ -15,7 +15,7 @@ void Title::Update(void)
 {
 	namespace keyboard = vivid::keyboard;
 
-	
+	//ƒV[ƒ“Ø‚è‘Ö‚¦
 	if (keyboard::Trigger(keyboard::KEY_ID::NUMPADENTER))
 	{
 		switch (m_ID)
@@ -61,7 +61,7 @@ void Title::Draw(void)
 	vivid::DrawTexture("data\\title\\title.png", { 240.0f,20.0f });
 
 	if(m_OuterFrameCount < 30)
-	vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + 64.0f,m_Position.y });
+	vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + m_dice_width, m_Position.y });
 
 
 }
