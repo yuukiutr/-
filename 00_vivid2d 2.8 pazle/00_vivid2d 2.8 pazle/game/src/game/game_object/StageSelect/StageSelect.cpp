@@ -74,7 +74,8 @@ if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
 void StageSelect::Draw(void)
 {
 #ifdef VIVID_DEBUG
-	vivid::DrawText(32, "ゲーム選択", { 0.0f,0.0f });
+	vivid::DrawText(50, "ゲーム選択", { 0.0f,0.0f });
+	vivid::DrawText(50, "Rで戻る", { 0.0f,50.0f });
 #if _DRAW_DEBUG_DATA
 	//見本 vivid::DrawText(50, "水色ブロック   　引力の強い状態でしばらく乗っていると上に落ちるブロック", { 0.0f,750.0f }, 0xffff8800);
 #endif
