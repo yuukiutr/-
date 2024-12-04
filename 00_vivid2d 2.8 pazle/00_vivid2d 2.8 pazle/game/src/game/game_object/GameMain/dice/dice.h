@@ -13,8 +13,9 @@ struct Blast
 class Dice
 {
 private:
-	int m_DiceDigit; //ダイスの出目
-	int m_BlastCount;//爆破回数
+	int m_DiceDigit;	//ダイスの出目
+	int m_BlastCount;	//爆破回数
+	int m_MoveCount;	//移動回数
 	vivid::Vector2 m_Position;
 	vivid::Vector2 m_BlastPosition;
 	vivid::Rect rect;
@@ -34,6 +35,7 @@ public:
 	int GetDiceDigit(void);
 	int GetDiceWidth(void);
 	int GetDiceHeight(void);
+	int GetMoveCount(void);
 
 	/*
 *	@brief	爆発する範囲を返す
@@ -47,6 +49,7 @@ public:
 	*	@brief	爆破範囲に破壊できるオブジェクトがある場合破壊する
 	*/
 	MAP_CHIP_ID Blast(void);
+
 
 	bool GoalFlag(void);
 	vivid::Vector2 GetDicePosition(void);

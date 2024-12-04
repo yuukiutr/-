@@ -59,6 +59,7 @@ void Dice::Update(void)
         m_Dice.center = m_Dice.bottom;
         m_Dice.bottom = m_Dice.back;
         m_Dice.back = work;
+        m_MoveCount++;
     }
     //ç∂Ç…ì]Ç™ÇÈ
     else if (keyboard::Trigger(keyboard::KEY_ID::A) &&
@@ -73,6 +74,7 @@ void Dice::Update(void)
         m_Dice.right = m_Dice.back;
         m_Dice.back = m_Dice.left;
         m_Dice.left = work;
+        m_MoveCount++;
     }
     //â∫Ç…ì]Ç™ÇÈ
     else if (keyboard::Trigger(keyboard::KEY_ID::S) &&
@@ -85,6 +87,7 @@ void Dice::Update(void)
         m_Dice.back = m_Dice.bottom;
         m_Dice.bottom = m_Dice.center;
         m_Dice.center = work;
+        m_MoveCount++;
     }
     //âEÇ…ì]Ç™ÇÈ
     else if (keyboard::Trigger(keyboard::KEY_ID::D) &&
@@ -97,7 +100,9 @@ void Dice::Update(void)
         m_Dice.left = m_Dice.back;
         m_Dice.back = m_Dice.right;
         m_Dice.right = work;
+        m_MoveCount++;
     }
+
     //ï`âÊà íu
     rect.left = m_dice_width * (m_Dice.center - 1);
     rect.right = m_dice_width * m_Dice.center;
@@ -116,6 +121,7 @@ void Dice::Draw(void)
         id = 3;
 
     vivid::DrawText(40,std::to_string(id),{ 0.0f, 200.0f });
+    vivid::DrawText(40, std::to_string(m_MoveCount), { 0.0f,150.0f });
 #endif // VIVID_DEBUG
 
 }
@@ -133,6 +139,11 @@ int Dice::GetDiceWidth(void)
 int Dice::GetDiceHeight(void)
 {
     return m_dice_height;
+}
+
+int Dice::GetMoveCount(void)
+{
+    return m_MoveCount;
 }
 
 Blast Dice::BlastSpot(int x, int y)

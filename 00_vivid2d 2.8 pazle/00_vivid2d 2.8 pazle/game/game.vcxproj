@@ -167,6 +167,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\game\game.cpp" />
+    <ClCompile Include="src\game\game_object\GameMain\Credit\Credit.cpp" />
     <ClCompile Include="src\game\game_object\option\option.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\Button_manager\Button\Button.cpp" />
     <ClCompile Include="src\game\game_object\GameMain\Button_manager\Button_manager.cpp" />
@@ -195,6 +196,7 @@
   <ItemGroup>
     <ClInclude Include="src\game\game object\GameMain\BoxManager\Box\deadbox\deadbox.h" />
     <ClInclude Include="src\game\game.h" />
+    <ClInclude Include="src\game\game_object\GameMain\Credit\Credit.h" />
     <ClInclude Include="src\game\game_object\option\option.h" />
     <ClInclude Include="src\game\game_object\GameMain\AnalogJoypad.h" />
     <ClInclude Include="src\game\game_object\GameMain\Button_manager\Button\Button.h" />

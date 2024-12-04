@@ -5,8 +5,6 @@
 #include "../Result/Result.h"
 #include "../option/option.h"
 
-//credit‚ð‘S‚Äoption‚É‚·‚é(‚ ‚Æ‚Å)
-
 GameMain gamemain;
 Title title;
 StageSelect stageselect;
@@ -36,6 +34,9 @@ void CreateScene(GameScene_ID next_scene)
 			break;
 		case GameScene_ID::OPTION:
 			option.Finalize();
+			break;
+		case GameScene_ID::CREDIT:
+
 			break;
 		case GameScene_ID::RESULT:
 			result.Finalize();
