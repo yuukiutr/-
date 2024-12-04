@@ -127,142 +127,20 @@ bool UtilityManager::Collision(void)
 
 Blast_state UtilityManager::Blast(void)
 {
-	int DiceDigit = m_Dice->GetDiceDigit();
-	vivid::Vector2  pos = { 0.0f,0.0f };
-	bool flg = false;
-	MAP_CHIP_ID id = MAP_CHIP_ID::EMPTY;
+	UTILITYLIST::iterator it = m_UtilityList.begin();
+	UTILITYLIST::iterator end = m_UtilityList.end();
 
-	//”š”­”ÍˆÍ•\Ž¦
-	switch (DiceDigit)
+
+	while (it != end)
 	{
-	case 1:
-
-		for (int j = -1; j <= 1; j += 2)
+		UtilityBase* base = (*it);
+		if (base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+			base->GetUtilityID() == UTILITY_ID::KEY)
 		{
-			if (m_Dice->BlastSpot(0, j).DicePosFlag)
-			{
-				int x = (int)((m_Dice->BlastSpot(0, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				int y = (int)((m_Dice->BlastSpot(0, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-			}
+			m_Dice->BlastSpot()
 		}
-		break;
-	case 2:
-		for (int i = -1; i <= 1; i += 2)
-		{
-			int x = (int)((m_Dice->BlastSpot(i, 0).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-			int y = (int)((m_Dice->BlastSpot(i, 0).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-			if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
-			{
-				id = MAP_CHIP_ID::BLASTWALL;
-				pos = { (float)x,(float)y };
-				flg = true;
-			}
-			if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
-			{
-				id = MAP_CHIP_ID::BLASTWALL;
-				pos = { (float)x,(float)y };
-				flg = true;
-			}
-		}
-		break;
-	case 3:
-		for (int i = -1; i <= 1; i += 2)
-			for (int j = -1; j <= 1; j += 2)
-			{
-				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				MAP_CHIP_ID id = STAGE.GetMapChipID(x, y);
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-			}
-		break;
-	case 4:
-		for (int i = -1; i <= 1; i++)
-			for (int j = -2; j <= 2; j += 4)
-			{
-				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-			}
-		break;
-	case 5:
-		for (int i = -2; i <= 2; i += 4)
-			for (int j = -1; j <= 1; j++)
-			{
-				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-			}
-		break;
-	case 6:
-		for (int i = -2; i <= 2; i += 4)
-			for (int j = -2; j <= 2; j += 4)
-			{
-				int x = (int)((m_Dice->BlastSpot(i, j).BlastPos.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				int y = (int)((m_Dice->BlastSpot(i, j).BlastPos.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-				if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::KEY)
-				{
-					id = MAP_CHIP_ID::BLASTWALL;
-					pos = { (float)x,(float)y };
-					flg = true;
-				}
-			}
-		break;
-	default:
-		break;
 	}
 
-	return { flg, pos, id };
 }
 
 void UtilityManager::Create(UTILITY_ID ID, vivid::Vector2 pos)
