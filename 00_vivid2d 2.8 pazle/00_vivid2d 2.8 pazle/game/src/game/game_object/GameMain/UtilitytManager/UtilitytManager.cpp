@@ -137,9 +137,11 @@ Blast_state UtilityManager::Blast(void)
 		if (base->GetUtilityID() == UTILITY_ID::BreakableWall ||
 			base->GetUtilityID() == UTILITY_ID::KEY)
 		{
-			m_Dice->BlastSpot()
+			//m_Dice->BlastSpot()
 		}
 	}
+
+	return { false,{0.0f,0.0f},MAP_CHIP_ID::KEY };
 
 }
 
