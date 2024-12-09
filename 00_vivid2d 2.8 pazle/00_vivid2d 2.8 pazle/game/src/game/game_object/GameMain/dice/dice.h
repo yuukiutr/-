@@ -13,6 +13,17 @@ struct Blast
 class Dice
 {
 private:
+
+	Dice() = default;
+	~Dice() = default;
+
+	Dice(const Dice&) = delete;
+	Dice(const Dice&&) = delete;
+	Dice& operator=(const Dice&) = delete;
+	Dice& operator=(const Dice&&) = delete;
+
+	static inline Dice* m_Instance;
+
 	int m_DiceDigit;	//ダイスの出目
 	int m_BlastCount;	//爆破回数
 	int m_MoveCount;	//移動回数
@@ -25,6 +36,11 @@ private:
 	const float m_map_height = 768;
 
 public:
+
+	static void CreateInstance(void);
+	static void DeleteInstance(void);
+	static Dice& GetInstance(void);
+
 	void Initialize(void);
 	void Update(void);
 	void Draw(void);

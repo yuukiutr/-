@@ -44,7 +44,7 @@ public:
 	 */
 	static UtilityManager& GetInstance();
 	//‰Šú‰»
-	void Initialize(Dice* dice);
+	void Initialize(void);
 	//XV
 	void Update(void);
 	//•`‰æ

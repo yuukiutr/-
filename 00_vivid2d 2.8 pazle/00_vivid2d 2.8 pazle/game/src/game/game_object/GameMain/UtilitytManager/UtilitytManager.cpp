@@ -37,10 +37,8 @@ UtilityManager& UtilityManager::GetInstance(void)
 	return Instance;
 }
 
-void UtilityManager::Initialize(Dice* dice)
-{
-	m_Dice = dice;
-	
+void UtilityManager::Initialize(void)
+{	
 	m_Generator[UTILITY_ID::BreakableWall] = []() {return new BreakableWall(); };
 	m_Generator[UTILITY_ID::KEY] = []() {return new Key(); };
 
@@ -97,7 +95,7 @@ bool UtilityManager::Collision(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
-	vivid::Vector2 tmp = m_Dice->GetDicePosition();
+	vivid::Vector2 tmp = Dice::GetInstance().GetDicePosition();
 
 	bool flag = false;
 
@@ -137,7 +135,7 @@ Blast_state UtilityManager::Blast(void)
 		if (base->GetUtilityID() == UTILITY_ID::BreakableWall ||
 			base->GetUtilityID() == UTILITY_ID::KEY)
 		{
-			//m_Dice->BlastSpot()
+			//Dice::GetInstance().BlastSpot()
 		}
 	}
 
@@ -153,7 +151,7 @@ void UtilityManager::Create(UTILITY_ID ID, vivid::Vector2 pos)
 
 	if (base != nullptr)
 	{
-		base->Initialize(m_Dice, pos);
+		base->Initialize(pos);
 
 		m_UtilityList.push_back(base);
 	}

@@ -13,7 +13,6 @@ private:
 	StageSelect* m_Select;
 	UtilityManager* m_Utility;
 	Goal goal;
-	Dice dice;
 
 	int m_Timer;
 	int m_ResetCount;

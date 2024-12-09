@@ -2,6 +2,7 @@
 #include "../StageSelect/StageSelect.h"
 #include "effectmanager/effectmanager.h"
 #include "UtilitytManager/UtilitytManager.h"
+#include "../gamescene_manager/gamescene_manager.h"
 
 
 //main Initialize
@@ -11,27 +12,28 @@ void GameMain::Initialize(StageSelect* target)
 	m_Timer = 0;
 	m_ResetCount = 0;
 	m_GameOverCount = 0;
-	UtilityManager::GetInstance().Initialize(&dice);
-	StageCreate::GetInstance().Initialize(m_Select, &dice);
+	UtilityManager::GetInstance().Initialize();
+	StageCreate::GetInstance().Initialize(m_Select);
+	Dice::GetInstance().Initialize();
 	goal.Initialize();
 	//ste_BGM_Initialize();
-	dice.Initialize();
 }
 
 //overroad Initialize
 void GameMain::Initialize(void)
 {
 	m_Timer = 0;
-	UtilityManager::GetInstance().Initialize(&dice);
-	StageCreate::GetInstance().Initialize(m_Select, &dice);
+
+	UtilityManager::GetInstance().Initialize();
+	StageCreate::GetInstance().Initialize(m_Select);
 
 	goal.Initialize();
-	dice.Initialize();
+	Dice::GetInstance().Initialize();
 }
 
 void GameMain::Update(void)
 {
-	if (!dice.GoalFlag())
+	if (!Dice::GetInstance().GoalFlag())
 	{
 		if (m_Timer < 2159999)
 		{
@@ -40,7 +42,7 @@ void GameMain::Update(void)
 
 		StageCreate::GetInstance().Update();
 		UtilityManager::GetInstance().Update();
-		dice.Update();
+		Dice::GetInstance().Update();
 
 		if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 			|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::START)
@@ -58,13 +60,15 @@ void GameMain::Update(void)
 		goal.Update();
 	}
 
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::Z))
+		CreateScene(GameScene_ID::RESULT);
 }
 
 void GameMain::Draw(void)
 {
 	vivid::DrawTexture("data/back.png", { 0.0f,0.0f });
 	StageCreate::GetInstance().Draw();
-	dice.Draw();
+	Dice::GetInstance().Draw();
 	UtilityManager::GetInstance().Draw();
 
 	//‚±‚ê‚æ‚è‘O‚É‘‚­
