@@ -51,7 +51,8 @@ void Dice::Update(void)
     //ã‚É“]‚ª‚é
     if (keyboard::Trigger(keyboard::KEY_ID::W) &&
         m_Position.y >= 264.0f &&
-        STAGE.CheckWall(x, y - 1) != true)
+        STAGE.CheckWall(x, y - 1) != true &&
+        !UtilityManager::GetInstance().Collision())
     {
         m_Position.y -= 64.0f;
         work = m_Dice.top;
@@ -63,8 +64,7 @@ void Dice::Update(void)
     //¶‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::A) &&
         m_Position.x >= 264.0f &&
-        STAGE.CheckWall(x - 1, y) != true
-        &&
+        STAGE.CheckWall(x - 1, y) != true &&
         !UtilityManager::GetInstance().Collision())
     {
         m_Position.x -= 64.0f;
@@ -77,7 +77,8 @@ void Dice::Update(void)
     //‰º‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::S) &&
         m_Position.y < m_map_height + 136.0f &&
-        STAGE.CheckWall(x, y + 1) != true)
+        STAGE.CheckWall(x, y + 1) != true &&
+        !UtilityManager::GetInstance().Collision())
     {
         m_Position.y += 64.0f;
         work = m_Dice.top;
@@ -89,7 +90,8 @@ void Dice::Update(void)
     //‰E‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::D) &&
         m_Position.x < m_map_width + 136.0f &&
-        STAGE.CheckWall(x + 1, y) != true)
+        STAGE.CheckWall(x + 1, y) != true &&
+        !UtilityManager::GetInstance().Collision())
     {
         m_Position.x += 64.0f;
         work = m_Dice.center;

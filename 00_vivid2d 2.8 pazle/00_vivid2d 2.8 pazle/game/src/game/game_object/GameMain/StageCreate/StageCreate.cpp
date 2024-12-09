@@ -126,7 +126,7 @@ void StageCreate::Update(void)
     namespace keyboad = vivid::keyboard;
     BlastRange();
     /*îöîj*/
-    if (keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER) ||
+    /*if (keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER) ||
         keyboad::Trigger(keyboad::KEY_ID::SPACE))
     {
          MAP_CHIP_SPOT pos = GetMapChipSpot(UtilityManager::GetInstance().Blast().BlastPos);
@@ -135,7 +135,7 @@ void StageCreate::Update(void)
         {
             m_Map[pos.x][pos.y] = 0u;
         }
-    }
+    }*/
 }
 
 void StageCreate::Draw(void)
@@ -342,8 +342,8 @@ bool StageCreate::CheckWall(int x, int y)
     if (y > g_map_chip_count_height)y = g_map_chip_count_height - 1;
 
     //IDÇ™ï«Ç©îöîjï«Ç»ÇÁêiÇﬂÇ»Ç¢
-    if (m_Map[y][x] == (unsigned char)MAP_CHIP_ID::WALL ||
-        m_Map[y][x] == (unsigned char)MAP_CHIP_ID::BLASTWALL)
+    if (m_Map[y][x] == (unsigned char)MAP_CHIP_ID::WALL)
+        //m_Map[y][x] == (unsigned char)MAP_CHIP_ID::BLASTWALL)
     {
         return true;
     }

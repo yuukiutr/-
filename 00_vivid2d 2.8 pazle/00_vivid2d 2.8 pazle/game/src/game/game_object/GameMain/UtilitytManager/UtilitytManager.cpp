@@ -97,16 +97,10 @@ bool UtilityManager::Collision(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
+	vivid::Vector2 tmp = m_Dice->GetDicePosition();
 
-	bool flg = false;
-	int x = (int)(m_Dice->GetDicePosition().x);
-	int y = (int)(m_Dice->GetDicePosition().y);
-	vivid::Vector2 tmp = {(float) x,(float)y };
+	bool flag = false;
 
-	if (x < 0)x = 0;
-	if (x > g_map_chip_count_width)x = g_map_chip_count_width - 1;
-	if (y < 0)y = 0;
-	if (y > g_map_chip_count_height)y = g_map_chip_count_height - 1;
 	while (it != end)
 	{
 		UtilityBase* base = (*it);
@@ -116,12 +110,18 @@ bool UtilityManager::Collision(void)
 			++it;
 			continue;
 		}
-		flg = base->GetCollisionFlag(x, y);
 
-		if(flg)
-		return false;
+		flag = base->GetCollisionFlag();
+
+		if (flag)
+		{
+			return true;
+		}
+
+		++it;
 	}
-	return flg;
+
+	return false;
 }
 
 

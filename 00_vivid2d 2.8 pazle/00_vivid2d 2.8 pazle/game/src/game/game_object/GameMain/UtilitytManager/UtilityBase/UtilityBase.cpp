@@ -30,15 +30,19 @@ void UtilityBase::Finalize(void)
 {
 }
 
-bool UtilityBase::GetCollisionFlag(int x, int y)
+bool UtilityBase::GetCollisionFlag(void)
 {
-    if (x < 0)x = 0;
-    if (x > g_map_chip_count_width)x = g_map_chip_count_width - 1;
-    if (y < 0)y = 0;
-    if (y > g_map_chip_count_height)y = g_map_chip_count_height - 1;
+    vivid::Vector2 pos = m_Dice->GetDicePosition();
+    int width = m_Dice->GetDiceWidth();
+    int height = m_Dice->GetDiceHeight();
+    if (pos.x + (float)width > m_UtilityPosition.x
+        && pos.x < m_UtilityPosition.x + (float)m_utility_width
+        && pos.y + (float)height > m_UtilityPosition.y
+        && pos.y < m_UtilityPosition.y + (float)m_utility_height)
     {
         return true;
     }
+
     return false;
 }
 

@@ -3,13 +3,11 @@
 #include "../Utility_ID.h"
 
 class Dice;
-class StageCreate;
 
 class UtilityBase
 {
 protected:
 	Dice* m_Dice;
-	StageCreate* m_Stage;
 
 	vivid::Vector2 m_UtilityPosition;
 	static const int m_utility_width;
@@ -31,7 +29,7 @@ public:
 	virtual void Finalize(void);
 
 	//Utility‚Æ‚Ì“–‚½‚è”»’è
-	virtual bool GetCollisionFlag(int x, int y);
+	virtual bool GetCollisionFlag(void);
 
 	//Utility‚ÌˆÊ’u‚ÌŽæ“¾
 	virtual vivid::Vector2 GetPosition(void);
