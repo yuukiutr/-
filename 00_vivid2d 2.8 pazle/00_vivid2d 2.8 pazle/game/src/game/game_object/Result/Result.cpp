@@ -17,7 +17,10 @@ void Result::Initialize(GameMain* main, StageSelect* target)
 
 void Result::Update(void)
 {
-	
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::T))
+		CreateScene(GameScene_ID::TITLE);
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::S))
+		CreateScene(GameScene_ID::STAGESELECT);
 }
 
 void Result::Draw(void)

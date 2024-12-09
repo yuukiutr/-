@@ -128,6 +128,9 @@ void Dice::Update(void)
     //•`‰æˆÊ’u
     rect.left = m_dice_width * (m_Dice.center - 1);
     rect.right = m_dice_width * m_Dice.center;
+
+    if (keyboard::Button(keyboard::KEY_ID::R))
+        m_MoveCount = 0;
 }
 
 void Dice::Draw(void)
