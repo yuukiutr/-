@@ -21,9 +21,9 @@ void GameMain::Initialize(void)
 {
 	UtilityManager::GetInstance().Initialize();
 	StageCreate::GetInstance().Initialize(m_Select);
+	Dice::GetInstance().Initialize();
 
 	goal.Initialize();
-	Dice::GetInstance().Initialize();
 }
 
 void GameMain::Update(void)
@@ -32,8 +32,8 @@ void GameMain::Update(void)
 	{
 
 		StageCreate::GetInstance().Update();
-		UtilityManager::GetInstance().Update();
 		Dice::GetInstance().Update();
+		UtilityManager::GetInstance().Update();
 
 		//ƒŠƒZƒbƒg
 		if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
