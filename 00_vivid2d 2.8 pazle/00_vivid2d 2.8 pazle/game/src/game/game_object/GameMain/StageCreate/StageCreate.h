@@ -59,7 +59,7 @@ public:
 	static StageCreate& GetInstance(void);
 
 	//‰Šú‰»
-	void Initialize(StageSelect* target, Dice* dice);
+	void Initialize(StageSelect* target);
 	//XV
 	void Update(void);
 	//•`‰æ

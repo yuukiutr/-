@@ -23,10 +23,9 @@ StageCreate& StageCreate::GetInstance(void)
     return instance;
 }
 
-void StageCreate::Initialize(StageSelect* target, Dice* dice)
+void StageCreate::Initialize(StageSelect* target)
 {
     m_Select = target;
-    m_Dice = dice;
     m_StageID = m_Select->GetNowStageID();
 
     m_KeyDigit = 0;
@@ -170,53 +169,53 @@ void StageCreate::Draw(void)
 
         for (int j = -1; j <= 1; j += 2)
         {
-            if (m_Dice->BlastSpot(0, j).DicePosFlag)
+            if (Dice::GetInstance().BlastSpot(0, j).DicePosFlag)
                 vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
-                    m_Dice->BlastSpot(0, j).BlastPos);
+                    Dice::GetInstance().BlastSpot(0, j).BlastPos);
         }
         break;
     case 2:
         for (int i = -1; i <= 1; i += 2)
         {
-            if (m_Dice->BlastSpot(i, 0).DicePosFlag)
+            if (Dice::GetInstance().BlastSpot(i, 0).DicePosFlag)
                 vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
-                    m_Dice->BlastSpot(i, 0).BlastPos);
+                    Dice::GetInstance().BlastSpot(i, 0).BlastPos);
         }
         break;
     case 3:
         for (int i = -1; i <= 1; i += 2)
             for (int j = -1; j <= 1; j += 2)
             {
-                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
                     vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
-                        m_Dice->BlastSpot(i, j).BlastPos);
+                        Dice::GetInstance().BlastSpot(i, j).BlastPos);
             }
         break;
     case 4:
         for (int i = -1; i <= 1; i++)
             for (int j = -2; j <= 2; j += 4)
             {
-                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
                     vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
-                        m_Dice->BlastSpot(i, j).BlastPos);
+                        Dice::GetInstance().BlastSpot(i, j).BlastPos);
             }
         break;
     case 5:
         for (int i = -2; i <= 2; i += 4)
             for (int j = -1; j <= 1; j++)
             {
-                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
                     vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
-                        m_Dice->BlastSpot(i, j).BlastPos);
+                        Dice::GetInstance().BlastSpot(i, j).BlastPos);
             }
         break;
     case 6:
         for (int i = -2; i <= 2; i += 4)
             for (int j = -2; j <= 2; j += 4)
             {
-                if (m_Dice->BlastSpot(i, j).DicePosFlag)
+                if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
                     vivid::DrawTexture("data\\gamemain_utility\\blast_range.png",
-                        m_Dice->BlastSpot(i, j).BlastPos);
+                        Dice::GetInstance().BlastSpot(i, j).BlastPos);
             }
         break;
     default:
@@ -320,8 +319,8 @@ bool StageCreate::GoalFlag(int x, int y)
 
 void StageCreate::BlastRange(void)
 {
-    m_DicePosition = m_Dice->GetDicePosition();
-    m_DiceDigit = m_Dice->GetDiceDigit();
+    m_DicePosition = Dice::GetInstance().GetDicePosition();
+    m_DiceDigit = Dice::GetInstance().GetDiceDigit();
 }
 
 int StageCreate::GetKeyDigit(void)

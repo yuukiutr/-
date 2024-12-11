@@ -31,6 +31,26 @@ struct DICE
 
 DICE m_Dice = { 2, 3, 5, 4, 1, 6 };
 
+void Dice::CreateInstance(void)
+{
+    Dice::DeleteInstance();
+
+    m_Instance = new Dice();
+}
+
+void Dice::DeleteInstance(void)
+{
+    if (!m_Instance) return;
+
+    delete m_Instance;
+    m_Instance = nullptr;
+}
+
+Dice& Dice::GetInstance(void)
+{
+    return *m_Instance;
+}
+
 void Dice::Initialize(void)
 {
     m_DiceDigit = 1;//‰¼’u‚«
@@ -115,6 +135,9 @@ void Dice::Update(void)
     //•`‰æˆÊ’u
     rect.left = m_dice_width * (m_Dice.center - 1);
     rect.right = m_dice_width * m_Dice.center;
+
+    if (keyboard::Button(keyboard::KEY_ID::R))
+        m_MoveCount = 0;
 }
 
 void Dice::Draw(void)

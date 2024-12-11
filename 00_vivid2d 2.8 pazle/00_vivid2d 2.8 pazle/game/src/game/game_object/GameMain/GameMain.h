@@ -13,11 +13,6 @@ private:
 	StageSelect* m_Select;
 	UtilityManager* m_Utility;
 	Goal goal;
-	Dice dice;
-
-	int m_Timer;
-	int m_ResetCount;
-	int m_GameOverCount;
 
 public:
 	GameMain() = default;
@@ -28,9 +23,4 @@ public:
 	void Update(void);
 	void Draw(void);
 	void Finalize(void);
-	int GetTimer(void);
-	int GetResetCount(void);
-	int GetGameOverCount(void);
-	void GAMEMAIN_DEBUG_DRAW_DATA(void);
-
 };

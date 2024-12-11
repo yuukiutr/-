@@ -17,7 +17,7 @@ protected:
 
 public:
 	//‰Šú‰»
-	virtual void Initialize(Dice* dice, vivid::Vector2 pos);
+	virtual void Initialize(vivid::Vector2 pos);
 
 	//XV
 	virtual void Update(void);
