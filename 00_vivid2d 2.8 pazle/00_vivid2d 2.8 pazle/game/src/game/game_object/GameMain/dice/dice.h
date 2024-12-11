@@ -17,6 +17,7 @@ private:
 	int m_BlastCount;	//”š”j‰ñ”
 	int m_MoveCount;	//ˆÚ“®‰ñ”
 	vivid::Vector2 m_Position;
+	vivid::Vector2 m_Velocity;
 	vivid::Vector2 m_BlastPosition;
 	vivid::Rect rect;
 	const int m_dice_width = 64;
@@ -36,6 +37,7 @@ public:
 	int GetDiceWidth(void);
 	int GetDiceHeight(void);
 	int GetMoveCount(void);
+	vivid::Vector2 GetVelocity(void);
 
 	/*
 *	@brief	”š”­‚·‚é”ÍˆÍ‚ğ•Ô‚·

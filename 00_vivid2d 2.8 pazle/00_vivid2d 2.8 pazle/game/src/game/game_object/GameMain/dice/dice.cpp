@@ -35,6 +35,7 @@ void Dice::Initialize(void)
 {
     m_DiceDigit = 1;//仮置き
     m_Position = STAGE.StartPosition();//スタートマスの位置を参照
+    m_Velocity = { 0.0f,0.0f };
     rect={0, 0, m_dice_width, m_dice_height};
 }
 
@@ -54,7 +55,7 @@ void Dice::Update(void)
         STAGE.CheckWall(x, y - 1) != true &&
         !UtilityManager::GetInstance().Collision())
     {
-        m_Position.y -= 64.0f;
+        m_Velocity.y -= 64.0f;
         work = m_Dice.top;
         m_Dice.top = m_Dice.center;
         m_Dice.center = m_Dice.bottom;
@@ -68,7 +69,7 @@ void Dice::Update(void)
         STAGE.CheckWall(x - 1, y) != true &&
         !UtilityManager::GetInstance().Collision())
     {
-        m_Position.x -= 64.0f;
+        m_Velocity.x -= 64.0f;
         work = m_Dice.center;
         m_Dice.center = m_Dice.right;
         m_Dice.right = m_Dice.back;
@@ -82,7 +83,7 @@ void Dice::Update(void)
         STAGE.CheckWall(x, y + 1) != true &&
         !UtilityManager::GetInstance().Collision())
     {
-        m_Position.y += 64.0f;
+        m_Velocity.y += 64.0f;
         work = m_Dice.top;
         m_Dice.top = m_Dice.back;
         m_Dice.back = m_Dice.bottom;
@@ -96,7 +97,7 @@ void Dice::Update(void)
         STAGE.CheckWall(x + 1, y) != true &&
         !UtilityManager::GetInstance().Collision())
     {
-        m_Position.x += 64.0f;
+        m_Velocity.x += 64.0f;
         work = m_Dice.center;
         m_Dice.center = m_Dice.left;
         m_Dice.left = m_Dice.back;
@@ -104,6 +105,12 @@ void Dice::Update(void)
         m_Dice.right = work;
         m_MoveCount++;
     }
+    else
+    {
+        m_Velocity.x = 0.0f;
+        m_Velocity.y = 0.0f;
+    }
+    m_Position += m_Velocity;
 
     //描画位置
     rect.left = m_dice_width * (m_Dice.center - 1);
@@ -146,6 +153,11 @@ int Dice::GetDiceHeight(void)
 int Dice::GetMoveCount(void)
 {
     return m_MoveCount;
+}
+
+vivid::Vector2 Dice::GetVelocity(void)
+{
+    return m_Velocity;
 }
 
 Blast Dice::BlastSpot(int x, int y)
