@@ -46,7 +46,7 @@ void Title::Update(void)
 		m_ID = GameScene_ID::OPTION;
 	}
 
-	if (m_OuterFrameCount++ > 40)
+	if (m_OuterFrameCount++ > 50)
 		m_OuterFrameCount = 0;
 }
 
@@ -60,7 +60,7 @@ void Title::Draw(void)
 	vivid::DrawTexture("data\\title\\option.png", { 564.0f,764.0f });
 	vivid::DrawTexture("data\\title\\title.png", { 240.0f,20.0f });
 
-	if(m_OuterFrameCount < 30)
+	if(m_OuterFrameCount < 40)
 	vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + m_dice_width, m_Position.y });
 
 
