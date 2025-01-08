@@ -33,6 +33,7 @@ private:
 	vivid::Rect rect;
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;
+	const vivid::Vector2 m_map_position = {200.0f, 200.0f};
 	const float m_map_width = 768;
 	const float m_map_height = 768;
 

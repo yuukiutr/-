@@ -191,30 +191,30 @@ Blast Dice::BlastSpot(int x, int y)
 	switch (m_Dice.center)
 	{
 	case 1:
-		if (m_Position.x >= 200.0f &&
-			m_Position.x < 968.0f &&
-			m_Position.y + 64 * y >= 200.0f &&
-			m_Position.y + 64 * y < 968.0f)
+		if (m_Position.x >= m_map_position.x &&
+			m_Position.x < m_map_position.x + m_map_width &&
+			m_Position.y + 64 * y >= m_map_position.y &&
+			m_Position.y + 64 * y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.y = m_Position.y + 64 * y;
 			blast_range_flg = true;
 		}
 		break;
 	case 2:
-		if (m_Position.x + 64 * x >= 200.0f &&
-			m_Position.x + 64 * x < 968.0f &&
-			m_Position.y >= 200.0f &&
-			m_Position.y < 968.0f)
+		if (m_Position.x + 64 * x >= m_map_position.x &&
+			m_Position.x + 64 * x < m_map_position.x + m_map_width &&
+			m_Position.y >= m_map_position.y &&
+			m_Position.y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			blast_range_flg = true;
 		}
 		break;
 	case 3:
-		if (m_Position.x + 64 * x >= 200.0f &&
-			m_Position.x + 64 * x < 968.0f &&
-			m_Position.y + 64 * y >= 200.0f &&
-			m_Position.y + 64 * y < 968.0f)
+		if (m_Position.x + 64 * x >= m_map_position.x &&
+			m_Position.x + 64 * x < m_map_position.x + m_map_width&&
+			m_Position.y + 64 * y >= m_map_position.y &&
+			m_Position.y + 64 * y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
@@ -222,10 +222,10 @@ Blast Dice::BlastSpot(int x, int y)
 		}
 		break;
 	case 4:
-		if (m_Position.x + 64 * x >= 200.0f &&
-			m_Position.x + 64 * x < 968.0f &&
-			m_Position.y + 64 * y >= 200.0f &&
-			m_Position.y + 64 * y < 968.0f)
+		if (m_Position.x + 64 * x >= m_map_position.x &&
+			m_Position.x + 64 * x < m_map_position.x + m_map_width&&
+			m_Position.y + 64 * y >= m_map_position.y &&
+			m_Position.y + 64 * y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
@@ -233,10 +233,10 @@ Blast Dice::BlastSpot(int x, int y)
 		}
 		break;
 	case 5:
-		if (m_Position.x + 64 * x >= 200.0f &&
-			m_Position.x + 64 * x < 968.0f &&
-			m_Position.y + 64 * y >= 200.0f &&
-			m_Position.y + 64 * y < 968.0f)
+		if (m_Position.x + 64 * x >= m_map_position.x &&
+			m_Position.x + 64 * x < m_map_position.x + m_map_width&&
+			m_Position.y + 64 * y >= m_map_position.y &&
+			m_Position.y + 64 * y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
@@ -244,10 +244,10 @@ Blast Dice::BlastSpot(int x, int y)
 		}
 		break;
 	case 6:
-		if (m_Position.x + 64 * x >= 200.0f &&
-			m_Position.x + 64 * x < 968.0f &&
-			m_Position.y + 64 * y >= 200.0f &&
-			m_Position.y + 64 * y < 968.0f)
+		if (m_Position.x + 64 * x >= m_map_position.x &&
+			m_Position.x + 64 * x < m_map_position.x + m_map_width&&
+			m_Position.y + 64 * y >= m_map_position.y + m_map_height &&
+			m_Position.y + 64 * y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
 			m_BlastPosition.y = m_Position.y + 64 * y;
