@@ -6,6 +6,7 @@ class StageSelect
 protected:
 	STAGE_ID m_NowStageID;
 	int m_SelectNumber;
+	int m_ReturnCount;
 
 public:
 	void Initialize(void);

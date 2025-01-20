@@ -6,6 +6,7 @@
 void StageSelect::Initialize(void)
 {
 	m_SelectNumber = 0;
+	m_ReturnCount = 0;
 	m_NowStageID = STAGE_ID::DUMMY;
 }
 
@@ -16,11 +17,13 @@ void StageSelect::Update(void)
 		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::RIGHT))
 	{
 		m_SelectNumber++;
+		m_ReturnCount = 0;
 	}
 	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A)
 		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::LEFT))
 	{
 		m_SelectNumber--;
+		m_ReturnCount = 0;
 	}
 
 	if (m_SelectNumber >= (int)STAGE_ID::DUMMY)
@@ -52,6 +55,11 @@ if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
 	CreateScene(GameScene_ID::MAIN);
 }
 
+//–³‘€ì20•b‚Åƒ^ƒCƒgƒ‹‚Ö
+if (++m_ReturnCount >= 1200)
+{
+	CreateScene(GameScene_ID::TITLE);
+}
 #ifdef VIVID_DEBUG
 #if _DRAW_DEBUG_DATA
 	if (vivid::keyboard::Button(vivid::keyboard::KEY_ID::NUMPADENTER)
