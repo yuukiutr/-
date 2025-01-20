@@ -67,63 +67,81 @@ void Dice::Update(void)
     int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
     int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
 
+    m_Velocity.x = 0.0f;
+    m_Velocity.y = 0.0f;
+
     int work = NULL;//“ü‚ê‘Ö‚¦‚é‚Ì‚É•K—v
 
     //ã‚É“]‚ª‚é
     if (keyboard::Trigger(keyboard::KEY_ID::W) &&
         m_Position.y >= 264.0f &&
-        STAGE.CheckWall(x, y - 1) != true &&
-        !UtilityManager::GetInstance().Collision())
+        STAGE.CheckWall(x, y - 1) != true)
     {
         m_Velocity.y -= 64.0f;
-        work = m_Dice.top;
-        m_Dice.top = m_Dice.center;
-        m_Dice.center = m_Dice.bottom;
-        m_Dice.bottom = m_Dice.back;
-        m_Dice.back = work;
-        m_MoveCount++;
+        if (!UtilityManager::GetInstance().Collision())
+        {
+            work = m_Dice.top;
+            m_Dice.top = m_Dice.center;
+            m_Dice.center = m_Dice.bottom;
+            m_Dice.bottom = m_Dice.back;
+            m_Dice.back = work;
+            m_MoveCount++;
+        }
+        else m_Velocity.y = 0.0f;
+
     }
     //¶‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::A) &&
         m_Position.x >= 264.0f &&
-        STAGE.CheckWall(x - 1, y) != true &&
-        !UtilityManager::GetInstance().Collision())
+        STAGE.CheckWall(x - 1, y) != true)
     {
         m_Velocity.x -= 64.0f;
-        work = m_Dice.center;
-        m_Dice.center = m_Dice.right;
-        m_Dice.right = m_Dice.back;
-        m_Dice.back = m_Dice.left;
-        m_Dice.left = work;
-        m_MoveCount++;
+        if (!UtilityManager::GetInstance().Collision())
+        {
+            work = m_Dice.center;
+            m_Dice.center = m_Dice.right;
+            m_Dice.right = m_Dice.back;
+            m_Dice.back = m_Dice.left;
+            m_Dice.left = work;
+            m_MoveCount++;
+        }
+        else m_Velocity.x = 0.0f;
+
     }
     //‰º‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::S) &&
         m_Position.y < m_map_height + 136.0f &&
-        STAGE.CheckWall(x, y + 1) != true &&
-        !UtilityManager::GetInstance().Collision())
+        STAGE.CheckWall(x, y + 1) != true)
     {
         m_Velocity.y += 64.0f;
-        work = m_Dice.top;
-        m_Dice.top = m_Dice.back;
-        m_Dice.back = m_Dice.bottom;
-        m_Dice.bottom = m_Dice.center;
-        m_Dice.center = work;
-        m_MoveCount++;
+        if (!UtilityManager::GetInstance().Collision())
+        {
+            work = m_Dice.top;
+            m_Dice.top = m_Dice.back;
+            m_Dice.back = m_Dice.bottom;
+            m_Dice.bottom = m_Dice.center;
+            m_Dice.center = work;
+            m_MoveCount++;
+        }
+        else m_Velocity.y = 0.0f;
+
     }
     //‰E‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::D) &&
         m_Position.x < m_map_width + 136.0f &&
-        STAGE.CheckWall(x + 1, y) != true &&
-        !UtilityManager::GetInstance().Collision())
+        STAGE.CheckWall(x + 1, y) != true)
     {
         m_Velocity.x += 64.0f;
-        work = m_Dice.center;
-        m_Dice.center = m_Dice.left;
-        m_Dice.left = m_Dice.back;
-        m_Dice.back = m_Dice.right;
-        m_Dice.right = work;
-        m_MoveCount++;
+        if (!UtilityManager::GetInstance().Collision())
+        {
+            work = m_Dice.center;
+            m_Dice.center = m_Dice.left;
+            m_Dice.left = m_Dice.back;
+            m_Dice.back = m_Dice.right;
+            m_Dice.right = work;
+            m_MoveCount++;
+        }
+        else m_Velocity.x = 0.0f;
     }
     else
     {
