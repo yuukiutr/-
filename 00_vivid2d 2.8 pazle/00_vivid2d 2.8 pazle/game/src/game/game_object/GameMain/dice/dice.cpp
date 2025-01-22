@@ -264,7 +264,7 @@ Blast Dice::BlastSpot(int x, int y)
 	case 6:
 		if (m_Position.x + 64 * x >= m_map_position.x &&
 			m_Position.x + 64 * x < m_map_position.x + m_map_width&&
-			m_Position.y + 64 * y >= m_map_position.y + m_map_height &&
+			m_Position.y + 64 * y >= m_map_position.y &&
 			m_Position.y + 64 * y < m_map_position.y + m_map_height)
 		{
 			m_BlastPosition.x = m_Position.x + 64 * x;
