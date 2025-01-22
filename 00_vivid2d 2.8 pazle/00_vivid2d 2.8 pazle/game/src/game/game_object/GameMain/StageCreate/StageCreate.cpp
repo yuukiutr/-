@@ -126,7 +126,7 @@ void StageCreate::Update(void)
     BlastRange();
     /*”š”j*/
     /*if (keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER) ||
-        keyboad::Trigger(keyboad::KEY_ID::SPACE))
+        keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER))
     {
          MAP_CHIP_SPOT pos = GetMapChipSpot(UtilityManager::GetInstance().Blast().BlastPos);
 
