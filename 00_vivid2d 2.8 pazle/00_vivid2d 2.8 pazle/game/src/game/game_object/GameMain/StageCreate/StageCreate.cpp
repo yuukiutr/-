@@ -162,7 +162,7 @@ void StageCreate::Draw(void)
     }
 
 
-    //”š”­”ÍˆÍ•\Ž¦
+    //”š”j”ÍˆÍ•\Ž¦
     switch (m_DiceDigit)
     {
     case 1:
