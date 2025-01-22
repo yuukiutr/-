@@ -58,9 +58,9 @@ void GameMain::Update(void)
 void GameMain::Draw(void)
 {
 	vivid::DrawTexture("data/back.png", { 0.0f,0.0f });
+	UtilityManager::GetInstance().Draw();
 	StageCreate::GetInstance().Draw();
 	Dice::GetInstance().Draw();
-	UtilityManager::GetInstance().Draw();
 
 	//‚±‚ê‚æ‚è‘O‚É‘‚­
 	goal.Draw();
