@@ -95,11 +95,11 @@ void StageCreate::Initialize(StageSelect* target)
                 UtilityManager::GetInstance().Create(UTILITY_ID::BreakableWall, pos);
             }
 
-            if (m_Map[i][k] == 5u)
+            /*if (m_Map[i][k] == 5u)
             {
                 UtilityManager::GetInstance().Create(UTILITY_ID::KEY, pos);
                 m_Map[i][k] = 0u;
-            }
+            }*/
 
             if (m_Map[i][k] == 6u)
             {
@@ -125,8 +125,7 @@ void StageCreate::Update(void)
     namespace keyboad = vivid::keyboard;
     BlastRange();
     /*”š”j*/
-    /*if (keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER) ||
-        keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER))
+    /*if (keyboad::Trigger(keyboad::KEY_ID::NUMPADENTER))
     {
          MAP_CHIP_SPOT pos = GetMapChipSpot(UtilityManager::GetInstance().Blast().BlastPos);
 

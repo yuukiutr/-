@@ -6,5 +6,5 @@ enum class MAP_CHIP_ID
 	STARTFLAG,		//スタート
 	GOALFLAG,		//ゴール
 	BLASTWALL,		//爆破できる壁
-	KEY,
+	KEY,			//カギを置くマス
 };
