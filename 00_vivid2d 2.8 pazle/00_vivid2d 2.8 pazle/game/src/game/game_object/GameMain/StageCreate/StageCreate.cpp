@@ -95,11 +95,11 @@ void StageCreate::Initialize(StageSelect* target)
                 UtilityManager::GetInstance().Create(UTILITY_ID::BreakableWall, pos);
             }
 
-            /*if (m_Map[i][k] == 5u)
+            if (m_Map[i][k] == 5u)
             {
                 UtilityManager::GetInstance().Create(UTILITY_ID::KEY, pos);
                 m_Map[i][k] = 0u;
-            }*/
+            }
 
             if (m_Map[i][k] == 6u)
             {

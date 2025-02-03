@@ -8,33 +8,41 @@
 void Result::Initialize(GameMain* main, StageSelect* target)
 {
 	m_ResultDiceMove = Dice::GetInstance().GetMoveCount();
+
+	//ベスト記録の読み込み
 	TEXTMANAGER.DeleteLoadData();
-	TEXTMANAGER.Load(LOAD_ID::ONLY_NUMERIC, "data/memo.txt");
+	TEXTMANAGER.Load(LOAD_ID::ONLY_NUMERIC, "data/BestRecord.txt");
 	std::vector<std::string> vec = TEXTMANAGER.GetLoadData();
-	TextLoader loader;
-	m_LoadDiceMove = (int)loader.to_long_double(vec[0]);
+	m_LoadDiceMove = stoi(vec[0]);
+
+	m_NewRecordFlag = false;
 }
 
 void Result::Update(void)
 {
-	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::T))
-		CreateScene(GameScene_ID::TITLE);
-	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::S))
-		CreateScene(GameScene_ID::STAGESELECT);
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
+	CreateScene(GameScene_ID::TITLE);
+
+	//記録更新してる時
+	if (m_LoadDiceMove > m_ResultDiceMove)
+		m_NewRecordFlag = true;
 }
 
 void Result::Draw(void)
 {
 	vivid::DrawText(40, std::to_string(m_ResultDiceMove), { 0.0f,0.0f });
 	vivid::DrawText(40, std::to_string(m_LoadDiceMove), { 0.0f,40.0f });
+
+	if (m_NewRecordFlag)
+		vivid::DrawText(40, "NEW RECORD!", { 0.0f,80.0f });
 }
 
 void Result::Finalize(void)
 {
 	//データセーブ
 	if (m_ResultDiceMove < m_LoadDiceMove) {
-	TEXTMANAGER.DeleteTextData("data/memo.txt");
-	TEXTMANAGER.SaveAndCreate(SAVE_ID::PS, "data/memo.txt", std::to_string(m_ResultDiceMove));
+	TEXTMANAGER.DeleteTextData("data/BestRecord.txt");
+	TEXTMANAGER.SaveAndCreate(SAVE_ID::PS, "data/BestRecord.txt", std::to_string(m_ResultDiceMove));
 	}
 
 }

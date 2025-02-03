@@ -46,7 +46,7 @@ void Title::Update(void)
 		m_ID = GameScene_ID::OPTION;
 	}
 
-	if (m_OuterFrameCount++ > 50)
+	if (m_OuterFrameCount++ > m_outer_frame_roop_time)
 		m_OuterFrameCount = 0;
 }
 
@@ -58,9 +58,10 @@ void Title::Draw(void)
 	vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
 	vivid::DrawTexture("data\\title\\start.png", {564.0f,700.0f});
 	vivid::DrawTexture("data\\title\\option.png", { 564.0f,764.0f });
-	vivid::DrawTexture("data\\title\\title.png", { 240.0f,20.0f });
+	vivid::DrawTexture("data\\title\\title.png",
+		{ (float)(vivid::WINDOW_WIDTH - m_title_logo_width) / 2,20.0f });
 
-	if(m_OuterFrameCount < 40)
+	if(m_OuterFrameCount < m_outer_frame_light_time)
 	vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + m_dice_width, m_Position.y });
 
 

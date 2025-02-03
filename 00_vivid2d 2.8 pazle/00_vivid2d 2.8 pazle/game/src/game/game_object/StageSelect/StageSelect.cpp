@@ -7,11 +7,14 @@ void StageSelect::Initialize(void)
 {
 	m_SelectNumber = 0;
 	m_ReturnCount = 0;
+	m_return_time = 1200;
+	m_Color = 0x00ffffff;
 	m_NowStageID = STAGE_ID::DUMMY;
 }
 
 void StageSelect::Update(void)
 {
+	int alpha = m_Color >> 24;
 
 	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D)
 		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::RIGHT))
@@ -56,9 +59,16 @@ if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
 }
 
 //無操作20秒でタイトルへ
-if (++m_ReturnCount >= 1200)
+if (++m_ReturnCount >= m_return_time)
 {
+	alpha += 5;//暗転
+	if (alpha >= 255)
+	{
+		alpha = 255;
 	CreateScene(GameScene_ID::TITLE);
+	}
+	m_Color = alpha << 24 | (m_Color & 0x00ffffff);
+
 }
 #ifdef VIVID_DEBUG
 #if _DRAW_DEBUG_DATA
@@ -74,9 +84,6 @@ if (++m_ReturnCount >= 1200)
 	{
 		m_NowStageID = (STAGE_ID)m_SelectNumber;
 	}
-#ifdef VIVID_DEBUG
-
-#endif // VIVID_DEBUG
 }
 
 void StageSelect::Draw(void)
@@ -84,10 +91,9 @@ void StageSelect::Draw(void)
 #ifdef VIVID_DEBUG
 	vivid::DrawText(50, "ゲーム選択", { 0.0f,0.0f });
 	vivid::DrawText(50, "Rで戻る", { 0.0f,50.0f });
-#if _DRAW_DEBUG_DATA
-	//見本 vivid::DrawText(50, "水色ブロック   　引力の強い状態でしばらく乗っていると上に落ちるブロック", { 0.0f,750.0f }, 0xffff8800);
 #endif
-#endif
+
+	vivid::DrawTexture("data\\black_bg.png", { 0.0f,0.0f }, m_Color);
 }
 
 void StageSelect::Finalize(void)

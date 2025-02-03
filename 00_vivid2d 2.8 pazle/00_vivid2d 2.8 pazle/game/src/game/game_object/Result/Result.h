@@ -14,8 +14,9 @@ private:
 	StageSelect* m_Select;
 	GameMain* m_Main;
 
-	int m_ResultDiceMove;
-	int m_LoadDiceMove;
+	int m_ResultDiceMove;	//今回の記録
+	int m_LoadDiceMove;		//ベスト記録
+	bool m_NewRecordFlag;	//記録更新したか
 
 public:
 	void Initialize(GameMain* main,StageSelect* target);

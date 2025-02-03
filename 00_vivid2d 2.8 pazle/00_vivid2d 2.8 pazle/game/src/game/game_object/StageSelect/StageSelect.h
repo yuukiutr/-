@@ -5,8 +5,6 @@ class StageSelect
 {
 protected:
 	STAGE_ID m_NowStageID;
-	int m_SelectNumber;
-	int m_ReturnCount;
 
 public:
 	void Initialize(void);
@@ -14,6 +12,12 @@ public:
 	void Draw(void);
 	void Finalize(void);
 	STAGE_ID GetNowStageID(void);
+
+private:
+	int m_SelectNumber;
+	int m_ReturnCount;		//無操作時間計測
+	int m_return_time;		//タイトルに戻るまでの時間
+	unsigned int	m_Color;		//透明度
 
 };
 

@@ -53,6 +53,7 @@ Dice& Dice::GetInstance(void)
 
 void Dice::Initialize(void)
 {
+    m_MoveCount = 0;
     m_DiceDigit = 1;//仮置き
     m_Position = STAGE.StartPosition();//スタートマスの位置を参照
     m_Velocity = { 0.0f,0.0f };
