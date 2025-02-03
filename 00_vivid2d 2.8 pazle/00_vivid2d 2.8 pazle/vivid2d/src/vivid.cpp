@@ -457,7 +457,7 @@ MainLoop(void)
         memcpy(g_PrevKeyState, g_KeyState, g_max_key_count);
 
         // Œ»İ‚Ì“ü—Íî•ñæ“¾
-        GetHitKeyStateAll(g_KeyState);
+         GetHitKeyStateAll(g_KeyState);
 
         // ‘O‚ÌƒtƒŒ[ƒ€‚Ì“ü—Íó‘Ô‚ğ•Û‘¶
         g_PrevMouseState = g_MouseState;

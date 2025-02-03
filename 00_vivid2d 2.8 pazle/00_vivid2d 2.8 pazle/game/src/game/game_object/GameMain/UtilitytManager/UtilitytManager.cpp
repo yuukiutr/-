@@ -42,7 +42,7 @@ void UtilityManager::Initialize(void)
 	m_Generator[UTILITY_ID::BreakableWall] = []() {return new BreakableWall(); };
 	m_Generator[UTILITY_ID::KEY] = []() {return new Key(); };
 
-
+	
 	m_KeyDigit = STAGE.GetKeyDigit();
 }
 
@@ -91,6 +91,9 @@ void UtilityManager::Finalize(void)
 	}
 }
 
+/*
+* ƒ}ƒX‚ªŒ®‚Ìê‡‚ÍˆÚ“®‚Å‚«‚é
+*/
 bool UtilityManager::Collision(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
@@ -111,7 +114,8 @@ bool UtilityManager::Collision(void)
 
 		flag = base->GetCollisionFlag();
 
-		if (flag)
+		if (flag &&
+			base->GetUtilityID()==UTILITY_ID::BreakableWall)
 		{
 			return true;
 		}
@@ -123,23 +127,26 @@ bool UtilityManager::Collision(void)
 }
 
 
-Blast_state UtilityManager::Blast(void)
+void UtilityManager::Blast(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
-
+	
 
 	while (it != end)
 	{
 		UtilityBase* base = (*it);
-		if (base->GetUtilityID() == UTILITY_ID::BreakableWall ||
-			base->GetUtilityID() == UTILITY_ID::KEY)
+		for (int i = 0; i < 6; i++)
 		{
-			//Dice::GetInstance().BlastSpot()
+			if (base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+				base->GetUtilityID() == UTILITY_ID::KEY)
+			{
+				delete(*it);
+				it = m_UtilityList.erase(it);
+			}
 		}
 	}
 
-	return { false,{0.0f,0.0f},MAP_CHIP_ID::KEY };
 
 }
 

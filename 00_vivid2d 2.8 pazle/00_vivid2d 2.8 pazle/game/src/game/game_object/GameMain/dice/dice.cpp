@@ -57,14 +57,17 @@ void Dice::Initialize(void)
     m_DiceDigit = 1;//‰¼’u‚«
     m_Position = STAGE.StartPosition();//ƒXƒ^[ƒgƒ}ƒX‚ÌˆÊ’u‚ðŽQÆ
     m_Velocity = { 0.0f,0.0f };
+    m_MoveCount = 0;
     rect={0, 0, m_dice_width, m_dice_height};
+    m_Dice = { 2, 3, 5, 4, 1, 6 };
+
 }
 
 void Dice::Update(void)
 {
 
     namespace keyboard = vivid::keyboard;
-
+    
     int x = (int)((m_Position.x - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
     int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
 
@@ -73,10 +76,20 @@ void Dice::Update(void)
 
     int work = NULL;//“ü‚ê‘Ö‚¦‚é‚Ì‚É•K—v
 
+    //”š”j
+
+    if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::SPACE))
+    {
+        UtilityManager::GetInstance().Blast();
+    }
+
+    //
+    //  ˆÚ“®
+    //
     //ã‚É“]‚ª‚é
     if (keyboard::Trigger(keyboard::KEY_ID::W) &&
         m_Position.y >= 264.0f &&
-        STAGE.CheckWall(x, y - 1) != true)
+        !STAGE.CheckWall(x, y - 1))
     {
         m_Velocity.y -= 64.0f;
         if (!UtilityManager::GetInstance().Collision())
@@ -94,7 +107,7 @@ void Dice::Update(void)
     //¶‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::A) &&
         m_Position.x >= 264.0f &&
-        STAGE.CheckWall(x - 1, y) != true)
+        !STAGE.CheckWall(x - 1, y))
     {
         m_Velocity.x -= 64.0f;
         if (!UtilityManager::GetInstance().Collision())
@@ -112,7 +125,7 @@ void Dice::Update(void)
     //‰º‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::S) &&
         m_Position.y < m_map_height + 136.0f &&
-        STAGE.CheckWall(x, y + 1) != true)
+        !STAGE.CheckWall(x, y + 1))
     {
         m_Velocity.y += 64.0f;
         if (!UtilityManager::GetInstance().Collision())
@@ -130,7 +143,7 @@ void Dice::Update(void)
     //‰E‚É“]‚ª‚é
     else if (keyboard::Trigger(keyboard::KEY_ID::D) &&
         m_Position.x < m_map_width + 136.0f &&
-        STAGE.CheckWall(x + 1, y) != true)
+        !STAGE.CheckWall(x + 1, y))
     {
         m_Velocity.x += 64.0f;
         if (!UtilityManager::GetInstance().Collision())
@@ -149,8 +162,9 @@ void Dice::Update(void)
         m_Velocity.x = 0.0f;
         m_Velocity.y = 0.0f;
     }
-    m_Position += m_Velocity;
 
+
+    m_Position += m_Velocity;
     //•`‰æˆÊ’u
     rect.left = m_dice_width * (m_Dice.center - 1);
     rect.right = m_dice_width * m_Dice.center;
@@ -161,6 +175,7 @@ void Dice::Update(void)
 
 void Dice::Draw(void)
 {
+
     vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
     vivid::DrawText(40, std::to_string(m_Dice.center), { 0.0f,100.0f });
 
@@ -277,19 +292,14 @@ Blast Dice::BlastSpot(int x, int y)
 		break;
 	}
 
+
 	return {blast_range_flg, m_BlastPosition,MAP_CHIP_ID::EMPTY};
 
 }
 
-MAP_CHIP_ID Dice::Blast(void)
+vivid::Vector2 Dice::GetBlastPos(int i)
 {
-    MAP_CHIP_ID id=MAP_CHIP_ID::EMPTY;
-    if(UtilityManager::GetInstance().Blast().ID!=MAP_CHIP_ID::EMPTY&&
-       UtilityManager::GetInstance().Blast().ID!= MAP_CHIP_ID::WALL&&
-       UtilityManager::GetInstance().Blast().ID != MAP_CHIP_ID::STARTFLAG&&
-       UtilityManager::GetInstance().Blast().ID != MAP_CHIP_ID::GOALFLAG)
-    id = UtilityManager::GetInstance().Blast().ID;
-    return id;
+    return { 0.0f,0.0f };
 }
 
 bool Dice::GoalFlag(void)

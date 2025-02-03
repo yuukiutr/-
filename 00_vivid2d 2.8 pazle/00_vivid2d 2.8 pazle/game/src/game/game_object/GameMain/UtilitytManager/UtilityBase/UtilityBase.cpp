@@ -38,7 +38,7 @@ bool UtilityBase::GetCollisionFlag(void)
     int width = m_Dice->GetInstance().GetDiceWidth();
     int height = m_Dice->GetInstance().GetDiceHeight();
 
-    //è„
+    //è„â∫
     if (dice_pos.x <= m_UtilityPosition.x
         && dice_pos.x + width >= m_UtilityPosition.x + m_utility_width
         && dice_pos.y + dice_velo.y <= m_UtilityPosition.y
@@ -46,7 +46,7 @@ bool UtilityBase::GetCollisionFlag(void)
     {
         hitflg = true;
     }
-    //âE
+    //ç∂âE
     if (dice_pos.x + dice_velo.x <= m_UtilityPosition.x
         && dice_pos.x + width + dice_velo.x >= m_UtilityPosition.x + m_utility_width
         && dice_pos.y <= m_UtilityPosition.y

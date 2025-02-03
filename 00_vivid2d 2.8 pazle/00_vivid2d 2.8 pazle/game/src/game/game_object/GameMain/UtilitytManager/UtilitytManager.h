@@ -53,8 +53,8 @@ public:
 	void Finalize(void);
 	//サイコロとの当たり判定
 	bool Collision(void);
-
-	Blast_state Blast(void);
+	
+	void Blast(void);
 
 	void Create(UTILITY_ID id, vivid::Vector2 pos);
 	//デバック時に描画されるデータ

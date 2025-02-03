@@ -65,9 +65,9 @@ public:
 	Blast BlastSpot(int x, int y);
 
 	/*
-	*	@brief	爆破範囲に破壊できるオブジェクトがある場合破壊する
+	*	@brief	爆破予定地を返す
 	*/
-	MAP_CHIP_ID Blast(void);
+	vivid::Vector2 GetBlastPos(int i);
 
 
 	bool GoalFlag(void);
