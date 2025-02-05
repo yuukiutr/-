@@ -28,9 +28,12 @@ void GameMain::Initialize(void)
 
 void GameMain::Update(void)
 {
-	if (!Dice::GetInstance().GoalFlag())
+	if (Dice::GetInstance().GoalFlag() && UtilityManager::GetInstance().GetKeyClearFlag())
 	{
-
+		goal.Update();
+	}
+	else
+	{
 		StageCreate::GetInstance().Update();
 		Dice::GetInstance().Update();
 		UtilityManager::GetInstance().Update();
@@ -41,12 +44,6 @@ void GameMain::Update(void)
 			this->Finalize();
 			this->Initialize();
 		}
-
-	}
-	else
-	{
-
-		goal.Update();
 	}
 
 #ifdef DEBUG

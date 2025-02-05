@@ -70,6 +70,11 @@ UTILITY_ID UtilityBase::GetUtilityID(void)
     return UTILITY_ID::BASE;
 }
 
+bool UtilityBase::GetKeyClearFlag(void)
+{
+    return false;
+}
+
 
 bool UtilityBase::GetUtilityFlag(void)
 {

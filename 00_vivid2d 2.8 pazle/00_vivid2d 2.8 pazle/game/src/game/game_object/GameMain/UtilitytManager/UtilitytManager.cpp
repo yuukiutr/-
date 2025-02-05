@@ -164,6 +164,26 @@ void UtilityManager::Create(UTILITY_ID ID, vivid::Vector2 pos)
 	}
 }
 
+bool UtilityManager::GetKeyClearFlag(void)
+{
+	UTILITYLIST::iterator it = m_UtilityList.begin();
+	UTILITYLIST::iterator end = m_UtilityList.end();
+
+	bool flg = false;
+
+	while (it != end && flg)
+	{
+		UtilityBase* base = (*it);
+		//Key‚ÉŒÀ’è
+		if (base->GetKeyClearFlag() &&
+			base->GetUtilityID() == UTILITY_ID::KEY)
+			flg = true;
+
+		++it;
+	}
+	return flg;
+}
+
 void UtilityManager::KEY_DEBUG_DRAW_DATA(void)
 {
 #ifdef VIVID_DEBUG

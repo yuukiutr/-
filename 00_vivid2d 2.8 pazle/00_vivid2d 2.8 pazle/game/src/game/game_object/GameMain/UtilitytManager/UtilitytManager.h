@@ -57,6 +57,8 @@ public:
 	void Blast(void);
 
 	void Create(UTILITY_ID id, vivid::Vector2 pos);
+
+	bool GetKeyClearFlag(void);
 	//デバック時に描画されるデータ
 	void KEY_DEBUG_DRAW_DATA(void);
 };

@@ -37,6 +37,7 @@ public:
 	//ê∂ê¨Ç≥ÇÍÇΩUtilityÇÃID
 	virtual UTILITY_ID GetUtilityID(void);
 
+	virtual bool GetKeyClearFlag(void);
 
 	bool GetUtilityFlag(void);
 };
