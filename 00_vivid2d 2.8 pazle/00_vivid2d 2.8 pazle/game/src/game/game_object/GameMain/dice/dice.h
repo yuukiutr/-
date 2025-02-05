@@ -30,6 +30,7 @@ private:
 	vivid::Vector2 m_Position;
 	vivid::Vector2 m_Velocity;
 	vivid::Vector2 m_BlastPosition;
+	vivid::Vector2 m_BlastContainer[6];
 	vivid::Rect rect;
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;

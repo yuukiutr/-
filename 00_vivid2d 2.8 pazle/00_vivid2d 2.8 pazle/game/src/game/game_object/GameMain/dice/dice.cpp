@@ -78,7 +78,7 @@ void Dice::Update(void)
 
     //”š”j
 
-    if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::SPACE))
+    if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
     {
         UtilityManager::GetInstance().Blast();
     }
