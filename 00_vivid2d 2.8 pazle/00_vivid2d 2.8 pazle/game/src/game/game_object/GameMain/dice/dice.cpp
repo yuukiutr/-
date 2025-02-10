@@ -61,10 +61,23 @@ void Dice::Initialize(void)
     rect={0, 0, m_dice_width, m_dice_height};
     m_Dice = { 2, 3, 5, 4, 1, 6 };
 
+    m_KeyCount = 0;
+    m_MaxKey = 3;
+    m_KeyClearFlag = false;
 }
 
 void Dice::Update(void)
 {
+    //カギ取得数+1
+    if (UtilityManager::GetInstance().GetKeyDeleteFlag())
+    {
+        m_KeyCount++;
+        UtilityManager::GetInstance().SetKeyDeleteFlag(false);
+    }
+
+    //カギ全回収
+    if (m_MaxKey <= m_KeyCount)
+        m_KeyClearFlag = true;
 
     namespace keyboard = vivid::keyboard;
     
@@ -178,6 +191,7 @@ void Dice::Draw(void)
 
     vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
     vivid::DrawText(40, std::to_string(m_Dice.center), { 0.0f,100.0f });
+    vivid::DrawText(40, std::to_string(m_KeyCount), { 0.0f,40.0f });
 
 #ifdef VIVID_DEBUG
     int id = 0;
@@ -192,21 +206,25 @@ void Dice::Draw(void)
 
 }
 
+//ダイスの出目
 int Dice::GetDiceDigit(void)
 {
     return m_Dice.center;
 }
 
+//ダイスの幅
 int Dice::GetDiceWidth(void)
 {
     return m_dice_width;
 }
 
+//ダイスの高さ
 int Dice::GetDiceHeight(void)
 {
     return m_dice_height;
 }
 
+//動いた回数
 int Dice::GetMoveCount(void)
 {
     return m_MoveCount;
@@ -309,6 +327,12 @@ int y = (int)((m_Position.y - 200.0f + 0.5f) / (float)STAGE.GetMapChipSize());
     return STAGE.GoalFlag(x,y);
 }
 
+bool Dice::KeyFlag(void)
+{
+    return m_KeyClearFlag;
+}
+
+//ダイスの位置
 vivid::Vector2 Dice::GetDicePosition(void)
 {
     return m_Position;

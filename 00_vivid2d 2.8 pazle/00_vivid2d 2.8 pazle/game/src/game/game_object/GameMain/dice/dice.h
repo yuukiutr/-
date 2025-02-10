@@ -38,6 +38,10 @@ private:
 	const float m_map_width = 768;
 	const float m_map_height = 768;
 
+	int m_KeyCount;			//カギ数カウント
+	int m_MaxKey;			//最大カギ数
+	bool m_KeyClearFlag;	//カギ数条件達成フラグ
+
 public:
 
 	static void CreateInstance(void);
@@ -72,5 +76,6 @@ public:
 
 
 	bool GoalFlag(void);
+	bool KeyFlag(void);
 	vivid::Vector2 GetDicePosition(void);
 };

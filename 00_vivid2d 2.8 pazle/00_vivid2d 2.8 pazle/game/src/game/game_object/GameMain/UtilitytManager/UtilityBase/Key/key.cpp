@@ -1,20 +1,14 @@
 #include "key.h"
 #include "../../../dice/dice.h"
-
+#include "../../UtilitytManager.h"
 
 void Key::Initialize(vivid::Vector2 pos)
 {
 	m_UtilityPosition = pos;
-
-	m_KeyCount = 0;
-	m_MaxKey = 3;
-	m_KeyClearFlag = false;
 }
 
 void Key::Update(void)
 {
-	if (m_MaxKey <= m_KeyCount)
-		m_KeyClearFlag = true;
 }
 
 void Key::Draw(void)
@@ -24,11 +18,6 @@ void Key::Draw(void)
 
 void Key::Finalize(void)
 {
-}
-
-bool Key::GetKeyClearFlag(void)
-{
-	return m_KeyClearFlag;
 }
 
 UTILITY_ID Key::GetUtilityID(void)

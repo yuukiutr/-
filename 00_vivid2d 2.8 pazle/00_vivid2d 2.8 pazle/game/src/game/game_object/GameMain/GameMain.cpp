@@ -28,7 +28,7 @@ void GameMain::Initialize(void)
 
 void GameMain::Update(void)
 {
-	if (Dice::GetInstance().GoalFlag() && UtilityManager::GetInstance().GetKeyClearFlag())
+	if (Dice::GetInstance().GoalFlag() && Dice::GetInstance().KeyFlag()/*UtilityManager::GetInstance().GetKeyClearFlag()*/)
 	{
 		goal.Update();
 	}

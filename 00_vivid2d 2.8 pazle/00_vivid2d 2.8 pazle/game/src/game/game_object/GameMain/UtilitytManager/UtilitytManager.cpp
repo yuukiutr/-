@@ -44,6 +44,7 @@ void UtilityManager::Initialize(void)
 
 	
 	m_KeyDigit = STAGE.GetKeyDigit();
+	m_KeyDeleteFlag = false;
 }
 
 void UtilityManager::Update(void)
@@ -56,6 +57,15 @@ void UtilityManager::Update(void)
 		UtilityBase* base = (*it);
 
 		base->Update();
+
+		//ƒJƒM‚ðÁ‚·ˆ—
+		if (base->GetUtilityID()==UTILITY_ID::KEY
+			&& (base->GetPosition() == Dice::GetInstance().GetDicePosition()))
+		{
+			delete(*it);
+			it = m_UtilityList.erase(it);
+			SetKeyDeleteFlag(true);
+		}
 
 		++it;
 	}
@@ -164,7 +174,7 @@ void UtilityManager::Create(UTILITY_ID ID, vivid::Vector2 pos)
 	}
 }
 
-bool UtilityManager::GetKeyClearFlag(void)
+/*bool UtilityManager::GetKeyClearFlag(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
@@ -182,7 +192,7 @@ bool UtilityManager::GetKeyClearFlag(void)
 		++it;
 	}
 	return flg;
-}
+}*/
 
 void UtilityManager::KEY_DEBUG_DRAW_DATA(void)
 {
@@ -206,5 +216,15 @@ void UtilityManager::KEY_DEBUG_DRAW_DATA(void)
 	}
 #endif //VIVID_DEBUG
 
+}
+
+bool UtilityManager::GetKeyDeleteFlag(void)
+{
+	return m_KeyDeleteFlag;
+}
+
+void UtilityManager::SetKeyDeleteFlag(bool flg)
+{
+	m_KeyDeleteFlag = flg;
 }
 

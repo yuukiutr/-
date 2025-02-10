@@ -34,6 +34,7 @@ private:
 
 
 	int m_KeyDigit;
+	bool m_KeyDeleteFlag;
 	//vivid::Vector2 m_KeyPosition[];
 
 public:
@@ -58,7 +59,11 @@ public:
 
 	void Create(UTILITY_ID id, vivid::Vector2 pos);
 
-	bool GetKeyClearFlag(void);
+	//bool GetKeyClearFlag(void);
+
 	//デバック時に描画されるデータ
 	void KEY_DEBUG_DRAW_DATA(void);
+
+	bool GetKeyDeleteFlag(void);
+	void SetKeyDeleteFlag(bool flg);
 };
