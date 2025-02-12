@@ -54,6 +54,7 @@ if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
 	|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::START))
 	{
 		 CreateScene(GameScene_ID::TITLE);
+		 CSoundManager::GetInstance().Play(SOUND_ID::CANCEL);
 	}
 	
 if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))

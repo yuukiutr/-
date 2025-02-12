@@ -50,6 +50,14 @@ void GameMain::Update(void)
 			this->Initialize();
 			CSoundManager::GetInstance().Play(SOUND_ID::RETRY);
 		}
+
+		//ƒ^ƒCƒgƒ‹‚Ö
+		if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::T))
+		{
+			this->Finalize();
+			CSoundManager::GetInstance().Play(SOUND_ID::CANCEL);
+			CreateScene(GameScene_ID::TITLE);
+	}
 	}
 
 #ifdef DEBUG
