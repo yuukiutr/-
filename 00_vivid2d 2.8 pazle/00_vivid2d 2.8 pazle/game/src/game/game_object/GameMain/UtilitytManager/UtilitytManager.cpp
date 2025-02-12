@@ -70,7 +70,10 @@ void UtilityManager::Update(void)
 			CSoundManager::GetInstance().Play(SOUND_ID::GET_KEY);
 		}
 
+<<<<<<< Updated upstream
 		
+=======
+>>>>>>> Stashed changes
 		++it;
 	}
 }
