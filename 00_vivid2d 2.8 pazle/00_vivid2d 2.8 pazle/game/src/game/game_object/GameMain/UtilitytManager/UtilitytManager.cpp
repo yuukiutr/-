@@ -3,6 +3,7 @@
 #include "UtilitytManager.h"
 #include "UtilityBase/Key/key.h"
 #include "UtilityBase/BreakableWall/BreakableWall.h"
+#include "../../sound_manager/sound_manager.h"
 
 UtilityManager::UtilityManager()
 {
@@ -45,6 +46,7 @@ void UtilityManager::Initialize(void)
 	
 	m_KeyDigit = STAGE.GetKeyDigit();
 	m_KeyDeleteFlag = false;
+	CSoundManager::GetInstance().Load();
 }
 
 void UtilityManager::Update(void)
@@ -65,15 +67,10 @@ void UtilityManager::Update(void)
 			delete(*it);
 			it = m_UtilityList.erase(it);
 			SetKeyDeleteFlag(true);
+			CSoundManager::GetInstance().Play(SOUND_ID::GET_KEY);
 		}
 
-		if (base->GetUtilityID() == UTILITY_ID::BreakableWall&&
-			vivid::keyboard::Button(vivid::keyboard::KEY_ID::O))
-		{
-			delete(*it);
-			it = m_UtilityList.erase(it);
-		}
-
+		
 		++it;
 	}
 }

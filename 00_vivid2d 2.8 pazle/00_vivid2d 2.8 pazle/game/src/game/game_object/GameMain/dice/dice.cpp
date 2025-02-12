@@ -1,6 +1,7 @@
 #include "dice.h"
 #include "../StageCreate/StageCreate.h"
 #include "../UtilitytManager/UtilitytManager.h"
+#include "../../../game_object/sound_manager/sound_manager.h"
 /*Ç®ñóßÇøèÓïÒ
 * 1 left 0   right 63
 * 2      64        178
@@ -70,6 +71,8 @@ void Dice::Initialize(void)
     m_KeyCount = 0;
     m_MaxKey = 3;
     m_KeyClearFlag = false;
+
+    CSoundManager::GetInstance().Load();
 }
 
 void Dice::Update(void)
@@ -122,6 +125,8 @@ void Dice::Update(void)
             m_Dice.bottom = m_Dice.back;
             m_Dice.back = work;
             m_MoveCount++;
+
+            CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.y = 0.0f;
 
@@ -140,6 +145,8 @@ void Dice::Update(void)
             m_Dice.back = m_Dice.left;
             m_Dice.left = work;
             m_MoveCount++;
+
+            CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.x = 0.0f;
 
@@ -158,6 +165,8 @@ void Dice::Update(void)
             m_Dice.bottom = m_Dice.center;
             m_Dice.center = work;
             m_MoveCount++;
+
+            CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.y = 0.0f;
 
@@ -176,6 +185,8 @@ void Dice::Update(void)
             m_Dice.back = m_Dice.right;
             m_Dice.right = work;
             m_MoveCount++;
+
+            CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.x = 0.0f;
     }

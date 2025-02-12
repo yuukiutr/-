@@ -14,6 +14,8 @@ enum class SOUND_ID
 	BLAST,				//爆破音
 	START,				//開始音
 	RETRY,				//リトライ音
+	GET_KEY,			//カギ獲得音
+	DICE_MOVE,			//サイコロが転がる音
 
 	MAX
 };
