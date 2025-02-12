@@ -61,7 +61,7 @@ void GameMain::Draw(void)
 	Dice::GetInstance().Draw();
 
 	//‚±‚ê‚æ‚è‘O‚É‘‚­
-	goal.Draw();
+ 	goal.Draw();
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(32, "ƒQ[ƒ€ƒƒCƒ“", { 0.0f,0.0f });

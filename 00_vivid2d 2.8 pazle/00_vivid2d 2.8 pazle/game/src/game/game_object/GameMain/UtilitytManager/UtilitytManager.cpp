@@ -67,6 +67,13 @@ void UtilityManager::Update(void)
 			SetKeyDeleteFlag(true);
 		}
 
+		if (base->GetUtilityID() == UTILITY_ID::BreakableWall&&
+			vivid::keyboard::Button(vivid::keyboard::KEY_ID::O))
+		{
+			delete(*it);
+			it = m_UtilityList.erase(it);
+		}
+
 		++it;
 	}
 }
@@ -95,9 +102,10 @@ void UtilityManager::Finalize(void)
 	{
 		UtilityBase* base = (*it);
 
-		base->Finalize();
+		(*it)->Finalize();
 
-		++it;
+		delete(*it);
+		it = m_UtilityList.erase(it);
 	}
 }
 
@@ -137,7 +145,7 @@ bool UtilityManager::Collision(void)
 }
 
 
-void UtilityManager::Blast(void)
+void UtilityManager::Blast(vivid::Vector2 pos)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
@@ -148,13 +156,15 @@ void UtilityManager::Blast(void)
 		UtilityBase* base = (*it);
 		for (int i = 0; i < 6; i++)
 		{
-			if (base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+			if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
 				base->GetUtilityID() == UTILITY_ID::KEY)
+				&&base->GetPosition()==Dice::GetInstance().GetBlastPos(i))
 			{
 				delete(*it);
 				it = m_UtilityList.erase(it);
 			}
 		}
+		++it;
 	}
 
 

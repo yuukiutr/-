@@ -55,7 +55,7 @@ public:
 	//ƒTƒCƒRƒ‚Æ‚Ì“–‚½‚è”»’è
 	bool Collision(void);
 	
-	void Blast(void);
+	void Blast(vivid::Vector2 pos);
 
 	void Create(UTILITY_ID id, vivid::Vector2 pos);
 

@@ -61,6 +61,12 @@ void Dice::Initialize(void)
     rect={0, 0, m_dice_width, m_dice_height};
     m_Dice = { 2, 3, 5, 4, 1, 6 };
 
+    for (int i = 0; i < 6; i++)
+    {
+        m_BlastContainer[i].x = 0.0f;
+        m_BlastContainer[i].y = 0.0f;
+    }
+
     m_KeyCount = 0;
     m_MaxKey = 3;
     m_KeyClearFlag = false;
@@ -93,7 +99,10 @@ void Dice::Update(void)
 
     if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::NUMPADENTER))
     {
-        UtilityManager::GetInstance().Blast();
+        for (int i = 0; i < 6; i++)
+        {
+            UtilityManager::GetInstance().Blast(m_BlastContainer[i]);
+        }
     }
 
     //
@@ -309,15 +318,25 @@ Blast Dice::BlastSpot(int x, int y)
 	default:
 		break;
 	}
-
-
+    
+    int i = 0;
+    while (m_BlastContainer[i].x != 0.0f
+        && m_BlastContainer[i].y != 0.0f
+        &&i<=6)
+    {
+        i++;
+    }
+    if (i < 6)
+    {
+        m_BlastContainer[i] = m_BlastPosition;
+    }
+    
 	return {blast_range_flg, m_BlastPosition,MAP_CHIP_ID::EMPTY};
-
 }
 
 vivid::Vector2 Dice::GetBlastPos(int i)
 {
-    return { 0.0f,0.0f };
+    return m_BlastContainer[i];
 }
 
 bool Dice::GoalFlag(void)
