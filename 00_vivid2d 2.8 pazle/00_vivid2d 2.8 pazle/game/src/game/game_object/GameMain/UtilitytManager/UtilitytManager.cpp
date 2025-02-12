@@ -69,17 +69,6 @@ void UtilityManager::Update(void)
 			SetKeyDeleteFlag(true);
 			CSoundManager::GetInstance().Play(SOUND_ID::GET_KEY);
 		}
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 		++it;
 	}
 }
