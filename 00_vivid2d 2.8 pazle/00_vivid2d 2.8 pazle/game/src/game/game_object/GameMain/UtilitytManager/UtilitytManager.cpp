@@ -69,8 +69,6 @@ void UtilityManager::Update(void)
 			SetKeyDeleteFlag(true);
 			CSoundManager::GetInstance().Play(SOUND_ID::GET_KEY);
 		}
-
-		
 		++it;
 	}
 }
