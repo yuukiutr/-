@@ -4,6 +4,7 @@
 #include "UtilitytManager/UtilitytManager.h"
 #include "../gamescene_manager/gamescene_manager.h"
 #include "UtilitytManager/UtilityBase/Key/key.h"
+#include "../sound_manager/sound_manager.h"
 
 //main Initialize
 void GameMain::Initialize(StageSelect* target)
@@ -13,6 +14,9 @@ void GameMain::Initialize(StageSelect* target)
 	StageCreate::GetInstance().Initialize(m_Select);
 	Dice::GetInstance().Initialize();
 	goal.Initialize();
+
+	CSoundManager::GetInstance().Load();
+	CSoundManager::GetInstance().Play(SOUND_ID::GAMEMAIN, true);
 	//ste_BGM_Initialize();
 }
 
@@ -22,8 +26,9 @@ void GameMain::Initialize(void)
 	UtilityManager::GetInstance().Initialize();
 	StageCreate::GetInstance().Initialize(m_Select);
 	Dice::GetInstance().Initialize();
-
 	goal.Initialize();
+
+	CSoundManager::GetInstance().Play(SOUND_ID::GAMEMAIN, true);
 }
 
 void GameMain::Update(void)
@@ -43,6 +48,7 @@ void GameMain::Update(void)
 		{
 			this->Finalize();
 			this->Initialize();
+			CSoundManager::GetInstance().Play(SOUND_ID::RETRY);
 		}
 	}
 
@@ -73,6 +79,7 @@ void GameMain::Finalize(void)
 {
 	StageCreate::GetInstance().Finalize();
 	UtilityManager::GetInstance().Finalize();
+	CSoundManager::GetInstance().StopSound(SOUND_ID::GAMEMAIN);
 	goal.Finalize();
 }
 

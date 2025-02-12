@@ -21,8 +21,8 @@ private:
 	const int m_dice_height = 64;
 	const int m_title_width = 0;		//タイトル用背景サイズ横
 	const int  m_title_height = 0;		//タイトル用背景サイズ縦
-	const int m_title_logo_width = 1500;	//タイトルロゴのサイズ横
-	const int m_title_logo_height = 562;	//タイトルロゴのサイズ縦
+	const int m_title_logo_width = 1232;	//タイトルロゴのサイズ横
+	const int m_title_logo_height = 217;	//タイトルロゴのサイズ縦
 
 	vivid::Rect m_Rect;			//描画範囲
 

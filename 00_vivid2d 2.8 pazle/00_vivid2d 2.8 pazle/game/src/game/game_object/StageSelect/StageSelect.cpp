@@ -1,5 +1,5 @@
 #include "StageSelect.h"
-
+#include "../sound_manager/sound_manager.h"
 #include "vivid.h"
 #include "../gamescene_manager/gamescene_manager.h"
 
@@ -10,6 +10,9 @@ void StageSelect::Initialize(void)
 	m_return_time = 1200;
 	m_Color = 0x00ffffff;
 	m_NowStageID = STAGE_ID::DUMMY;
+
+	CSoundManager::GetInstance().Load();
+	CSoundManager::GetInstance().Play(SOUND_ID::STAGESELECT, true);
 }
 
 void StageSelect::Update(void)
@@ -98,6 +101,7 @@ void StageSelect::Draw(void)
 
 void StageSelect::Finalize(void)
 {
+	CSoundManager::GetInstance().StopSound(SOUND_ID::STAGESELECT);
 }
 
 STAGE_ID StageSelect::GetNowStageID(void)

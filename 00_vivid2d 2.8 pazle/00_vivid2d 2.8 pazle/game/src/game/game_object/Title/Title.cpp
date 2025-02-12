@@ -2,6 +2,7 @@
 #include "vivid.h"
 #include "../gamescene_manager/gamescene_manager.h"
 #include "../TextManager/TextManager.h"
+#include "../sound_manager/sound_manager.h"
 
 void Title::Initialize(void)
 {
@@ -9,6 +10,9 @@ void Title::Initialize(void)
 	rect = { 0, 0, m_dice_width, m_dice_height };
 	m_OuterFrameCount = 0; //外枠点滅
 	m_ID = GameScene_ID::STAGESELECT;
+	
+	CSoundManager::GetInstance().Load();
+	CSoundManager::GetInstance().Play(SOUND_ID::TITLE, true);
 }
 
 void Title::Update(void)
@@ -52,21 +56,24 @@ void Title::Update(void)
 
 void Title::Draw(void)
 {
+	vivid::DrawTexture("data\\title\\title_bg.jpeg", {0.0f,0.0f});
 #ifndef Title
 	vivid::DrawText(32, "タイトル", { 0.0f,0.0f });
 #endif // !Title
-	vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
+	vivid::DrawTexture("data\\title\\title_dice.png", m_Position, 0xffffffff, rect);
 	vivid::DrawTexture("data\\title\\start.png", {564.0f,700.0f});
 	vivid::DrawTexture("data\\title\\option.png", { 564.0f,764.0f });
 	vivid::DrawTexture("data\\title\\title.png",
-		{ (float)(vivid::WINDOW_WIDTH - m_title_logo_width) / 2,20.0f });
+		{ (float)(vivid::WINDOW_WIDTH - m_title_logo_width) / 2,300.0f });
 
-	if(m_OuterFrameCount < m_outer_frame_light_time)
-	vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + m_dice_width, m_Position.y });
+	//いらないかも
+	//if(m_OuterFrameCount < m_outer_frame_light_time)
+	//vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + m_dice_width, m_Position.y });
 
 
 }
 
 void Title::Finalize(void)
 {
+	CSoundManager::GetInstance().StopSound(SOUND_ID::TITLE);
 }

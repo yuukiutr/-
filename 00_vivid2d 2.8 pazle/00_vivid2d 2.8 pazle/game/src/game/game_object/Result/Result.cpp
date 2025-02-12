@@ -4,6 +4,7 @@
 #include "../GameMain/GameMain.h"
 #include "../TextManager/TextManager.h"
 #include "../GameMain/dice/dice.h"
+#include "../sound_manager/sound_manager.h"
 
 void Result::Initialize(GameMain* main, StageSelect* target)
 {
@@ -16,6 +17,9 @@ void Result::Initialize(GameMain* main, StageSelect* target)
 	m_LoadDiceMove = stoi(vec[0]);
 
 	m_NewRecordFlag = false;
+
+	CSoundManager::GetInstance().Load();
+	CSoundManager::GetInstance().Play(SOUND_ID::RESULT, false);
 }
 
 void Result::Update(void)
@@ -44,5 +48,6 @@ void Result::Finalize(void)
 	TEXTMANAGER.DeleteTextData("data/BestRecord.txt");
 	TEXTMANAGER.SaveAndCreate(SAVE_ID::PS, "data/BestRecord.txt", std::to_string(m_ResultDiceMove));
 	}
+	CSoundManager::GetInstance().StopSound(SOUND_ID::RESULT);
 
 }

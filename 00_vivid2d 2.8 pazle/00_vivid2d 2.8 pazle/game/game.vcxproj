@@ -181,6 +181,7 @@
     <ClCompile Include="src\game\game_object\GameMain\StageCreate\StageCreate.cpp" />
     <ClCompile Include="src\game\game_object\gamescene_manager\gamescene_manager.cpp" />
     <ClCompile Include="src\game\game_object\Result\Result.cpp" />
+    <ClCompile Include="src\game\game_object\sound_manager\sound_manager.cpp" />
     <ClCompile Include="src\game\game_object\StageSelect\StageSelect.cpp" />
     <ClCompile Include="src\game\game_object\TextManager\TextManager.cpp" />
     <ClCompile Include="src\game\game_object\TextManager\text_loader\text_loader.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="src\game\game_object\gamescene_manager\gamescene_id.h" />
     <ClInclude Include="src\game\game_object\gamescene_manager\gamescene_manager.h" />
     <ClInclude Include="src\game\game_object\Result\Result.h" />
+    <ClInclude Include="src\game\game_object\sound_manager\sound_manager.h" />
     <ClInclude Include="src\game\game_object\StageSelect\StageSelect.h" />
     <ClInclude Include="src\game\game_object\StageSelect\Stage_id.h" />
     <ClInclude Include="src\game\game_object\TextManager\manipulation_id.h" />
