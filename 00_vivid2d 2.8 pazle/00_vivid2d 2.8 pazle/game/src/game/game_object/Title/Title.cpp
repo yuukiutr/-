@@ -22,6 +22,7 @@ void Title::Update(void)
 	//ƒV[ƒ“Ø‚è‘Ö‚¦
 	if (keyboard::Trigger(keyboard::KEY_ID::NUMPADENTER))
 	{
+		CSoundManager::GetInstance().Play(SOUND_ID::DECISION);
 		switch (m_ID)
 		{
 		case GameScene_ID::STAGESELECT:
@@ -42,12 +43,14 @@ void Title::Update(void)
 		m_Position.y -= 64.0f;
 		rect = { 0, 0, m_dice_width, m_dice_height };
 		m_ID = GameScene_ID::STAGESELECT;
+		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
 	}
 	else if (keyboard::Trigger(keyboard::KEY_ID::S) && m_Position.y == 700.0f)
 	{
 		m_Position.y += 64.0f;
 		rect = { 64, 0, m_dice_width * 2, m_dice_height };
 		m_ID = GameScene_ID::OPTION;
+		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
 	}
 
 	if (m_OuterFrameCount++ > m_outer_frame_roop_time)
