@@ -8,7 +8,6 @@ void Title::Initialize(void)
 {
 	m_Position = { 500.0f,700.0f };
 	rect = { 0, 0, m_dice_width, m_dice_height };
-	m_OuterFrameCount = 0; //ŠO˜g“_–Å
 	m_ID = GameScene_ID::STAGESELECT;
 	
 	CSoundManager::GetInstance().Load();
@@ -52,9 +51,6 @@ void Title::Update(void)
 		m_ID = GameScene_ID::OPTION;
 		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
 	}
-
-	if (m_OuterFrameCount++ > m_outer_frame_roop_time)
-		m_OuterFrameCount = 0;
 }
 
 void Title::Draw(void)
@@ -68,12 +64,6 @@ void Title::Draw(void)
 	vivid::DrawTexture("data\\title\\option.png", { 564.0f,764.0f });
 	vivid::DrawTexture("data\\title\\title.png",
 		{ (float)(vivid::WINDOW_WIDTH - m_title_logo_width) / 2,300.0f });
-
-	//‚¢‚ç‚È‚¢‚©‚à
-	//if(m_OuterFrameCount < m_outer_frame_light_time)
-	//vivid::DrawTexture("data\\title\\outer_frame.png", { m_Position.x + m_dice_width, m_Position.y });
-
-
 }
 
 void Title::Finalize(void)

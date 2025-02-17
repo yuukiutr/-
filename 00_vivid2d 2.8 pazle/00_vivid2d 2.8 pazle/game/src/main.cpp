@@ -25,8 +25,6 @@ Display(void)
     game.Update();
 
     game.Draw();
-
-    //TEXTMANAGER.SaveAndCreate(SAVE_ID::CREATE, "data/memo.txt", "¯(•Ô)‚ÌŠl“¾ó‹µ");
 }
 
 /*!

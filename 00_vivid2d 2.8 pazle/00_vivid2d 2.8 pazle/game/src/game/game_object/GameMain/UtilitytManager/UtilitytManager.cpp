@@ -164,6 +164,7 @@ void UtilityManager::Blast(void)
 					{
 						delete(*it);
 						it = m_UtilityList.erase(it);
+						CSoundManager::GetInstance().Play(SOUND_ID::BLAST);
 						break;
 					}
 			}
@@ -178,6 +179,7 @@ void UtilityManager::Blast(void)
 					{
 						delete(*it);
 						it = m_UtilityList.erase(it);
+						CSoundManager::GetInstance().Play(SOUND_ID::BLAST);
 						break;
 					}
 			}
@@ -194,6 +196,7 @@ void UtilityManager::Blast(void)
 						{
 							delete(*it);
 							it = m_UtilityList.erase(it);
+							CSoundManager::GetInstance().Play(SOUND_ID::BLAST);
 							break;
 						}
 				}
@@ -213,6 +216,7 @@ void UtilityManager::Blast(void)
 							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
+							CSoundManager::GetInstance().Play(SOUND_ID::BLAST);
 							break;
 						}
 					}
@@ -232,6 +236,7 @@ void UtilityManager::Blast(void)
 						{
 							delete(*it);
 							it = m_UtilityList.erase(it);
+							CSoundManager::GetInstance().Play(SOUND_ID::BLAST);
 							break;
 						}
 				}
@@ -249,6 +254,7 @@ void UtilityManager::Blast(void)
 						{
 							delete(*it);
 							it = m_UtilityList.erase(it);
+							CSoundManager::GetInstance().Play(SOUND_ID::BLAST);
 							break;
 						}
 				}

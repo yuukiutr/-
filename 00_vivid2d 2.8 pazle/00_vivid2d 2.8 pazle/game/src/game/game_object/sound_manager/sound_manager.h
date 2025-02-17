@@ -16,6 +16,7 @@ enum class SOUND_ID
 	RETRY,				//リトライ音
 	GET_KEY,			//カギ獲得音
 	DICE_MOVE,			//サイコロが転がる音
+	GOAL,				//ゴールジングル
 
 	MAX
 };

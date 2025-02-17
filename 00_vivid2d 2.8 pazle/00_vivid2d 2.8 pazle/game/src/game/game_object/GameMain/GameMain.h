@@ -14,6 +14,8 @@ private:
 	UtilityManager* m_Utility;
 	Goal goal;
 
+	vivid::Vector2 m_stage_frame_pos = {141.0f, 141.0f};
+
 public:
 	GameMain() = default;
 	~GameMain() = default;

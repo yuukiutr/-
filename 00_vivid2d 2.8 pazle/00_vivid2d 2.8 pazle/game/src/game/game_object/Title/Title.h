@@ -14,9 +14,6 @@ private:
 	vivid::Vector2	m_Position;
 	vivid::Rect		rect;
 	bool m_GoStageSelect;
-	int m_OuterFrameCount;	//外枠の点滅
-	const int m_outer_frame_roop_time = 50;
-	const int m_outer_frame_light_time = 40;
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;
 	const int m_title_width = 0;		//タイトル用背景サイズ横

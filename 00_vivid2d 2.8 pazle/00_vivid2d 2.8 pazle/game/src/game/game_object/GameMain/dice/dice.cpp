@@ -256,10 +256,7 @@ void Dice::Update(void)
 
 void Dice::Draw(void)
 {
-
     vivid::DrawTexture("data\\gamemain_utility\\dice.png", m_Position, 0xffffffff, rect);
-    vivid::DrawText(40, std::to_string(m_Dice.center), { 0.0f,100.0f });
-    vivid::DrawText(40, std::to_string(m_KeyCount), { 0.0f,40.0f });
 
 #ifdef VIVID_DEBUG
     int id = 0;
@@ -268,8 +265,8 @@ void Dice::Draw(void)
     if (STAGE.GetMapChipID(x, y) == MAP_CHIP_ID::BLASTWALL)
         id = 3;
 
-    vivid::DrawText(40,std::to_string(id),{ 0.0f, 200.0f });
-    vivid::DrawText(40, std::to_string(m_MoveCount), { 0.0f,150.0f });
+    //vivid::DrawText(40,std::to_string(id),{ 0.0f, 200.0f });
+    vivid::DrawText(60, std::to_string(m_MoveCount), { 1400.0f,150.0f });
 #endif // VIVID_DEBUG
 
 }

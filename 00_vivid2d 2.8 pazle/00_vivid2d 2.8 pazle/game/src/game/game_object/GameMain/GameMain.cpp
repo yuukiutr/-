@@ -33,9 +33,10 @@ void GameMain::Initialize(void)
 
 void GameMain::Update(void)
 {
-	if (Dice::GetInstance().GoalFlag() && Dice::GetInstance().KeyFlag()/*UtilityManager::GetInstance().GetKeyClearFlag()*/)
+	if (Dice::GetInstance().GoalFlag() && Dice::GetInstance().KeyFlag())
 	{
 		goal.Update();
+		CSoundManager::GetInstance().StopSound(SOUND_ID::GAMEMAIN);
 	}
 	else
 	{
@@ -59,17 +60,12 @@ void GameMain::Update(void)
 			CreateScene(GameScene_ID::TITLE);
 	}
 	}
-
-#ifdef DEBUG
-	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::Z))
-		CreateScene(GameScene_ID::RESULT);
-#endif // DEBUG
-
 }
 
 void GameMain::Draw(void)
 {
-	vivid::DrawTexture("data/back.png", { 0.0f,0.0f });
+	vivid::DrawTexture("data/gamemain_utility/back.png", { 0.0f,0.0f });
+	vivid::DrawTexture("data/gamemain_utility/stage_frame.png", { m_stage_frame_pos.x, m_stage_frame_pos.y});
 	UtilityManager::GetInstance().Draw();
 	StageCreate::GetInstance().Draw();
 	Dice::GetInstance().Draw();
@@ -79,6 +75,9 @@ void GameMain::Draw(void)
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(32, "ゲームメイン", { 0.0f,0.0f });
+	vivid::DrawText(60, "Rでリセット", { 1000.0f,0.0f });
+	vivid::DrawText(60, "Tでタイトル", { 1000.0f,70.0f });
+	vivid::DrawText(60, "移動回数", { 1000.0f,150.0f });
 #endif //VIVID_DEBUG
 
 }
