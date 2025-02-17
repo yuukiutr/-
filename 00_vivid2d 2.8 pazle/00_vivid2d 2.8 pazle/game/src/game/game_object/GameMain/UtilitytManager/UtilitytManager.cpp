@@ -140,24 +140,122 @@ bool UtilityManager::Collision(void)
 }
 
 
-void UtilityManager::Blast(vivid::Vector2 pos)
+void UtilityManager::Blast(void)
 {
 	UTILITYLIST::iterator it = m_UtilityList.begin();
 	UTILITYLIST::iterator end = m_UtilityList.end();
-	
+
+	bool flg = false;
 
 	while (it != end)
 	{
 		UtilityBase* base = (*it);
-		for (int i = 0; i < 6; i++)
+
+		switch (Dice::GetInstance().GetDiceDigit())
 		{
-			if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
-				base->GetUtilityID() == UTILITY_ID::KEY)
-				&&base->GetPosition()==Dice::GetInstance().GetBlastPos(i))
+		case 1:
+
+			for (int j = -1; j <= 1; j += 2)
 			{
-				delete(*it);
-				it = m_UtilityList.erase(it);
+				if (Dice::GetInstance().BlastSpot(0, j).DicePosFlag)
+					if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+						base->GetUtilityID() == UTILITY_ID::KEY)
+						&& base->GetPosition() == Dice::GetInstance().BlastSpot(0, j).BlastPos)
+					{
+						delete(*it);
+						it = m_UtilityList.erase(it);
+						break;
+					}
 			}
+			break;
+		case 2:
+			for (int i = -1; i <= 1; i += 2)
+			{
+				if (Dice::GetInstance().BlastSpot(i, 0).DicePosFlag)
+					if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+						base->GetUtilityID() == UTILITY_ID::KEY)
+						&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, 0).BlastPos)
+					{
+						delete(*it);
+						it = m_UtilityList.erase(it);
+						break;
+					}
+			}
+			break;
+		case 3:
+			for (int i = -1; i <= 1; i += 2)
+			{
+				for (int j = -1; j <= 1; j += 2)
+				{
+					if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
+						if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+							base->GetUtilityID() == UTILITY_ID::KEY)
+							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
+						{
+							delete(*it);
+							it = m_UtilityList.erase(it);
+							break;
+						}
+				}
+			}
+			break;
+		case 4:
+			for (int i = -1; i <= 1; i++)
+			{
+				for (int j = -2; j <= 2; j += 4)
+				{
+					if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
+					{
+						if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+							base->GetUtilityID() == UTILITY_ID::KEY)
+							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
+						{
+							flg = true;
+							delete(*it);
+							it = m_UtilityList.erase(it);
+							break;
+						}
+					}
+				}
+				if (flg == true)break;
+			}
+			break;
+		case 5:
+			for (int i = -2; i <= 2; i += 4)
+			{
+				for (int j = -1; j <= 1; j++)
+				{
+					if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
+						if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+							base->GetUtilityID() == UTILITY_ID::KEY)
+							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
+						{
+							delete(*it);
+							it = m_UtilityList.erase(it);
+							break;
+						}
+				}
+			}
+			break;
+		case 6:
+			for (int i = -2; i <= 2; i += 4)
+			{
+				for (int j = -2; j <= 2; j += 4)
+				{
+					if (Dice::GetInstance().BlastSpot(i, j).DicePosFlag)
+						if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
+							base->GetUtilityID() == UTILITY_ID::KEY)
+							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
+						{
+							delete(*it);
+							it = m_UtilityList.erase(it);
+							break;
+						}
+				}
+			}
+			break;
+		default:
+			break;
 		}
 		++it;
 	}

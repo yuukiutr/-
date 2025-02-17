@@ -104,7 +104,7 @@ void Dice::Update(void)
     {
         for (int i = 0; i < 6; i++)
         {
-            UtilityManager::GetInstance().Blast(m_BlastContainer[i]);
+            UtilityManager::GetInstance().Blast();
         }
     }
 
@@ -126,6 +126,11 @@ void Dice::Update(void)
             m_Dice.back = work;
             m_MoveCount++;
 
+            for (int i = 0; i < 6; i++)
+            {
+                m_BlastContainer[i].x = 0.0f;
+                m_BlastContainer[i].y = 0.0f;
+            }
             CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.y = 0.0f;
@@ -146,6 +151,11 @@ void Dice::Update(void)
             m_Dice.left = work;
             m_MoveCount++;
 
+            for (int i = 0; i < 6; i++)
+            {
+                m_BlastContainer[i].x = 0.0f;
+                m_BlastContainer[i].y = 0.0f;
+            }
             CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.x = 0.0f;
@@ -166,6 +176,11 @@ void Dice::Update(void)
             m_Dice.center = work;
             m_MoveCount++;
 
+            for (int i = 0; i < 6; i++)
+            {
+                m_BlastContainer[i].x = 0.0f;
+                m_BlastContainer[i].y = 0.0f;
+            }
             CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.y = 0.0f;
@@ -185,7 +200,12 @@ void Dice::Update(void)
             m_Dice.back = m_Dice.right;
             m_Dice.right = work;
             m_MoveCount++;
-
+            
+            for (int i = 0; i < 6; i++)
+            {
+                m_BlastContainer[i].x = 0.0f;
+                m_BlastContainer[i].y = 0.0f;
+            }
             CSoundManager::GetInstance().Play(SOUND_ID::DICE_MOVE);
         }
         else m_Velocity.x = 0.0f;
@@ -195,6 +215,34 @@ void Dice::Update(void)
         m_Velocity.x = 0.0f;
         m_Velocity.y = 0.0f;
     }
+
+#ifdef VIVID_DEBUG
+    if (keyboard::Trigger(keyboard::KEY_ID::NUMPAD1))
+    {
+        m_Dice.center = 1;
+    }
+    if (keyboard::Trigger(keyboard::KEY_ID::NUMPAD2))
+    {
+        m_Dice.center = 2;
+    }
+    if (keyboard::Trigger(keyboard::KEY_ID::NUMPAD3))
+    {
+        m_Dice.center = 3;
+    }
+    if (keyboard::Trigger(keyboard::KEY_ID::NUMPAD4))
+    {
+        m_Dice.center = 4;
+    }
+    if (keyboard::Trigger(keyboard::KEY_ID::NUMPAD5))
+    {
+        m_Dice.center = 5;
+    }
+    if (keyboard::Trigger(keyboard::KEY_ID::NUMPAD6))
+    {
+        m_Dice.center = 6;
+    }
+#endif // VIVID_DEBUG
+
 
 
     m_Position += m_Velocity;
