@@ -14,6 +14,8 @@ void StageSelect::Initialize(void)
 	m_Color = 0x00ffffff;
 	m_FremeVisibleFlag = true;
 	m_NowStageID = STAGE_ID::DUMMY;
+	m_ButtonPosition = { 100.0f,200.0f };
+	m_stage1_position = { 100.0f,310.0f };
 
 	CSoundManager::GetInstance().Load();
 	CSoundManager::GetInstance().Play(SOUND_ID::STAGESELECT, true);
@@ -97,10 +99,10 @@ if (++m_ReturnCount >= m_return_time)
 void StageSelect::Draw(void)
 {
 	vivid::DrawTexture("data\\stage_select_bg.png", { 0.0f, 0.0f });
-	vivid::DrawTexture("data\\button.png", { 200.0f, 200.0f });
+	vivid::DrawTexture("data\\button.png", m_ButtonPosition);
 	if(m_FremeVisibleFlag)
-	vivid::DrawTexture("data\\button_frame.png", { 200.0f, 200.0f });
-	vivid::DrawTexture("data\\stage1.png", { 201.0f, 255.0f });
+	vivid::DrawTexture("data\\button_frame.png", m_ButtonPosition);
+	vivid::DrawTexture("data\\stage1.png", m_stage1_position);
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(50, "ÉQÅ[ÉÄëIë", { 0.0f,0.0f });

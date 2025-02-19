@@ -11,15 +11,15 @@ public:
 	void Draw(void);
 	void Finalize(void);
 private:
-	vivid::Vector2	m_Position;
+	vivid::Vector2	m_dice_Position;
+	vivid::Vector2	m_TITLE_position;
+	vivid::Vector2	m_OPTION_position;
 	vivid::Rect		rect;
 	bool m_GoStageSelect;
 	const int m_dice_width = 64;
 	const int m_dice_height = 64;
-	const int m_title_width = 0;		//タイトル用背景サイズ横
-	const int  m_title_height = 0;		//タイトル用背景サイズ縦
-	const int m_title_logo_width = 1232;	//タイトルロゴのサイズ横
-	const int m_title_logo_height = 217;	//タイトルロゴのサイズ縦
+	const int m_title_logo_width = 1700;	//タイトルロゴのサイズ横
+	//const int m_title_logo_height = 568;	//タイトルロゴのサイズ縦
 
 	vivid::Rect m_Rect;			//描画範囲
 
