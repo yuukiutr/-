@@ -199,11 +199,9 @@
     <ClInclude Include="src\game\game.h" />
     <ClInclude Include="src\game\game_object\GameMain\Credit\Credit.h" />
     <ClInclude Include="src\game\game_object\option\option.h" />
-    <ClInclude Include="src\game\game_object\GameMain\AnalogJoypad.h" />
     <ClInclude Include="src\game\game_object\GameMain\Button_manager\Button\Button.h" />
     <ClInclude Include="src\game\game_object\GameMain\Button_manager\Button_id.h" />
     <ClInclude Include="src\game\game_object\GameMain\Button_manager\Button_manager.h" />
-    <ClInclude Include="src\game\game_object\GameMain\dice\Blast.h" />
     <ClInclude Include="src\game\game_object\GameMain\dice\dice.h" />
     <ClInclude Include="src\game\game_object\GameMain\GameMain.h" />
     <ClInclude Include="src\game\game_object\GameMain\goal\goal.h" />

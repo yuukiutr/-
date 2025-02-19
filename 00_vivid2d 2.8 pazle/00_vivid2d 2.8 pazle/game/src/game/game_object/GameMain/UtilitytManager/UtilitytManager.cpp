@@ -42,8 +42,13 @@ void UtilityManager::Initialize(void)
 {	
 	m_Generator[UTILITY_ID::BreakableWall] = []() {return new BreakableWall(); };
 	m_Generator[UTILITY_ID::KEY] = []() {return new Key(); };
-
 	
+	for (int i = 0; i < 6; i++)
+	{
+		m_EffectPos[i] = { 0.0f,0.0f };
+	}
+	count = 0;
+	m_EffectCount = 0;
 	m_KeyDigit = STAGE.GetKeyDigit();
 	m_KeyDeleteFlag = false;
 	CSoundManager::GetInstance().Load();
@@ -87,6 +92,28 @@ void UtilityManager::Draw(void)
 
 		++it;
 	}
+
+	if (m_effect_flg && m_EffectCount <= 24)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			if (m_EffectPos[i].x != 0.0f &&
+				m_EffectPos[i].y != 0.0f)
+				vivid::DrawTexture("data\\gamemain_utility\\blast.png", m_EffectPos[i]);
+
+		}
+		m_EffectCount++;
+	}
+	else
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			m_EffectPos[i] = { 0.0f,0.0f };
+		}
+		m_effect_flg = false;
+		m_EffectCount = 0;
+	}
+
 }
 
 void UtilityManager::Finalize(void)
@@ -164,6 +191,9 @@ void UtilityManager::Blast(void)
 						base->GetUtilityID() == UTILITY_ID::KEY)
 						&& base->GetPosition() == Dice::GetInstance().BlastSpot(0, j).BlastPos)
 					{
+						m_EffectPos[count] = Dice::GetInstance().BlastSpot(0, j).BlastPos;
+						count++;
+						m_effect_flg = true;
 						flg = true;
 						delete(*it);
 						it = m_UtilityList.erase(it);
@@ -180,6 +210,9 @@ void UtilityManager::Blast(void)
 						base->GetUtilityID() == UTILITY_ID::KEY)
 						&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, 0).BlastPos)
 					{
+						m_EffectPos[count] = Dice::GetInstance().BlastSpot(i, 0).BlastPos;
+						count++;
+						m_effect_flg = true;
 						flg = true;
 						delete(*it);
 						it = m_UtilityList.erase(it);
@@ -198,6 +231,9 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							m_EffectPos[count] = Dice::GetInstance().BlastSpot(i, j).BlastPos;
+							count++;
+							m_effect_flg = true;
 							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
@@ -218,6 +254,9 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							m_EffectPos[count] = Dice::GetInstance().BlastSpot(i, j).BlastPos;
+							count++;
+							m_effect_flg = true;
 							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
@@ -238,6 +277,9 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							m_EffectPos[count] = Dice::GetInstance().BlastSpot(i, j).BlastPos;
+							count++;
+							m_effect_flg = true;
 							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
@@ -257,6 +299,9 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							m_EffectPos[count] = Dice::GetInstance().BlastSpot(i, j).BlastPos;
+							count++;
+							m_effect_flg = true;
 							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
@@ -269,6 +314,8 @@ void UtilityManager::Blast(void)
 		default:
 			break;
 		}
+		/*
+		*/
 		if (it == end)break;
 		++it;
 	}
@@ -323,5 +370,10 @@ bool UtilityManager::GetKeyDeleteFlag(void)
 void UtilityManager::SetKeyDeleteFlag(bool flg)
 {
 	m_KeyDeleteFlag = flg;
+}
+
+void UtilityManager::Effect(vivid::Vector2 pos)
+{
+	vivid::DrawTexture("data\\gamemain_utility\\blast.png", pos);
 }
 

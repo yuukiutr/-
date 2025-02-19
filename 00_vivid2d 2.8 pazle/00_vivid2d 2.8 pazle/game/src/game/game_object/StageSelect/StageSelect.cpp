@@ -98,11 +98,11 @@ if (++m_ReturnCount >= m_return_time)
 
 void StageSelect::Draw(void)
 {
-	vivid::DrawTexture("data\\stage_select_bg.png", { 0.0f, 0.0f });
-	vivid::DrawTexture("data\\button.png", m_ButtonPosition);
+	vivid::DrawTexture("data\\stage_select\\stage_select_bg.png", { 0.0f, 0.0f });
+	vivid::DrawTexture("data\\stage_select\\button.png", m_ButtonPosition);
 	if(m_FremeVisibleFlag)
-	vivid::DrawTexture("data\\button_frame.png", m_ButtonPosition);
-	vivid::DrawTexture("data\\stage1.png", m_stage1_position);
+	vivid::DrawTexture("data\\stage_select\\button_frame.png", m_ButtonPosition);
+	vivid::DrawTexture("data\\stage_select\\stage1.png", m_stage1_position);
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(50, "ÉQÅ[ÉÄëIë", { 0.0f,0.0f });

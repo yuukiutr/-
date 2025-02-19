@@ -31,10 +31,10 @@ void Title::Update(void)
 			CreateScene(GameScene_ID::STAGESELECT);
 			break;
 
-		case GameScene_ID::OPTION:
+		/*case GameScene_ID::OPTION:
 			CreateScene(GameScene_ID::OPTION);
 			break;
-
+			*/
 		default:
 			break;
 		}
@@ -46,13 +46,13 @@ void Title::Update(void)
 		m_ID = GameScene_ID::STAGESELECT;
 		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
 	}
-	else if (keyboard::Trigger(keyboard::KEY_ID::S) && m_dice_Position.y == 700.0f)
+	/*else if (keyboard::Trigger(keyboard::KEY_ID::S) && m_dice_Position.y == 700.0f)
 	{
 		m_dice_Position.y += 64.0f;
 		rect = { 64, 0, m_dice_width * 2, m_dice_height };
 		m_ID = GameScene_ID::OPTION;
 		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
-	}
+	}*/
 }
 
 void Title::Draw(void)
@@ -63,7 +63,7 @@ void Title::Draw(void)
 #endif // !Title
 	vivid::DrawTexture("data\\title\\title_dice.png", m_dice_Position, 0xffffffff, rect);
 	vivid::DrawTexture("data\\title\\start.png", m_TITLE_position);
-	vivid::DrawTexture("data\\title\\option.png", m_OPTION_position);
+	//vivid::DrawTexture("data\\title\\option.png", m_OPTION_position);
 	vivid::DrawTexture("data\\title\\title.png",
 	{ (float)(vivid::WINDOW_WIDTH - m_title_logo_width) / 2,100.0f });
 }

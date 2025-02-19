@@ -32,8 +32,11 @@ private:
 
 	std::map<UTILITY_ID, std::function<UtilityBase* (void)>> m_Generator;
 
-
+	int m_EffectCount;
 	int m_KeyDigit;
+	int  count;
+	vivid::Vector2 m_EffectPos[6];
+	bool m_effect_flg;
 	bool m_KeyDeleteFlag;
 	//vivid::Vector2 m_KeyPosition[];
 
@@ -66,4 +69,5 @@ public:
 
 	bool GetKeyDeleteFlag(void);
 	void SetKeyDeleteFlag(bool flg);
+	void Effect(vivid::Vector2 pos);
 };

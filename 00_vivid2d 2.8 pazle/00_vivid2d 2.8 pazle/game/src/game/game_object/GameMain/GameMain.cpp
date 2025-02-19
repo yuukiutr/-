@@ -17,7 +17,6 @@ void GameMain::Initialize(StageSelect* target)
 
 	CSoundManager::GetInstance().Load();
 	CSoundManager::GetInstance().Play(SOUND_ID::GAMEMAIN, true);
-	//ste_BGM_Initialize();
 }
 
 //overroad Initialize
@@ -72,6 +71,10 @@ void GameMain::Draw(void)
 
 	//これより前に書く
  	goal.Draw();
+
+	vivid::DrawText(60, "Rでリセット", { 1000.0f,0.0f });
+	vivid::DrawText(60, "Tでタイトル", { 1000.0f,70.0f });
+	vivid::DrawText(60, "移動回数", { 1000.0f,150.0f });
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(32, "ゲームメイン", { 0.0f,0.0f });
