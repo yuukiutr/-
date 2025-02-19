@@ -69,6 +69,7 @@ void UtilityManager::Update(void)
 			SetKeyDeleteFlag(true);
 			CSoundManager::GetInstance().Play(SOUND_ID::GET_KEY);
 		}
+		if (it == end)break;
 		++it;
 	}
 }
@@ -146,6 +147,7 @@ void UtilityManager::Blast(void)
 	UTILITYLIST::iterator end = m_UtilityList.end();
 
 	bool flg = false;
+	bool begin_flg = false;
 
 	while (it != end)
 	{
@@ -155,13 +157,14 @@ void UtilityManager::Blast(void)
 		{
 		case 1:
 
-			for (int j = -1; j <= 1; j += 2)
+			for (int j = -1; j <= 1 && flg == false; j += 2)
 			{
 				if (Dice::GetInstance().BlastSpot(0, j).DicePosFlag)
 					if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
 						base->GetUtilityID() == UTILITY_ID::KEY)
 						&& base->GetPosition() == Dice::GetInstance().BlastSpot(0, j).BlastPos)
 					{
+						flg = true;
 						delete(*it);
 						it = m_UtilityList.erase(it);
 						break;
@@ -169,13 +172,14 @@ void UtilityManager::Blast(void)
 			}
 			break;
 		case 2:
-			for (int i = -1; i <= 1; i += 2)
+			for (int i = -1; i <= 1 && flg == false; i += 2)
 			{
 				if (Dice::GetInstance().BlastSpot(i, 0).DicePosFlag)
 					if ((base->GetUtilityID() == UTILITY_ID::BreakableWall ||
 						base->GetUtilityID() == UTILITY_ID::KEY)
 						&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, 0).BlastPos)
 					{
+						flg = true;
 						delete(*it);
 						it = m_UtilityList.erase(it);
 						break;
@@ -183,7 +187,7 @@ void UtilityManager::Blast(void)
 			}
 			break;
 		case 3:
-			for (int i = -1; i <= 1; i += 2)
+			for (int i = -1; i <= 1 && flg == false; i += 2)
 			{
 				for (int j = -1; j <= 1; j += 2)
 				{
@@ -192,6 +196,7 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
 							break;
@@ -200,7 +205,7 @@ void UtilityManager::Blast(void)
 			}
 			break;
 		case 4:
-			for (int i = -1; i <= 1; i++)
+			for (int i = -1; i <= 1 && flg == false; i++)
 			{
 				for (int j = -2; j <= 2; j += 4)
 				{
@@ -217,11 +222,10 @@ void UtilityManager::Blast(void)
 						}
 					}
 				}
-				if (flg == true)break;
 			}
 			break;
 		case 5:
-			for (int i = -2; i <= 2; i += 4)
+			for (int i = -2; i <= 2 && flg == false; i += 4)
 			{
 				for (int j = -1; j <= 1; j++)
 				{
@@ -230,6 +234,7 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
 							break;
@@ -238,7 +243,7 @@ void UtilityManager::Blast(void)
 			}
 			break;
 		case 6:
-			for (int i = -2; i <= 2; i += 4)
+			for (int i = -2; i <= 2 && flg == false; i += 4)
 			{
 				for (int j = -2; j <= 2; j += 4)
 				{
@@ -247,6 +252,7 @@ void UtilityManager::Blast(void)
 							base->GetUtilityID() == UTILITY_ID::KEY)
 							&& base->GetPosition() == Dice::GetInstance().BlastSpot(i, j).BlastPos)
 						{
+							flg = true;
 							delete(*it);
 							it = m_UtilityList.erase(it);
 							break;
@@ -257,6 +263,7 @@ void UtilityManager::Blast(void)
 		default:
 			break;
 		}
+		if (it == end)break;
 		++it;
 	}
 
@@ -277,25 +284,6 @@ void UtilityManager::Create(UTILITY_ID ID, vivid::Vector2 pos)
 	}
 }
 
-/*bool UtilityManager::GetKeyClearFlag(void)
-{
-	UTILITYLIST::iterator it = m_UtilityList.begin();
-	UTILITYLIST::iterator end = m_UtilityList.end();
-
-	bool flg = false;
-
-	while (it != end && flg)
-	{
-		UtilityBase* base = (*it);
-		//Key‚ÉŒÀ’è
-		if (base->GetKeyClearFlag() &&
-			base->GetUtilityID() == UTILITY_ID::KEY)
-			flg = true;
-
-		++it;
-	}
-	return flg;
-}*/
 
 void UtilityManager::KEY_DEBUG_DRAW_DATA(void)
 {
