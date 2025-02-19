@@ -14,6 +14,7 @@ const char* CSoundManager::m_sound_file_names[] =
 	"data\\se\\AS_1467764_ピコッ・カチッ・決定・テロップ・ポップ6.mp3",
 	"data\\se\\AS_39629_キランというかわいいSEです。.mp3",
 	"data\\se\\AS_1534404_カン（小皿を置く音）007.mp3",
+	"data\\se\\AS_16535_ゲームでステージクリアに使う曲.mp3",
 
 };
 

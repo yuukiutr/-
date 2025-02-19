@@ -7,8 +7,9 @@ class StageCreate;
 class Goal
 {
 private:
-	vivid::Vector2 m_DicePosition;
-
+	int m_ChangeSceneCount;
+	vivid::Vector2 m_goal_size;
+	bool m_GoalSound;
 public:
 	Goal();
 	void Initialize(void);

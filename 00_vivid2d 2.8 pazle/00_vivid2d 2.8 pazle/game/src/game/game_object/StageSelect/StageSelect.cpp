@@ -6,10 +6,16 @@
 void StageSelect::Initialize(void)
 {
 	m_SelectNumber = 0;
+	m_FrameCount = 0;
+	m_frame_invisible = 50;
+	m_frame_count_reset = 70;
 	m_ReturnCount = 0;
 	m_return_time = 1200;
 	m_Color = 0x00ffffff;
+	m_FremeVisibleFlag = true;
 	m_NowStageID = STAGE_ID::DUMMY;
+	m_ButtonPosition = { 100.0f,200.0f };
+	m_stage1_position = { 100.0f,310.0f };
 
 	CSoundManager::GetInstance().Load();
 	CSoundManager::GetInstance().Play(SOUND_ID::STAGESELECT, true);
@@ -17,16 +23,24 @@ void StageSelect::Initialize(void)
 
 void StageSelect::Update(void)
 {
+	m_FrameCount++;
 	int alpha = m_Color >> 24;
 
-	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D)
-		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::RIGHT))
+	if (m_FrameCount > m_frame_invisible)
+		m_FremeVisibleFlag = false;
+
+	if (m_FrameCount > m_frame_count_reset)
+	{
+		m_FremeVisibleFlag = true;
+		m_FrameCount = 0;
+	}
+
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D))
 	{
 		m_SelectNumber++;
 		m_ReturnCount = 0;
 	}
-	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A)
-		|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::LEFT))
+	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A))
 	{
 		m_SelectNumber--;
 		m_ReturnCount = 0;
@@ -41,17 +55,9 @@ void StageSelect::Update(void)
 	{
 		m_SelectNumber = (int)STAGE_ID::DUMMY;
 		m_SelectNumber--;
-	}
+	}	
 
-	if (vivid::keyboard::Button(vivid::keyboard::KEY_ID::NUMPAD8)
-		&& vivid::keyboard::Button(vivid::keyboard::KEY_ID::D))
-	{
-	}
-
-	
-
-if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R)
-	|| vivid::controller::Trigger(vivid::controller::DEVICE_ID::PLAYER1, vivid::controller::BUTTON_ID::START))
+if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::R))
 	{
 		 CreateScene(GameScene_ID::TITLE);
 		 CSoundManager::GetInstance().Play(SOUND_ID::CANCEL);
@@ -92,6 +98,12 @@ if (++m_ReturnCount >= m_return_time)
 
 void StageSelect::Draw(void)
 {
+	vivid::DrawTexture("data\\stage_select_bg.png", { 0.0f, 0.0f });
+	vivid::DrawTexture("data\\button.png", m_ButtonPosition);
+	if(m_FremeVisibleFlag)
+	vivid::DrawTexture("data\\button_frame.png", m_ButtonPosition);
+	vivid::DrawTexture("data\\stage1.png", m_stage1_position);
+
 #ifdef VIVID_DEBUG
 	vivid::DrawText(50, "ÉQÅ[ÉÄëIë", { 0.0f,0.0f });
 	vivid::DrawText(50, "RÇ≈ñﬂÇÈ", { 0.0f,50.0f });
