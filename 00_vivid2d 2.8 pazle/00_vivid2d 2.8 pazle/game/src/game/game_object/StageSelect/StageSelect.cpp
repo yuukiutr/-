@@ -35,12 +35,12 @@ void StageSelect::Update(void)
 		m_FrameCount = 0;
 	}
 
-	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D))
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D) && m_SelectNumber != 2)
 	{
 		m_SelectNumber++;
 		m_ReturnCount = 0;
 	}
-	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A))
+	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A) && m_SelectNumber != 0)
 	{
 		m_SelectNumber--;
 		m_ReturnCount = 0;
@@ -120,4 +120,9 @@ void StageSelect::Finalize(void)
 STAGE_ID StageSelect::GetNowStageID(void)
 {
 	return m_NowStageID;
+}
+
+int StageSelect::GetSelectNumber(void)
+{
+	return m_SelectNumber;
 }

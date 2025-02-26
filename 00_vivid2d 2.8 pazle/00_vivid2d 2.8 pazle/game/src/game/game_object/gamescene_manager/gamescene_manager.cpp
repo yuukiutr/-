@@ -30,6 +30,7 @@ void CreateScene(GameScene_ID next_scene)
 			title.Finalize();
 			break;
 		case GameScene_ID::STAGESELECT:
+			GameSceneManager::GetInstance()->SetSelectNumber((int)stageselect.GetNowStageID()); //
 			stageselect.Finalize();
 			break;
 		case GameScene_ID::OPTION:
@@ -77,6 +78,8 @@ void CreateScene(GameScene_ID next_scene)
 void GameSceneManager::Initialize(void)
 {
 	CreateScene(GameScene_ID::TITLE);
+
+	m_Instance = this;
 }
 
 void GameSceneManager::Update(void)
@@ -153,3 +156,24 @@ void GameSceneManager::Finalize(void)
 		break;
 	}
 }
+
+void GameSceneManager::SetSelectNumber(int num)
+{
+	m_StageNo = num;
+}
+
+int GameSceneManager::GetSelectNumber(void)
+{
+	return m_StageNo;
+}
+
+GameSceneManager* GameSceneManager::GetInstance(void)
+{
+	return m_Instance;
+}
+
+/*int GameSceneManager::GetSelectNumber(int num)
+{
+	num = m_Select->GetSelectNumber();
+	return num;
+}*/

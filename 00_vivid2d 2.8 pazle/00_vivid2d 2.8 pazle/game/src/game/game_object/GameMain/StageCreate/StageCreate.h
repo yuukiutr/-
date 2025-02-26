@@ -45,9 +45,6 @@ private:
 		"data\\excel\\stage1.csv",
 		"data\\excel\\stage2.csv",
 		"data\\excel\\stage3.csv",
-		"data\\excel\\stage4.csv",
-		"data\\excel\\stage5.csv",
-		"data\\excel\\stage6.csv",
 	};
 
 	int m_DiceDigit;

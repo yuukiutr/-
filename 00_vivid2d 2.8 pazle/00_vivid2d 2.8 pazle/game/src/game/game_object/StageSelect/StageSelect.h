@@ -12,7 +12,8 @@ public:
 	void Update(void);
 	void Draw(void);
 	void Finalize(void);
-	STAGE_ID GetNowStageID(void);
+	STAGE_ID GetNowStageID(void);	//ステージIDの取得
+	int GetSelectNumber(void);		//ステージの取得
 
 private:
 	int m_SelectNumber;

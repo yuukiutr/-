@@ -2,6 +2,7 @@
 #include "vivid.h"
 #include "../StageSelect/Stage_id.h"
 #include "../GameMain/dice/dice.h"
+#include "../gamescene_manager/gamescene_manager.h"
 
 
 class StageSelect;
@@ -11,9 +12,10 @@ class Dice;
 class Result
 {
 private:
-	StageSelect* m_Select;
 	GameMain* m_Main;
+	GameSceneManager m_Stage;
 
+	int m_StageNo;			//ステージがいくつか
 	int m_TitleCount;		//タイトルに戻るまでの時間
 	int m_ResultDiceMove;	//今回の記録
 	int m_LoadDiceMove;		//ベスト記録

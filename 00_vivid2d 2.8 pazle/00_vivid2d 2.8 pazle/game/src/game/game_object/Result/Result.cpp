@@ -10,9 +10,23 @@ void Result::Initialize(GameMain* main, StageSelect* target)
 {
 	m_ResultDiceMove = Dice::GetInstance().GetMoveCount();
 
+	m_StageNo = 0;
 	//ベスト記録の読み込み
 	TEXTMANAGER.DeleteLoadData();
-	TEXTMANAGER.Load(LOAD_ID::ONLY_NUMERIC, "data/BestRecord.txt");
+	switch (GameSceneManager::GetInstance()->GetSelectNumber())
+	{
+	case 0:
+		TEXTMANAGER.Load(LOAD_ID::ONLY_NUMERIC, "data/BestRecordStage1.txt");
+		break;
+	case 1:
+		TEXTMANAGER.Load(LOAD_ID::ONLY_NUMERIC, "data/BestRecordStage2.txt");
+		break;
+	case 2:
+		TEXTMANAGER.Load(LOAD_ID::ONLY_NUMERIC, "data/BestRecordStage3.txt");
+		break;
+	default:
+		break;
+	}
 	std::vector<std::string> vec = TEXTMANAGER.GetLoadData();
 	m_LoadDiceMove = stoi(vec[0]);
 
@@ -58,8 +72,20 @@ void Result::Finalize(void)
 {
 	//データセーブ
 	if (m_ResultDiceMove < m_LoadDiceMove) {
-	TEXTMANAGER.DeleteTextData("data/BestRecord.txt");
-	TEXTMANAGER.SaveAndCreate(SAVE_ID::PS, "data/BestRecord.txt", std::to_string(m_ResultDiceMove));
+		switch (GameSceneManager::GetInstance()->GetSelectNumber())
+		{
+		case 0:
+			TEXTMANAGER.SaveAndCreate(SAVE_ID::OVERWRITING, "data/BestRecordStage1.txt", std::to_string(m_ResultDiceMove));
+			break;
+		case 1:
+			TEXTMANAGER.SaveAndCreate(SAVE_ID::OVERWRITING, "data/BestRecordStage2.txt", std::to_string(m_ResultDiceMove));
+			break;
+		case 2:
+			TEXTMANAGER.SaveAndCreate(SAVE_ID::OVERWRITING, "data/BestRecordStage3.txt", std::to_string(m_ResultDiceMove));
+			break;
+		default:
+			break;
+		}
 	}
 	CSoundManager::GetInstance().StopSound(SOUND_ID::RESULT);
 
