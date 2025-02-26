@@ -11,7 +11,7 @@ void Title::Initialize(void)
 	m_OPTION_position = { vivid::WINDOW_WIDTH / 2 - 95.0f ,764.0f };
 	rect = { 0, 0, m_dice_width, m_dice_height };
 	m_ID = GameScene_ID::STAGESELECT;
-	
+
 	CSoundManager::GetInstance().Load();
 	CSoundManager::GetInstance().Play(SOUND_ID::TITLE, true);
 }
@@ -53,6 +53,12 @@ void Title::Update(void)
 		m_ID = GameScene_ID::OPTION;
 		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
 	}*/
+
+	//ResetScore Max
+	if (vivid::keyboard::Button(vivid::keyboard::KEY_ID::R) &&
+		vivid::keyboard::Button(vivid::keyboard::KEY_ID::S) &&
+		vivid::keyboard::Button(vivid::keyboard::KEY_ID::M))
+		ResetScore();
 }
 
 void Title::Draw(void)
@@ -71,4 +77,12 @@ void Title::Draw(void)
 void Title::Finalize(void)
 {
 	CSoundManager::GetInstance().StopSound(SOUND_ID::TITLE);
+}
+
+void Title::ResetScore(void)
+{
+	TEXTMANAGER.DeleteLoadData();
+	TEXTMANAGER.SaveAndCreate(SAVE_ID::OVERWRITING, "data/BestRecordStage1.txt", std::to_string(m_max_score));
+	TEXTMANAGER.SaveAndCreate(SAVE_ID::OVERWRITING, "data/BestRecordStage2.txt", std::to_string(m_max_score));
+	TEXTMANAGER.SaveAndCreate(SAVE_ID::OVERWRITING, "data/BestRecordStage3.txt", std::to_string(m_max_score));
 }
