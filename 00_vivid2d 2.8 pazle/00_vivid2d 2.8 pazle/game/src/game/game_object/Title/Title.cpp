@@ -65,7 +65,7 @@ void Title::Draw(void)
 {
 	vivid::DrawTexture("data\\title\\title_bg.png", {0.0f,0.0f});
 #ifndef Title
-	vivid::DrawText(32, "タイトル", { 0.0f,0.0f });
+	//vivid::DrawText(32, "タイトル", { 0.0f,0.0f });
 #endif // !Title
 	vivid::DrawTexture("data\\title\\title_dice.png", m_dice_Position, 0xffffffff, rect);
 	vivid::DrawTexture("data\\title\\start.png", m_TITLE_position);

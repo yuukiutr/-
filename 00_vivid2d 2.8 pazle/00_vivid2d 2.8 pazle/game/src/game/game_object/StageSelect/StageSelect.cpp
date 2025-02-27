@@ -35,15 +35,32 @@ void StageSelect::Update(void)
 		m_FrameCount = 0;
 	}
 
-	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D) && m_SelectNumber != 2)
+	if (vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::D))
 	{
-		m_SelectNumber++;
+		if (m_SelectNumber == 2)
+		{
+			m_SelectNumber = 0;
+		}
+		else
+		{
+			m_SelectNumber++;
+		}
 		m_ReturnCount = 0;
+		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
 	}
-	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A) && m_SelectNumber != 0)
+	else if(vivid::keyboard::Trigger(vivid::keyboard::KEY_ID::A))
 	{
+		if (m_SelectNumber == 0)
+		{
+			m_SelectNumber = 2;
+		}
+		else 
+		{
 		m_SelectNumber--;
+		}
 		m_ReturnCount = 0;
+		CSoundManager::GetInstance().Play(SOUND_ID::SELECT);
+
 	}
 
 	if (m_SelectNumber >= (int)STAGE_ID::DUMMY)
@@ -102,7 +119,21 @@ void StageSelect::Draw(void)
 	vivid::DrawTexture("data\\stage_select\\button.png", m_ButtonPosition);
 	if(m_FremeVisibleFlag)
 	vivid::DrawTexture("data\\stage_select\\button_frame.png", m_ButtonPosition);
-	vivid::DrawTexture("data\\stage_select\\stage1.png", m_stage1_position);
+	vivid::DrawTexture("data\\stage_select\\select.png", {100.0f,600.0f});
+	switch (m_SelectNumber)
+	{
+	case 0:
+		vivid::DrawTexture("data\\stage_select\\stage1.png", m_stage1_position);
+		break;
+	case 1:
+		vivid::DrawTexture("data\\stage_select\\stage2.png", m_stage1_position);
+		break;
+	case 2:
+		vivid::DrawTexture("data\\stage_select\\stage3.png", m_stage1_position);
+		break;
+	default:
+		break;
+	}
 
 #ifdef VIVID_DEBUG
 	vivid::DrawText(50, "ÉQÅ[ÉÄëIë", { 0.0f,0.0f });
